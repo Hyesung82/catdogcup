@@ -17,23 +17,24 @@ navigationCompose = "2.7.7"
 retrofit2 = "2.9.0"
 okhttp = "4.10.0"
 ktx = "1.13.1"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
 
 # plugin
 androidGradlePlugin = "8.5.0"
 kotlin = "1.9.23"
-material = "1.11.0"
+material = "1.12.0"
 composeMaterial = "1.2.1"
 junit = "4.13.2"
 junitTest = "1.1.5"
 espresso = "3.5.1"
-lifecycle = "2.3.1"
-compose = "1.6.7"
+lifecycle = "2.8.2"
+activityCompose = "1.9.0"
+compose = "1.6.8"
 kotlinBom = "1.8.22"
 core = "1.42.0"
 playServicesAnalytics = "18.0.4"
 
-coil = "0.10.0"
+coil = "2.6.0"
 glide = "4.13.0"
 compose-glide = "1.4.7"
 
@@ -80,7 +81,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 
-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "compose" }
+compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
 compose-junit = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
