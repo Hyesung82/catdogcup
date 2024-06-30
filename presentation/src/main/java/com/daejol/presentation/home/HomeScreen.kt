@@ -12,8 +12,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.theme.Typography
 
@@ -59,14 +60,16 @@ fun HomeScreen(
                 actions = {
                     IconButton(onClick = { /* TODO: 품종 검색 */ }) {
                         Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = stringResource(R.string.home_app_bar_search)
+                            imageVector = Icons.Outlined.Search,
+                            contentDescription = stringResource(R.string.home_app_bar_search),
+                            tint = Orange100
                         )
                     }
                     IconButton(onClick = { /* TODO: 마이페이지 */ }) {
                         Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = stringResource(R.string.home_app_bar_my_page)
+                            imageVector = Icons.Outlined.AccountCircle,
+                            contentDescription = stringResource(R.string.home_app_bar_my_page),
+                            tint = Orange100
                         )
                     }
                 }
