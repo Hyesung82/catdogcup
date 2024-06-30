@@ -49,9 +49,9 @@ fun PopularCatDogCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
         ),
-        colors = CardDefaults.cardColors(
-            containerColor = White100
-        ),
+//        colors = CardDefaults.cardColors(
+//            containerColor = White100
+//        ),
         modifier = Modifier
             .wrapContentHeight()
             .width(width)
