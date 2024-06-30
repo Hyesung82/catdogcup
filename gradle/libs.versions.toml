@@ -41,8 +41,7 @@ compose-glide = "1.4.7"
 # {groupId}:{artifactId}:{version}
 
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
-androidx-material-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialVersion" }
-
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialVersion" }
 androidx-material3-adaptive-navigation-suite = { module = "androidx.compose.material3:material3-adaptive-navigation-suite", version.ref = "material3AdaptiveNavigationSuite" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationCompose" }

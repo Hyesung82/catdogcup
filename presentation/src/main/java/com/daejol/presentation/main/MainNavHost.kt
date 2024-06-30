@@ -27,7 +27,7 @@ fun MainNavHost(
         composable(route = Screen.Home.route) {
             HomeScreen(navController)
         }
-        composable(route = Screen.Category.route) {
+        composable(route = Screen.Matching.route) {
             PersonalWidget()
         }
         composable(route = Screen.Bookmark.route) {

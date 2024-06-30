@@ -19,7 +19,7 @@ import com.daejol.presentation.Screen
 fun MainScreenApp() {
     val items = listOf(
         Screen.Home,
-        Screen.Category,
+        Screen.Matching,
         Screen.Bookmark,
         Screen.MyPage,
     )
