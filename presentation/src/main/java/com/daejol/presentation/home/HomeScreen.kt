@@ -32,7 +32,6 @@ import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
-import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +49,7 @@ fun HomeScreen(
                         Image(
                             painter = painterResource(id = R.drawable.catdogcup_logo),
                             contentDescription = stringResource(R.string.home_app_bar_title),
-                            colorFilter = ColorFilter.tint(Orange80),
+                            colorFilter = ColorFilter.tint(Orange100),
                             modifier = Modifier
                                 .width(dimensionResource(id = R.dimen.home_app_bar_title_width))
                                 .fillMaxHeight()
