@@ -1,4 +1,4 @@
-package com.daejol.presentation.worldcup.top
+package com.daejol.presentation.worldcup.selection.top
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.Orange80
-import com.daejol.presentation.worldcup.WorldCupPreviewParameterProvider
-import com.daejol.presentation.worldcup.WorldCupType
+import com.daejol.presentation.worldcup.selection.WorldCupPreviewParameterProvider
+import com.daejol.presentation.worldcup.selection.WorldCupType
 
 @Preview
 @Composable

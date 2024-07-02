@@ -1,6 +1,6 @@
-package com.daejol.presentation.worldcup
+package com.daejol.presentation.worldcup.selection
 
-import com.daejol.presentation.worldcup.top.TopSectionWidget
+import com.daejol.presentation.worldcup.selection.top.TopSectionWidget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.daejol.presentation.common.ui.BottomButton
-import com.daejol.presentation.worldcup.middle.MiddleSectionWidget
+import com.daejol.presentation.worldcup.WorldCupViewModel
+import com.daejol.presentation.worldcup.selection.middle.MiddleSectionWidget
 
 enum class WorldCupType {
     CAT, DOG, COMBINED

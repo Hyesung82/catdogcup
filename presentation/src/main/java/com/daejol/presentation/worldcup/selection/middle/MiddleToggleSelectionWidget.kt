@@ -1,4 +1,4 @@
-package com.daejol.presentation.worldcup.middle
+package com.daejol.presentation.worldcup.selection.middle
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

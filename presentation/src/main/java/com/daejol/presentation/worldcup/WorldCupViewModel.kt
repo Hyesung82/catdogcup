@@ -1,13 +1,16 @@
 package com.daejol.presentation.worldcup
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class WorldCupViewModel @Inject constructor(): ViewModel() {
+class WorldCupViewModel @Inject constructor(
+
+): ViewModel() {
     private val _worldCupLevel = mutableStateOf("16강")
     val worldCupLevel: State<String> = _worldCupLevel
 
@@ -19,6 +22,12 @@ class WorldCupViewModel @Inject constructor(): ViewModel() {
 
     private val _share = mutableStateOf(true)
     val share: State<Boolean> = _share
+
+    private val _currentGameLevel = mutableStateOf(0)
+    val currentGameLevel: State<Int> = _currentGameLevel
+
+    private val _worldCupAnimalList = mutableStateListOf()
+     al worldCupAnimalList: State
 
     fun setLevel(level: String) {
         _worldCupLevel.value = level
@@ -34,5 +43,9 @@ class WorldCupViewModel @Inject constructor(): ViewModel() {
 
     fun allowShare(share: Boolean) {
         _share.value = share
+    }
+
+    fun updateGameLevel(level: Int) {
+        _currentGameLevel.value = level
     }
 }
