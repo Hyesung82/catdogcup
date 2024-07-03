@@ -1,13 +1,14 @@
 package usecase
 
+import androidx.versionedparcelable.ParcelField
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
 import entity.ImageEntity
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-enum class WorldCupType {
-    CAT, DOG, COMBINED
+enum class WorldCupType(value: String) {
+    CAT("CAT"), DOG("DOG"), COMBINED("COMBINED")
 }
 
 class GetImageUsecase @Inject constructor(
@@ -52,7 +53,7 @@ class GetImageUsecase @Inject constructor(
 
     private suspend fun getRandomDogImages(randomImageCount: Int): Flow<List<ImageEntity>>? {
         try {
-            val flow = catImagesRepository.getCatRandomImages(randomImageCount).map {
+            val flow = dogImagesRepository.getDogRandomImages(randomImageCount).map {
                 return@map it.on(
                     // TODO: Entity 자체를 넘겨주는 것이 좋을까? 아니면 정말 필요한 것만 한 번 더 정제해서
                     // TODO: 주는 것이 나을까?
