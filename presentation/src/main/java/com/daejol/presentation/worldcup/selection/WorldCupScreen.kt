@@ -15,14 +15,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.Navigator
+import androidx.navigation.compose.rememberNavController
+import com.daejol.presentation.Screen
 import com.daejol.presentation.common.ui.BottomButton
 import com.daejol.presentation.worldcup.WorldCupViewModel
 import com.daejol.presentation.worldcup.selection.middle.MiddleSectionWidget
+import usecase.WorldCupType
 
-enum class WorldCupType {
-    CAT, DOG, COMBINED
-}
 
 class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> {
     override val values = sequenceOf(
@@ -32,13 +36,14 @@ class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> 
     )
 }
 
-@Preview
 @Composable
 fun WorldCupScreen(
-    viewModel: WorldCupViewModel = viewModel(),
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    viewModel: WorldCupViewModel = hiltViewModel(),
+    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: String,
+    navController: NavController? = null
 ) {
-    val t = WorldCupType.DOG
+    val t = enumValueOf<WorldCupType>(type)
+    viewModel.setType(t)
 
     return Column(
         verticalArrangement = Arrangement.Bottom,
@@ -65,7 +70,24 @@ fun WorldCupScreen(
         Box(
             contentAlignment = Alignment.BottomCenter,
         ) {
-            BottomButton({})
+            BottomButton(
+                onClick = {
+                    viewModel.getAnimalList()
+                    navController?.navigate(
+                        route = Screen.WorldCupPlay.route
+                    )
+                }
+            )
         }
     }
+}
+
+@Preview
+@Composable
+fun Preview() {
+    WorldCupScreen(
+        viewModel = viewModel(),
+        WorldCupType.CAT.name,
+        null
+    )
 }

@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.ui.theme.CustomTextStyle
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Pretendard
@@ -27,7 +28,9 @@ fun BottomButton(onClick: () -> Unit) {
             .wrapContentHeight(),
         shape = RectangleShape,
         colors = ButtonColors(Orange100, Orange100, Orange100, Orange100),
-        onClick = { onClick.invoke() },
+        onClick = {
+            onClick.invoke()
+        },
     ) {
         Column {
             Text(
