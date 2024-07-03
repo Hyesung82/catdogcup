@@ -15,7 +15,7 @@ class CatImagesRepositoryImpl @Inject constructor(
     override suspend fun getCatRandomImages(imageCount: Int): Flow<DataState<List<ImageEntity>>> = flow {
         try {
             val catImages =
-                catImagesApi.getCatImages().body()?.map { it.toDomain() }?.toList()
+                catImagesApi.getCatImages(imageCount).body()?.map { it.toDomain() }?.toList()
             println(catImages)
             emit(DataState.Success(data = catImages))
         } catch (e: Exception) {

@@ -137,7 +137,7 @@ fun CatDogCupNavHost(
             // TODO: 북마크
         }
         composable(route = Screen.MyPage.route) {
-//             WorldCupScreen(navController = navController, type = "CAT")
+             WorldCupScreen(navController = navController, type = "CAT")
         }
         composable(route = Screen.WorldCupSelection.route) {
             WorldCupScreen(navController = navController, type = "CAT")

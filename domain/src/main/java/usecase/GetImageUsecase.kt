@@ -19,6 +19,7 @@ class GetImageUsecase @Inject constructor(
         type: WorldCupType,
         randomImageCount: Int
     ): Flow<List<ImageEntity>> {
+        println("[keykat] randomImageCount:: $randomImageCount")
         return when (type) {
             WorldCupType.CAT -> getRandomCatImages(randomImageCount)
                 ?: flow { listOf<ImageEntity>() }
