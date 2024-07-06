@@ -38,7 +38,7 @@ class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> 
 
 @Composable
 fun WorldCupScreen(
-    viewModel: WorldCupViewModel = hiltViewModel(),
+    viewModel: WorldCupViewModel,
     @PreviewParameter(WorldCupPreviewParameterProvider::class) type: String,
     navController: NavController? = null
 ) {
@@ -72,9 +72,13 @@ fun WorldCupScreen(
         ) {
             BottomButton(
                 onClick = {
-                    viewModel.getAnimalList()
-                    navController?.navigate(
-                        route = Screen.WorldCupPlay.route
+                    viewModel.getAnimalList(
+                        onFinish = {
+                            viewModel.initializeGame()
+                            navController?.navigate(
+                                route = Screen.WorldCupPlay.route
+                            )
+                        }
                     )
                 }
             )

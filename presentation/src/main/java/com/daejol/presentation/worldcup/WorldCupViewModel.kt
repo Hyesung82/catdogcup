@@ -2,18 +2,20 @@ package com.daejol.presentation.worldcup
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import entity.ImageEntity
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
 import usecase.GetImageUsecase
 import usecase.WorldCupType
 import javax.inject.Inject
+import kotlin.math.pow
+import kotlin.math.sqrt
+import kotlin.random.Random
 
 @HiltViewModel
 class WorldCupViewModel @Inject constructor(
@@ -34,11 +36,17 @@ class WorldCupViewModel @Inject constructor(
     private val _share = mutableStateOf(true)
     val share: State<Boolean> = _share
 
-    private val _currentGameLevel = mutableIntStateOf(0)
+    private val _currentGameLevel = mutableIntStateOf(16)
     val currentGameLevel: State<Int> = _currentGameLevel
 
     private val _worldCupAnimalList = mutableStateOf(listOf<ImageEntity>())
-    val worldCupAnimalList: State<List<ImageEntity>> = _worldCupAnimalList
+
+    private val _currentMatchImages = mutableStateOf(listOf<ImageEntity>())
+    val currentMatchImages: State<List<ImageEntity>> = _currentMatchImages
+
+    // 128 -> 64 -> 32 -> 16 -> 4 -> final
+    private val _gameProgressImageList =
+        mutableStateOf<MutableList<MutableList<ImageEntity>>>(mutableListOf())
 
     fun setType(type: WorldCupType) {
         _worldCupType.value = type
@@ -64,16 +72,114 @@ class WorldCupViewModel @Inject constructor(
         _currentGameLevel.intValue = level
     }
 
-    fun getAnimalList() {
+    fun getAnimalList(
+        onFinish: () -> Unit
+    ) {
         viewModelScope.launch {
             imageUsecase.getAnimalList(
-                type = _worldCupType.value,
-                randomImageCount = currentGameLevel.value / 2
-            )
-                .collect {
-                    val list = it.toImmutableList()
-                    _worldCupAnimalList.value = list
+                type = _worldCupType.value, randomImageCount = currentGameLevel.value
+            ).catch {
+
+            }.collect {
+                val list = it.toImmutableList()
+                _worldCupAnimalList.value = list
+                onFinish.invoke()
+            }
+        }
+    }
+
+    fun initializeGame() {
+        if (_gameProgressImageList.value.isEmpty() || _gameProgressImageList.value.last().size != 0) {
+            var gameLevel = _currentGameLevel.value * 2
+            _gameProgressImageList.value.removeAll { true }
+
+            while (gameLevel % 2 == 0) {
+                _gameProgressImageList.value.add(mutableListOf())
+                gameLevel /= 2
+            }
+
+            val tempList = _worldCupAnimalList.value.toMutableList()
+            while (_gameProgressImageList.value.first().size < _worldCupAnimalList.value.size) {
+                val random = Random.nextInt(tempList.size)
+                val element = tempList[random]
+                _gameProgressImageList.value.first().add(element)
+                tempList.remove(element)
+            }
+
+            // 다음 대결 상대 정하기
+            var element = _gameProgressImageList.value.first()
+            var first = element[0]
+            var second = element[1]
+            _currentMatchImages.value = listOf(first.copy(), second.copy())
+
+        }
+    }
+
+    // 현재 누른 이미지는 [_gameProgressImageList] 에 넣고 패배한 이미지는 사라진다.
+    fun updateMatch(
+        winner: Int,
+        onMatchEnd: () -> Unit
+    ) {
+        if (checkEndGame(onMatchEnd)) {
+            return
+        }
+        removeSelectedMatch(winner)
+
+        if (checkEndGame(onMatchEnd)) {
+            return
+        }
+        setNextMatchedImages()
+        _gameProgressImageList.value.forEach { it ->
+            println("[keykat] _gameProgressImageList: ${it.size}")
+        }
+    }
+
+    private fun checkEndGame(onMatchEnd: () -> Unit): Boolean {
+        if (_gameProgressImageList.value.last().size != 0) {
+            _currentMatchImages.value = listOf(_gameProgressImageList.value.last().last())
+            onMatchEnd.invoke()
+            return true
+        }
+
+        return false
+    }
+
+    private fun removeSelectedMatch(winner: Int) {
+        for (i in 0..<_gameProgressImageList.value.size) {
+            val element = _gameProgressImageList.value[i]
+            if (element.size > 0) {
+                // 일단 현재 이미지가 리스트 내 어떤 이미지인지 판단하고
+                val first = element.removeFirst()
+                val second = element.removeFirst()
+
+                // 승자조에 넣기
+                if (winner == 0) {
+                    _gameProgressImageList.value[i + 1].add(first.copy())
+                } else {
+                    _gameProgressImageList.value[i + 1].add(second.copy())
                 }
+
+                break
+            }
+        }
+    }
+
+    private fun setNextMatchedImages() {
+        for (i in 0..<_gameProgressImageList.value.size) {
+            val element = _gameProgressImageList.value[i]
+            if (element.size > 0) {
+                // 128 -> 64 -> 32 -> 16 -> 8 -> 4 -> final
+                println("[keykat] ${(i)}강")
+                _currentGameLevel.value =
+                    (2.0).pow((_gameProgressImageList.value.size - i - 1).toDouble()).toInt()
+                _worldCupLevel.value = "${_currentGameLevel.value}강"
+                // 다음 대결 상대 정하기
+                val first = element[0]
+                val second = element[1]
+                _currentMatchImages.value = listOf(first.copy(), second.copy())
+
+                return
+            }
         }
     }
 }
