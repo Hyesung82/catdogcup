@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -33,6 +34,7 @@ import androidx.navigation.navArgument
 import com.daejol.presentation.home.HomeScreen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.worldcup.WorldCupViewModel
 import com.daejol.presentation.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.worldcup.selection.WorldCupScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -122,6 +124,8 @@ fun CatDogCupNavHost(
     navController: NavHostController,
     modifier: Modifier
 ) {
+    val viewModel: WorldCupViewModel = hiltViewModel()
+
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route,
@@ -137,13 +141,13 @@ fun CatDogCupNavHost(
             // TODO: 북마크
         }
         composable(route = Screen.MyPage.route) {
-             WorldCupScreen(navController = navController, type = "CAT")
+            WorldCupScreen(viewModel = viewModel, navController = navController, type = "CAT")
         }
         composable(route = Screen.WorldCupSelection.route) {
-            WorldCupScreen(navController = navController, type = "CAT")
+            WorldCupScreen(viewModel = viewModel, navController = navController, type = "CAT")
         }
         composable(route = Screen.WorldCupPlay.route) { backStackEntry ->
-            WorldCupPlayScreen()
+            WorldCupPlayScreen(viewModel = viewModel)
         }
     }
 }
