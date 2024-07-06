@@ -15,10 +15,9 @@ import com.daejol.presentation.worldcup.selection.WorldCupPreviewParameterProvid
 import com.daejol.presentation.worldcup.WorldCupViewModel
 import usecase.WorldCupType
 
-@Preview
 @Composable
 fun MiddleSectionWidget(
-    viewModel: WorldCupViewModel = viewModel(),
+    viewModel: WorldCupViewModel,
     @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
 ) {
     Column(

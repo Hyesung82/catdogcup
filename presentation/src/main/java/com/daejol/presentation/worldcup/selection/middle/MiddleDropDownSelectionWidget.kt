@@ -29,7 +29,6 @@ import com.daejol.presentation.worldcup.WorldCupViewModel
 fun MiddleDropDownSelectionWidget(
     content: String,
     state: State<String>,
-    viewModel: WorldCupViewModel = viewModel(),
     menus: List<DropdownItems>
 ) {
     var expanded by remember { mutableStateOf(false) }
