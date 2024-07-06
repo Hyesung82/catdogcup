@@ -12,16 +12,15 @@ import javax.inject.Inject
 class CatImagesRepositoryImpl @Inject constructor(
     private val catImagesApi: CatImagesApi
 ) : CatImagesRepository {
-    override suspend fun getCatRandomImages(imageCount: Int): Flow<DataState<List<ImageEntity>>> = flow {
-        try {
+    override suspend fun getCatRandomImages(imageCount: Int): Flow<DataState<List<ImageEntity>>> =
+        flow {
+
             val catImages =
                 catImagesApi.getCatImages(imageCount).body()?.map { it.toDomain() }?.toList()
             println(catImages)
             emit(DataState.Success(data = catImages))
-        } catch (e: Exception) {
-            emit(DataState.Fail(data = null, exception = e))
+
         }
-    }
 
 
 }
