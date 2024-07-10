@@ -28,7 +28,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -62,11 +61,8 @@ fun HomeScreen(
             HomeAppBar()
         }
     ) { innerPadding ->
-        val configuration = LocalConfiguration.current
-        val screenWidth = configuration.screenWidthDp
-
         LazyVerticalStaggeredGrid(
-            columns = StaggeredGridCells.Adaptive((screenWidth / 2 - 22).dp),
+            columns = StaggeredGridCells.Fixed(2),
             verticalItemSpacing = dimensionResource(id = R.dimen.space_s),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_s)),
             modifier = Modifier
@@ -83,7 +79,7 @@ fun HomeScreen(
                 }
             }
             itemsIndexed(catdogs) { i, catdog ->
-                PopularCatDogCard(i + 1, catdog, (screenWidth / 2 - 22).dp)
+                PopularCatDogCard(i + 1, catdog)
             }
             item(span = StaggeredGridItemSpan.FullLine) {
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))

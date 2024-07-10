@@ -2,11 +2,8 @@ package com.daejol.presentation.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
@@ -21,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -36,7 +32,6 @@ import com.daejol.presentation.ui.theme.White100
 fun PopularCatDogCard(
     ranking: Int = 1,
     catdog: Catdog = Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
-    width: Dp = 140.dp
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -44,16 +39,9 @@ fun PopularCatDogCard(
         ),
 //        colors = CardDefaults.cardColors(
 //            containerColor = White100
-//        ),
-        modifier = Modifier
-            .wrapContentHeight()
-            .width(width)
+//        )
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-        ) {
+        Box {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(catdog.image)
@@ -61,14 +49,11 @@ fun PopularCatDogCard(
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
                 contentDescription = stringResource(R.string.popular_catdog_image),
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(dimensionResource(id = R.dimen.popular_catdog_image_height))
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier.fillMaxWidth()
             )
             Box(
-                modifier = Modifier
-                    .padding(12.dp)
+                modifier = Modifier.padding(12.dp)
             ) {
                 Ranking(ranking)
             }
