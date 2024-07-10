@@ -3,6 +3,7 @@ package com.daejol.presentation.home
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,72 +32,78 @@ import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 import com.daejol.presentation.ui.theme.White100
+import usecase.WorldCupType
 
 @Composable
 fun WorldCupCard(
     @StringRes title: Int = R.string.cat_world_cup_title,
     @StringRes desc: Int = R.string.cat_world_cup_desc,
     @StringRes button: Int = R.string.cat_world_cup_button,
-    @DrawableRes painter: Int = R.drawable.cat
+    @DrawableRes painter: Int = R.drawable.cat,
+    onClick: () -> Unit
 ) {
-    ElevatedCard(
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = dimensionResource(id = R.dimen.elevation_default)
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = White100
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(
-                start = dimensionResource(id = R.dimen.space_m),
-                top = dimensionResource(id = R.dimen.space_m),
-                bottom = dimensionResource(id = R.dimen.space_xxs),
-                end = dimensionResource(id = R.dimen.space_m)
-            )
+    Surface(onClick = {
+        onClick.invoke()
+    }) {
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(
+                defaultElevation = dimensionResource(id = R.dimen.elevation_default)
+            ),
+            colors = CardDefaults.cardColors(
+                containerColor = White100
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
-            Column(
-                Modifier.weight(1f)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.space_m),
+                    top = dimensionResource(id = R.dimen.space_m),
+                    bottom = dimensionResource(id = R.dimen.space_xxs),
+                    end = dimensionResource(id = R.dimen.space_m)
+                )
             ) {
-                Text(
-                    text = stringResource(id = title),
-                    fontSize = dimensionResource(id = R.dimen.text_m).value.sp,
-                    style = Typography.titleSmall
-                )
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                Text(
-                    text = stringResource(id = desc),
-                    style = Typography.bodySmall
-                )
-                Button(
-                    onClick = { /*TODO*/ },
-                    contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
-                    modifier = Modifier
-                        .defaultMinSize(
-                            minWidth = ButtonDefaults.MinWidth,
-                            minHeight = 1.dp
-                        )
+                Column(
+                    Modifier.weight(1f)
                 ) {
                     Text(
-                        text = stringResource(id = button),
-                        fontSize = dimensionResource(id = R.dimen.text_xxs).value.sp,
-                        style = Typography.titleLarge,
+                        text = stringResource(id = title),
+                        fontSize = dimensionResource(id = R.dimen.text_m).value.sp,
+                        style = Typography.titleSmall
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                    Text(
+                        text = stringResource(id = desc),
+                        style = Typography.bodySmall
+                    )
+                    Button(
+                        onClick = { /*TODO*/ },
+                        contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
+                        modifier = Modifier
+                            .defaultMinSize(
+                                minWidth = ButtonDefaults.MinWidth,
+                                minHeight = 1.dp
+                            )
+                    ) {
+                        Text(
+                            text = stringResource(id = button),
+                            fontSize = dimensionResource(id = R.dimen.text_xxs).value.sp,
+                            style = Typography.titleLarge,
+                        )
+                    }
+                }
+                Column {
+                    Image(
+                        painter = painterResource(id = painter),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(dimensionResource(id = R.dimen.world_cup_card_image_size))
+                    )
+                    Spacer(
+                        modifier = Modifier.height(dimensionResource(id = R.dimen.space_s))
                     )
                 }
-            }
-            Column {
-                Image(
-                    painter = painterResource(id = painter),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(dimensionResource(id = R.dimen.world_cup_card_image_size))
-                )
-                Spacer(
-                    modifier = Modifier.height(dimensionResource(id = R.dimen.space_s))
-                )
             }
         }
     }
@@ -105,6 +113,6 @@ fun WorldCupCard(
 @Composable
 fun WorldCupCardPreview() {
     CatdogcupTheme {
-        WorldCupCard()
+        WorldCupCard(onClick = {})
     }
 }
