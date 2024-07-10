@@ -129,7 +129,6 @@ private fun Ranking(
 ) {
     Box(
         modifier = Modifier
-            .size(dimensionResource(id = R.dimen.popular_catdog_ranking_padding))
             .padding(12.dp)
     ) {
         Text(
