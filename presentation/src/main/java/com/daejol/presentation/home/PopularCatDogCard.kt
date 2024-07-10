@@ -34,7 +34,8 @@ import com.daejol.presentation.ui.theme.White100
 
 @Composable
 fun PopularCatDogCard(
-    catdog: Catdog = Catdog("Russian Blue", 1),
+    ranking: Int = 1,
+    catdog: Catdog = Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
     width: Dp = 140.dp
 ) {
     ElevatedCard(
@@ -55,7 +56,7 @@ fun PopularCatDogCard(
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://cdn2.thecatapi.com/images/cqg.jpg")
+                    .data(catdog.image)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
@@ -69,7 +70,7 @@ fun PopularCatDogCard(
                 modifier = Modifier
                     .padding(12.dp)
             ) {
-                Ranking(catdog.ranking)
+                Ranking(ranking)
             }
         }
     }
