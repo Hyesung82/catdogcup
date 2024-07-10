@@ -90,7 +90,7 @@ class WorldCupViewModel @Inject constructor(
 
     fun initializeGame() {
         if (_gameProgressImageList.value.isEmpty() || _gameProgressImageList.value.last().size != 0) {
-            var gameLevel = _currentGameLevel.value * 2
+            var gameLevel = _currentGameLevel.intValue * 2
             _gameProgressImageList.value.removeAll { true }
 
             while (gameLevel % 2 == 0) {
@@ -108,10 +108,7 @@ class WorldCupViewModel @Inject constructor(
 
             // 다음 대결 상대 정하기
             var element = _gameProgressImageList.value.first()
-            var first = element[0]
-            var second = element[1]
-            _currentMatchImages.value = listOf(first.copy(), second.copy())
-
+            _currentMatchImages.value = element.toList()
         }
     }
 
@@ -120,22 +117,30 @@ class WorldCupViewModel @Inject constructor(
         winner: Int,
         onMatchEnd: () -> Unit
     ) {
-        if (checkEndGame(onMatchEnd)) {
-            return
+        println("[keykat] -------------------------------------------------")
+        _gameProgressImageList.value.forEach { it ->
+            println("[keykat] 현재 게임 상황: _gameProgressImageList: ${it.size}")
         }
+
         removeSelectedMatch(winner)
+        setNextMatchedImages()
 
         if (checkEndGame(onMatchEnd)) {
             return
         }
-        setNextMatchedImages()
+
+        println("[keykat] -------------------------------------------------")
         _gameProgressImageList.value.forEach { it ->
-            println("[keykat] _gameProgressImageList: ${it.size}")
+            println("[keykat] 이후 게임 상황: _gameProgressImageList: ${it.size}")
         }
     }
 
     private fun checkEndGame(onMatchEnd: () -> Unit): Boolean {
         if (_gameProgressImageList.value.last().size != 0) {
+            _gameProgressImageList.value.forEach { it ->
+                println("[keykat] checlEndGame: _gameProgressImageList: ${it}")
+            }
+
             _currentMatchImages.value = listOf(_gameProgressImageList.value.last().last())
             onMatchEnd.invoke()
             return true
@@ -147,7 +152,7 @@ class WorldCupViewModel @Inject constructor(
     private fun removeSelectedMatch(winner: Int) {
         for (i in 0..<_gameProgressImageList.value.size) {
             val element = _gameProgressImageList.value[i]
-            if (element.size > 0) {
+            if (element.size >= 2) {
                 // 일단 현재 이미지가 리스트 내 어떤 이미지인지 판단하고
                 val first = element.removeFirst()
                 val second = element.removeFirst()
@@ -167,16 +172,19 @@ class WorldCupViewModel @Inject constructor(
     private fun setNextMatchedImages() {
         for (i in 0..<_gameProgressImageList.value.size) {
             val element = _gameProgressImageList.value[i]
-            if (element.size > 0) {
+            // 결과가 나왔을 땐 다음 게임 정보로 업데이트할 필요 없음
+            if (element.size >= 2) {
                 // 128 -> 64 -> 32 -> 16 -> 8 -> 4 -> final
                 println("[keykat] ${(i)}강")
-                _currentGameLevel.value =
+                _currentGameLevel.intValue =
                     (2.0).pow((_gameProgressImageList.value.size - i - 1).toDouble()).toInt()
-                _worldCupLevel.value = "${_currentGameLevel.value}강"
-                // 다음 대결 상대 정하기
-                val first = element[0]
-                val second = element[1]
-                _currentMatchImages.value = listOf(first.copy(), second.copy())
+                if (_currentGameLevel.value == 2) {
+                    _worldCupLevel.value = "결승"
+                } else {
+                    _worldCupLevel.value = "${_currentGameLevel.intValue}강"
+                }
+
+                _currentMatchImages.value = element.toList()
 
                 return
             }

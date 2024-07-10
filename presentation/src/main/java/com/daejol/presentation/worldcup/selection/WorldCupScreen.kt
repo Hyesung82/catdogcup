@@ -15,12 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.Navigator
-import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.Screen
 import com.daejol.presentation.common.ui.BottomButton
 import com.daejol.presentation.worldcup.WorldCupViewModel
@@ -92,9 +88,5 @@ fun WorldCupScreen(
 @Preview
 @Composable
 fun Preview() {
-    WorldCupScreen(
-        viewModel = viewModel(),
-        WorldCupType.CAT.name,
-        null
-    )
+    WorldCupScreen(viewModel = viewModel(), WorldCupType.CAT.name)
 }
