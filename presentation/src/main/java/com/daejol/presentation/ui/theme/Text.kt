@@ -7,6 +7,11 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -114,7 +119,7 @@ class RichTextScope(
     val defaultFontFamily: FontFamily = Pretendard,
     val defaultFontWeight: FontWeight = FontWeight.Normal,
 ) {
-    private val items = mutableListOf<RichTextInstance>()
+    private val items = mutableListOf<MutableState<RichTextInstance>>()
 
     @Composable
     fun RichText(
@@ -129,6 +134,10 @@ class RichTextScope(
         lineHeight: Dp = 0.dp,
         decoration: RichTextDecoration = RichTextDecoration()
     ) {
+        val rt = remember {
+            mutableStateOf(RichTextInstance())
+        }
+
         val richText = RichTextInstance(
             text = text,
             textStyle = textStyle,
@@ -137,7 +146,11 @@ class RichTextScope(
             decoration = decoration
         )
 
-        items.add(richText)
+        if (rt !in items) {
+            items.add(rt)
+        }
+
+        rt.value = richText
     }
 
     private class RichTextInstance(
@@ -151,7 +164,8 @@ class RichTextScope(
 
     fun richTextContent(): @Composable () -> Unit {
         return {
-            items.forEach {
+            items.forEach { state ->
+                val it = state.value
                 val text = it.text + if (it.endOfLine) "\n" else ""
 
                 Box(
@@ -187,7 +201,7 @@ class RichTextScope(
 
     fun isEndOfLine(index: Int): Boolean {
         val item = items[index]
-        return item.endOfLine
+        return item.value.endOfLine
     }
 }
 
@@ -200,6 +214,14 @@ fun CustomRichText(
     textAlign: RichTextAlign = RichTextAlign.Start,
     content: @Composable RichTextScope.() -> Unit
 ) {
+    SideEffect {
+
+    }
+
+    LaunchedEffect(key1 = content) {
+        println()
+    }
+
     val scope = RichTextScope(
         defaultTextSize = defaultTextSize,
         defaultTextColor = defaultTextColor,
@@ -208,6 +230,7 @@ fun CustomRichText(
     )
     scope.content()
     val richContent = scope.richTextContent()
+    println("[keykat] sideEffect custom richText: $scope")
 
     return Layout(
         modifier = Modifier.wrapContentSize(),
@@ -285,7 +308,6 @@ fun CustomRichText(
 
             placeables.forEachIndexed { index, placeable ->
                 val pair = placeableMap[index]
-                println("[keykat pair x: ${pair?.first}")
                 pair?.let {
                     placeable.placeRelative(x = pair.first, y = pair.second)
                 }

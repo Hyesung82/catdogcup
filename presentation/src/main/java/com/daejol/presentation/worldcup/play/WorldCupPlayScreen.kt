@@ -53,7 +53,6 @@ fun WorldCupPlayScreen(
         fontFamily = MoveSans
     )
 
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
