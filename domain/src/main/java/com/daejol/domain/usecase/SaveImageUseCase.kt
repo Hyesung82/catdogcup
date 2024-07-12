@@ -1,15 +1,11 @@
-package usecase
+package com.daejol.domain.usecase
 
-import AnimalType
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Environment
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import com.daejol.domain.AnimalType
+import com.daejol.domain.entity.ImageEntity
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
-import entity.ImageEntity
 import java.io.File
 import java.io.FileOutputStream
 import javax.inject.Inject

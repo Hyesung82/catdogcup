@@ -1,5 +1,6 @@
-package com.daejol.catdata.dto
+package com.daejol.data.dogdata.dto
 
+import com.daejol.data.dogdata.dto.DogBreedsDto
 import com.google.gson.annotations.SerializedName
 
 data class DogImageDto(

@@ -1,12 +1,12 @@
-package di
+package com.daejol.domain.di
 
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
+import com.daejol.domain.usecase.GetImageUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import usecase.GetImageUseCase
 import javax.inject.Singleton
 
 @Module

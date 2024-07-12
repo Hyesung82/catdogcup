@@ -1,10 +1,10 @@
-package com.daejol.catdata.repository
+package com.daejol.data.dogdata.repository
 
-import DataState
-import com.daejol.catdata.api.DogImagesApi
-import com.daejol.catdata.dto.DogMapper.toDomain
+import com.daejol.domain.DataState
+import com.daejol.data.dogdata.api.DogImagesApi
+import com.daejol.data.dogdata.dto.DogMapper.toDomain
 import com.daejol.domain.repository.DogImagesRepository
-import entity.ImageEntity
+import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

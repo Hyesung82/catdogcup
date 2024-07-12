@@ -1,4 +1,4 @@
-package entity
+package com.daejol.domain.entity
 
 import com.google.gson.annotations.SerializedName
 

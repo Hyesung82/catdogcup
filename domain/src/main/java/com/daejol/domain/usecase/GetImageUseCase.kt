@@ -1,8 +1,8 @@
-package usecase
+package com.daejol.domain.usecase
 
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
-import entity.ImageEntity
+import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 

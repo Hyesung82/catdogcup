@@ -3,7 +3,7 @@ package com.daejol.data.di
 import com.daejol.data.catdata.api.CatBreedsApi
 import com.daejol.data.ApiConst
 import com.daejol.data.catdata.api.CatImagesApi
-import com.daejol.catdata.api.DogImagesApi
+import com.daejol.data.dogdata.api.DogImagesApi
 import com.daejol.data.dogdata.api.DogBreedsApi
 import dagger.Module
 import dagger.Provides

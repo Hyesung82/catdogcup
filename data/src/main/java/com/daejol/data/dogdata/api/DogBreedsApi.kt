@@ -1,7 +1,6 @@
 package com.daejol.data.dogdata.api
 
-import com.daejol.catdata.dto.DogBreedsDto
-import com.daejol.catdata.dto.DogImageDto
+import com.daejol.data.dogdata.dto.DogBreedsDto
 import com.daejol.data.dogdata.dto.DogBreedDto
 import retrofit2.http.GET
 

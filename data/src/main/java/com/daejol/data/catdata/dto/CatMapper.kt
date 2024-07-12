@@ -1,8 +1,8 @@
 package com.daejol.data.catdata.dto
 
-import entity.BreedInfoEntity
-import entity.BreedTypeEntity
-import entity.ImageEntity
+import com.daejol.domain.entity.BreedInfoEntity
+import com.daejol.domain.entity.BreedTypeEntity
+import com.daejol.domain.entity.ImageEntity
 
 object CatMapper {
     fun CatBreedDto.toDomain(): BreedTypeEntity {

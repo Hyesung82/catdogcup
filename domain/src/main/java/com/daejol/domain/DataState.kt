@@ -1,3 +1,5 @@
+package com.daejol.domain
+
 import kotlin.Exception
 
 sealed class DataState<T>(

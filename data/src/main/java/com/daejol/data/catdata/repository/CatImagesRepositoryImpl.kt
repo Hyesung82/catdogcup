@@ -1,10 +1,10 @@
 package com.daejol.data.catdata.repository
 
-import DataState
+import com.daejol.domain.DataState
 import com.daejol.data.catdata.api.CatImagesApi
 import com.daejol.data.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatImagesRepository
-import entity.ImageEntity
+import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

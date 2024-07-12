@@ -1,11 +1,11 @@
 package com.daejol.data.catdata.repository
 
-import DataState
+import com.daejol.domain.DataState
 import com.daejol.data.catdata.api.CatBreedsApi
 import com.daejol.data.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatBreedsRepository
-import entity.BreedInfoEntity
-import entity.BreedTypeEntity
+import com.daejol.domain.entity.BreedInfoEntity
+import com.daejol.domain.entity.BreedTypeEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

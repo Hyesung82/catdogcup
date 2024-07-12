@@ -1,9 +1,8 @@
-package com.daejol.catdata.dto
+package com.daejol.data.dogdata.dto
 
-import com.daejol.data.dogdata.dto.DogBreedDto
-import entity.BreedInfoEntity
-import entity.BreedTypeEntity
-import entity.ImageEntity
+import com.daejol.domain.entity.BreedInfoEntity
+import com.daejol.domain.entity.BreedTypeEntity
+import com.daejol.domain.entity.ImageEntity
 
 object DogMapper {
     fun DogBreedDto.toDomain(): BreedTypeEntity {

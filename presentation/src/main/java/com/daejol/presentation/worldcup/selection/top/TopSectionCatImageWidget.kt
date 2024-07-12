@@ -21,10 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.Orange80
 import com.daejol.presentation.worldcup.selection.WorldCupPreviewParameterProvider
-import usecase.WorldCupType
 
 @Preview
 @Composable
