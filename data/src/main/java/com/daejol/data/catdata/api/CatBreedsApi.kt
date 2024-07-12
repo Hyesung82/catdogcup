@@ -1,7 +1,7 @@
-package com.daejol.catdata.api
+package com.daejol.data.catdata.api
 
-import com.daejol.catdata.dto.CatBreedDto
-import com.daejol.catdata.dto.CatBreedsDto
+import com.daejol.data.catdata.dto.CatBreedDto
+import com.daejol.data.catdata.dto.CatBreedsDto
 import retrofit2.http.GET
 
 public interface CatBreedsApi {

@@ -1,9 +1,9 @@
-package di
+package com.daejol.data.di
 
-import com.daejol.catdata.repository.CatBreedsRepositoryImpl
-import com.daejol.catdata.repository.CatImagesRepositoryImpl
+import com.daejol.data.catdata.repository.CatBreedsRepositoryImpl
+import com.daejol.data.catdata.repository.CatImagesRepositoryImpl
 import com.daejol.catdata.repository.DogImagesRepositoryImpl
-import com.daejol.dogdata.repository.DogBreedsRepositoryImpl
+import com.daejol.data.dogdata.repository.DogBreedsRepositoryImpl
 import com.daejol.domain.repository.CatBreedsRepository
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogBreedsRepository

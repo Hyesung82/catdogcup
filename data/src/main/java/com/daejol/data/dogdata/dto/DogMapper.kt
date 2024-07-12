@@ -1,6 +1,6 @@
 package com.daejol.catdata.dto
 
-import com.daejol.dogdata.dto.DogBreedDto
+import com.daejol.data.dogdata.dto.DogBreedDto
 import entity.BreedInfoEntity
 import entity.BreedTypeEntity
 import entity.ImageEntity

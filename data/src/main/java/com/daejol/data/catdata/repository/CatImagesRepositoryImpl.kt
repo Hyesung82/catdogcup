@@ -1,8 +1,8 @@
-package com.daejol.catdata.repository
+package com.daejol.data.catdata.repository
 
 import DataState
-import com.daejol.catdata.api.CatImagesApi
-import com.daejol.catdata.dto.CatMapper.toDomain
+import com.daejol.data.catdata.api.CatImagesApi
+import com.daejol.data.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatImagesRepository
 import entity.ImageEntity
 import kotlinx.coroutines.flow.Flow

@@ -1,8 +1,8 @@
-package com.daejol.catdata.repository
+package com.daejol.data.catdata.repository
 
 import DataState
-import com.daejol.catdata.api.CatBreedsApi
-import com.daejol.catdata.dto.CatMapper.toDomain
+import com.daejol.data.catdata.api.CatBreedsApi
+import com.daejol.data.catdata.dto.CatMapper.toDomain
 import com.daejol.domain.repository.CatBreedsRepository
 import entity.BreedInfoEntity
 import entity.BreedTypeEntity
