@@ -4,10 +4,12 @@ import com.daejol.data.catdata.repository.CatBreedsRepositoryImpl
 import com.daejol.data.catdata.repository.CatImagesRepositoryImpl
 import com.daejol.data.dogdata.repository.DogImagesRepositoryImpl
 import com.daejol.data.dogdata.repository.DogBreedsRepositoryImpl
+import com.daejol.data.ranking.repository.RankingRepositoryImpl
 import com.daejol.domain.repository.CatBreedsRepository
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogBreedsRepository
 import com.daejol.domain.repository.DogImagesRepository
+import com.daejol.domain.repository.RankingRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -43,4 +45,10 @@ abstract class RepositoryModule {
     abstract fun bindsDogBreedsRepository(
         dogBreedsRepositoryImpl: DogBreedsRepositoryImpl
     ): DogBreedsRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindsRankingRepository(
+        rankingRepositoryImpl: RankingRepositoryImpl
+    ): RankingRepository
 }
