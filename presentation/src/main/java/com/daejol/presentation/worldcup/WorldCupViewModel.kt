@@ -190,4 +190,16 @@ class WorldCupViewModel @Inject constructor(
             }
         }
     }
+
+    fun getWinnerImage(): String? {
+        return _gameProgressImageList.value.last().last().url
+    }
+
+    fun getWinnerName(): String? {
+        return _gameProgressImageList.value.last().last().breeds?.last()?.name
+    }
+
+    fun getWinnerDescription(): String? {
+        return _gameProgressImageList.value.last().last().breeds?.last()?.description
+    }
 }

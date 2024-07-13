@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.common.data.sp
 import kotlin.math.max
+import kotlin.math.min
 
 /** CustomRichText에 담을 자식 클래스입니다.
  * @param text 단순히 텍스트를 담아주세요.
@@ -53,7 +55,7 @@ open class RichText(
  *       )
  *    )
  *
- * @param texts 텍스트와 텍스트 스타일을 담아줍니다. []RichText] 클래스를 사용해주고 list로 묶어주세요.
+ * @param texts 텍스트와 텍스트 스타일을 담아줍니다. [RichText] 클래스를 사용해주고 list로 묶어주세요.
  **/
 @Deprecated("Text를 이용해서 RichText를 만드는 방식에서 Layout을 이용해서 만들겠습니다.")
 @Composable
@@ -212,16 +214,9 @@ fun CustomRichText(
     defaultFontFamily: FontFamily = Pretendard,
     defaultFontWeight: FontWeight = FontWeight.Normal,
     textAlign: RichTextAlign = RichTextAlign.Start,
+    textWidth: Dp = LocalConfiguration.current.screenWidthDp.dp,
     content: @Composable RichTextScope.() -> Unit
 ) {
-    SideEffect {
-
-    }
-
-    LaunchedEffect(key1 = content) {
-        println()
-    }
-
     val scope = RichTextScope(
         defaultTextSize = defaultTextSize,
         defaultTextColor = defaultTextColor,
@@ -230,10 +225,10 @@ fun CustomRichText(
     )
     scope.content()
     val richContent = scope.richTextContent()
-    println("[keykat] sideEffect custom richText: $scope")
 
     return Layout(
-        modifier = Modifier.wrapContentSize(),
+        modifier = Modifier
+            .wrapContentSize(),
         content = richContent,
     ) { measurables, constraints ->
         val placeables = measurables.map { measurable ->
@@ -263,6 +258,8 @@ fun CustomRichText(
             }
         }
 
+        layoutWidth = min(layoutWidth, textWidth.toPx().toInt())
+
         placeables.forEachIndexed { index, placeable ->
             layoutHeight += placeable.height
 
@@ -272,8 +269,11 @@ fun CustomRichText(
             }
 
             placeableMap[index] = Pair(xPosition, yPosition)
+            val overflow = xPosition + placeable.width > layoutWidth
+
+            println("[keykat] overflow: $overflow  xp: ${xPosition + placeable.width}  layout : $layoutWidth")
             // 라인이 끝나거나 마지막 라인일 경우
-            if (scope.isEndOfLine(index) || index == placeables.lastIndex) {
+            if (overflow || scope.isEndOfLine(index) || index == placeables.lastIndex) {
 
                 // 가운데 정렬
                 if (textAlign == RichTextAlign.Center) {
