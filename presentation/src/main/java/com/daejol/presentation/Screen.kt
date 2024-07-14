@@ -3,9 +3,9 @@ package com.daejol.presentation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Extension
-import androidx.compose.material.icons.filled.Fireplace
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -18,7 +18,7 @@ sealed class Screen(
 
     data object Matching : Screen("matching", R.string.matching, Icons.Filled.Extension)
 
-    data object Random : Screen("random", R.string.random, Icons.Filled.Fireplace)
+    data object Random : Screen("random", R.string.random, Icons.Filled.PhotoLibrary)
 
     data object Bookmark : Screen("bookmark", R.string.bookmark, Icons.Filled.Star)
 
