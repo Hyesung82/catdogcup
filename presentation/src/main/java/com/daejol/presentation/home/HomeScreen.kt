@@ -37,19 +37,7 @@ import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
-
-private val catdogs = listOf(
-    Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
-    Catdog("Keykat", 2, "https://cdn2.thecatapi.com/images/ebv.jpg"),
-    Catdog("Snow Cat", 3, "https://cdn.thedogapi.com/images/Hylo4Snaf.jpeg"),
-    Catdog("Grasskitty", 4, "https://cdn2.thecatapi.com/images/xxBaNrfM0.jpg"),
-    Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
-    Catdog("Keykat", 2, "https://cdn2.thecatapi.com/images/ebv.jpg"),
-    Catdog("Snow Cat", 3, "https://cdn.thedogapi.com/images/Hylo4Snaf.jpeg"),
-    Catdog("Grasskitty", 4, "https://cdn2.thecatapi.com/images/xxBaNrfM0.jpg"),
-    Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
-    Catdog("Keykat", 2, "https://cdn2.thecatapi.com/images/ebv.jpg")
-)
+import com.daejol.presentation.util.TestData
 
 @Composable
 fun HomeScreen(
@@ -77,7 +65,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
-            itemsIndexed(catdogs) { i, catdog ->
+            itemsIndexed(TestData.catdogs) { i, catdog ->
                 PopularCatDogCard(i + 1, catdog)
             }
             item(span = StaggeredGridItemSpan.FullLine) {

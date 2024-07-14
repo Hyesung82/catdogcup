@@ -27,11 +27,12 @@ import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Pretendard
 import com.daejol.presentation.ui.theme.Red100
 import com.daejol.presentation.ui.theme.White100
+import com.daejol.presentation.util.TestData
 
 @Composable
 fun PopularCatDogCard(
     ranking: Int = 1,
-    catdog: Catdog = Catdog("Russian Blue", 1, "https://cdn2.thecatapi.com/images/cqg.jpg"),
+    catdog: Catdog = TestData.catdogs[0],
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
