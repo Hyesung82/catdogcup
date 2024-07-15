@@ -20,8 +20,8 @@ fun MainScreenApp() {
     val items = listOf(
         Screen.Home,
         Screen.Matching,
-        Screen.Bookmark,
-        Screen.MyPage,
+        Screen.Random,
+        Screen.Bookmark
     )
     val appState = rememberAppState()
     val navController = appState.navController
@@ -62,4 +62,3 @@ fun MainScreenApp() {
         MainNavHost(navController, Modifier.padding(innerPadding))
     }
 }
-

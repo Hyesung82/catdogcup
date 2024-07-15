@@ -30,11 +30,11 @@ fun MainNavHost(
         composable(route = Screen.Matching.route) {
             PersonalWidget()
         }
+        composable(route = Screen.Random.route) {
+            // TODO: 스토리(랜덤 개냥이 이미지)
+        }
         composable(route = Screen.Bookmark.route) {
             // TODO: 북마크
-        }
-        composable(route = Screen.MyPage.route) {
-            // TODO: 마이페이지
         }
         composable(route = Screen.WorldCupSelection.route) {
             WorldCupScreen(
