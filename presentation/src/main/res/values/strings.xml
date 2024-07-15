@@ -28,4 +28,5 @@
     <string name="popular_catdog_title">인기있는 고양이 &amp; 강아지</string>
     <string name="popular_catdog_image">인기 고양이 및 강아지 이미지</string>
     <string name="popular_catdog_like">좋아요</string>
+    <string name="popular_catdog_back">뒤로 가기</string>
 </resources>

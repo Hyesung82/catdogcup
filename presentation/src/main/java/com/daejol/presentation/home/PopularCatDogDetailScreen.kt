@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -59,7 +60,7 @@ private fun CatDogDetailImage() {
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(id = R.drawable.sample_cat),
-            contentDescription = "인기 개냥이"
+            contentDescription = stringResource(id = R.string.popular_catdog_image)
         )
         PopularCatDogTopBar()
     }
@@ -72,7 +73,10 @@ private fun PopularCatDogTopBar() {
         title = {},
         navigationIcon = {
             IconButton(onClick = { /* TODO: 뒤로 가기 */ }) {
-                Icon(imageVector = Icons.Outlined.ArrowBackIosNew, contentDescription = "뒤로 가기")
+                Icon(
+                    imageVector = Icons.Outlined.ArrowBackIosNew,
+                    contentDescription = stringResource(id = R.string.popular_catdog_back)
+                )
             }
         },
         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
@@ -91,11 +95,15 @@ private fun CatDogDetailDescription(
             Text(
                 text = catDog.name,
                 style = Typography.headlineLarge,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .align(Alignment.CenterVertically)
             )
             IconButton(onClick = { /* TODO: 좋아요 */ }) {
-                Icon(imageVector = Icons.Outlined.FavoriteBorder, contentDescription = "좋아요")
+                Icon(
+                    imageVector = Icons.Outlined.FavoriteBorder,
+                    contentDescription = stringResource(id = R.string.popular_catdog_like)
+                )
             }
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
