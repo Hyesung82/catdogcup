@@ -27,12 +27,13 @@ import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Pretendard
 import com.daejol.presentation.ui.theme.Red100
 import com.daejol.presentation.ui.theme.White100
-import com.daejol.presentation.util.TestData
+import com.daejol.presentation.data.CatDog
+import com.daejol.presentation.data.TestData
 
 @Composable
 fun PopularCatDogCard(
     ranking: Int = 1,
-    catdog: Catdog = TestData.catdogs[0],
+    catdog: CatDog = TestData.catdogs[0],
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -41,6 +42,7 @@ fun PopularCatDogCard(
 //        colors = CardDefaults.cardColors(
 //            containerColor = White100
 //        )
+        onClick = { /* TODO: PopularCatDogDetailScreen으로 이동 */ }
     ) {
         Box {
             AsyncImage(

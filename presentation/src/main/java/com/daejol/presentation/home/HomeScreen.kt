@@ -34,10 +34,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
-import com.daejol.presentation.util.TestData
 
 @Composable
 fun HomeScreen(
@@ -45,7 +45,7 @@ fun HomeScreen(
 ) {
     Scaffold(
         topBar = {
-            HomeAppBar()
+            HomeTopBar()
         }
     ) { innerPadding ->
         LazyVerticalStaggeredGrid(
@@ -77,7 +77,7 @@ fun HomeScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HomeAppBar() {
+private fun HomeTopBar() {
     TopAppBar(
         title = {
             Row(
@@ -130,9 +130,3 @@ fun HomeScreenPreview() {
         HomeScreen()
     }
 }
-
-data class Catdog(
-    val name: String,
-    val ranking: Int,
-    val image: String
-)
