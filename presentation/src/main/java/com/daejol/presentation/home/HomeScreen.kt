@@ -65,8 +65,8 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
-            itemsIndexed(TestData.catdogs) { i, catdog ->
-                PopularCatDogCard(i + 1, catdog)
+            itemsIndexed(TestData.catdogs) { i, catDog ->
+                PopularCatDogCard(i + 1, catDog)
             }
             item(span = StaggeredGridItemSpan.FullLine) {
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))

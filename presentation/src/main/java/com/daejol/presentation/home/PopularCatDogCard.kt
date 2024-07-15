@@ -33,7 +33,7 @@ import com.daejol.presentation.data.TestData
 @Composable
 fun PopularCatDogCard(
     ranking: Int = 1,
-    catdog: CatDog = TestData.catdogs[0],
+    catDog: CatDog = TestData.catdogs[0],
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -47,7 +47,7 @@ fun PopularCatDogCard(
         Box {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(catdog.image)
+                    .data(catDog.image)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
