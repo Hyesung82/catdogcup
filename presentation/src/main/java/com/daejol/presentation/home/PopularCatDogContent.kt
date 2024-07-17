@@ -22,11 +22,11 @@ import com.daejol.presentation.ui.theme.CatdogcupTheme
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PopularCatDogContent(
-    catdogs: List<Catdog> = listOf(
-        Catdog("Russian Blue", 1),
-        Catdog("Keykat", 2),
-        Catdog("Snow Cat", 3),
-        Catdog("Grasskitty", 4)
+    catdogs: List<CatDog> = listOf(
+        CatDog("Russian Blue", 1),
+        CatDog("Keykat", 2),
+        CatDog("Snow Cat", 3),
+        CatDog("Grasskitty", 4)
     )
 ) {
     Column(
@@ -61,7 +61,8 @@ fun PopularCatDogContentPreview() {
     }
 }
 
-data class Catdog(
+data class CatDog(
     val name: String,
-    val ranking: Int
+    val ranking: Int,
+    val imageUrl: String = "https://cdn2.thecatapi.com/images/cqg.jpg"
 )
