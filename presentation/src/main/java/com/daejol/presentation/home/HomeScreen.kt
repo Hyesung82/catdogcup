@@ -1,6 +1,5 @@
 package com.daejol.presentation.home
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -63,7 +62,7 @@ fun HomeScreen(
                 Column {
                     WorldCupContent(navController)
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-                    Title(text = R.string.popular_animal_title)
+                    Title(text = stringResource(id = R.string.popular_animal_title))
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
@@ -120,12 +119,13 @@ private fun HomeTopBar() {
 
 @Composable
 fun Title(
-    @StringRes text: Int
+    text: String,
+    modifier: Modifier = Modifier
 ) {
     Text(
-        text = stringResource(id = text),
+        text = text,
         style = Typography.titleLarge,
-        modifier = Modifier
+        modifier = modifier
     )
 }
 
