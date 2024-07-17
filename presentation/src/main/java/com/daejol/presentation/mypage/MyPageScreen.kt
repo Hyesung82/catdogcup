@@ -27,6 +27,8 @@ fun MyPageScreen(
         BookmarkContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
         AchievementContent()
+        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
+        EtcContent()
     }
 }
 
