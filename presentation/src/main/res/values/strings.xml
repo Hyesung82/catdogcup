@@ -35,4 +35,6 @@
     <string name="my_page_title_bookmark">북마크</string>
     <string name="my_page_bookmark_more">북마크 더보기</string>
     <string name="my_page_bookmarked_image">북마크한 이미지</string>
+    <string name="my_page_title_achievement">활동 업적</string>
+    <string name="my_page_achievement_image">업적 이미지</string>
 </resources>

@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -34,7 +35,7 @@ fun AchievementContent(
         modifier = modifier.padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
         Text(
-            text = "활동 업적",
+            text = stringResource(id = R.string.my_page_title_achievement),
             style = Typography.titleLarge
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -50,7 +51,8 @@ fun AchievementContent(
 
 @Composable
 private fun AchievementItem(
-    imageUrl: String = ""
+    imageUrl: String = "",
+    title: String = "선택의 시작"
 ) {
     Column {
         AsyncImage(
@@ -59,11 +61,11 @@ private fun AchievementItem(
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),
-            contentDescription = "활동 업적",
+            contentDescription = stringResource(id = R.string.my_page_achievement_image),
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(116.dp)
         )
-        Text(text = "선택의 시작")
+        Text(text = title)
     }
 }
 
