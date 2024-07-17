@@ -30,4 +30,9 @@
     <string name="popular_animal_image">인기 고양이 및 강아지 이미지</string>
     <string name="popular_animal_like">좋아요</string>
     <string name="popular_animal_back">뒤로 가기</string>
+
+    <!-- My Page Screen -->
+    <string name="my_page_title_bookmark">북마크</string>
+    <string name="my_page_bookmark_more">북마크 더보기</string>
+    <string name="my_page_bookmarked_image">북마크한 이미지</string>
 </resources>

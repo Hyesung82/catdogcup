@@ -21,6 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -34,20 +35,22 @@ fun BookmarkContent(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding(end = 0.dp)
+        modifier = modifier
+            .padding(end = 0.dp)
             .padding(start = dimensionResource(id = R.dimen.space_l))
     ) {
         Row {
             Text(
-                text = "북마크",
+                text = stringResource(id = R.string.my_page_title_bookmark),
                 style = Typography.titleLarge,
-                modifier = modifier.weight(1f)
+                modifier = modifier
+                    .weight(1f)
                     .align(Alignment.CenterVertically)
             )
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                    contentDescription = "북마크 더보기"
+                    contentDescription = stringResource(id = R.string.my_page_bookmark_more)
                 )
             }
         }
@@ -74,7 +77,7 @@ private fun BookmarkItem(
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),
-            contentDescription = "북마크한 이미지",
+            contentDescription = stringResource(id = R.string.my_page_bookmarked_image),
             contentScale = ContentScale.Crop
         )
     }
