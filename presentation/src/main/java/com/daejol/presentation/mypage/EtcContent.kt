@@ -30,7 +30,7 @@ fun EtcContent(
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         Text(
-            text = stringResource(id = R.string.my_page_etc_sign_out),
+            text = stringResource(id = R.string.my_page_etc_sign_in),
             style = Typography.bodyMedium
         )
     }
