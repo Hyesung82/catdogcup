@@ -37,4 +37,6 @@
     <string name="my_page_bookmarked_image">북마크한 이미지</string>
     <string name="my_page_title_achievement">활동 업적</string>
     <string name="my_page_achievement_image">업적 이미지</string>
+    <string name="my_page_title_etc">기타</string>
+    <string name="my_page_etc_sign_out">로그아웃</string>
 </resources>

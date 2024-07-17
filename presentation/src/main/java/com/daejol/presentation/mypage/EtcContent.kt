@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
@@ -24,12 +25,12 @@ fun EtcContent(
         modifier = modifier.padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
         Text(
-            text = "기타",
+            text = stringResource(id = R.string.my_page_title_etc),
             style = Typography.titleLarge
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         Text(
-            text = "로그아웃",
+            text = stringResource(id = R.string.my_page_etc_sign_out),
             style = Typography.bodyMedium
         )
     }
