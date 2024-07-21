@@ -38,6 +38,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -127,33 +128,14 @@ fun WorldCupResultScreen(
                 .fillMaxWidth()
         ) {
             ShareButton()
-
             Spacer(modifier = Modifier.width(24.dp))
-
             BookMarkButton()
-
             Spacer(modifier = Modifier.width(24.dp))
-
             DownloadButton()
         }
 
         Spacer(modifier = Modifier.height(24.dp))
-
-        // 다른 월드컵 하러 가기
-        Button(
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .width(imageWidth),
-            shape = RoundedCornerShape(
-                corner = CornerSize(50.dp)
-            )
-
-        ) {
-            Text(
-                text = "다른 월드컵 하러 가기",
-                fontSize = 16.sp
-            )
-        }
+        PlayAnotherWorldCupButton(imageWidth)
     }
 }
 
@@ -219,6 +201,25 @@ fun DownloadButton() {
                 .width(20.dp)
                 .height(20.dp)
 //                .background(White100)
+        )
+    }
+}
+
+@Composable
+fun PlayAnotherWorldCupButton(imageWidth: Dp) {
+    // 다른 월드컵 하러 가기
+    Button(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .width(imageWidth),
+        shape = RoundedCornerShape(
+            corner = CornerSize(50.dp)
+        )
+
+    ) {
+        Text(
+            text = "다른 월드컵 하러 가기",
+            fontSize = 16.sp
         )
     }
 }
