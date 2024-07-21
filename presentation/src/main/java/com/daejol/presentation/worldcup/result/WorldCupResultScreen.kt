@@ -12,14 +12,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.Download
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
@@ -27,6 +31,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -43,6 +48,7 @@ import com.daejol.presentation.ui.theme.Grey10
 import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.RichTextAlign
+import com.daejol.presentation.ui.theme.White100
 import com.daejol.presentation.worldcup.WorldCupViewModel
 
 @Composable
@@ -120,81 +126,15 @@ fun WorldCupResultScreen(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            // share
-            OutlinedIconButton(
-                onClick = { },
-                border = BorderStroke(3.dp, Orange100),
-                shape = RoundedCornerShape(50), // = 50% percent
-                colors = IconButtonColors(
-                    contentColor = Orange100,
-                    containerColor = Color.Transparent,
-                    disabledContentColor = Grey10,
-                    disabledContainerColor = Grey10
-                ),
-                modifier = Modifier
-                    .width(36.dp)
-                    .height(36.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Share,
-                    contentDescription = "",
-                    modifier = Modifier
-                        .width(20.dp)
-                        .height(20.dp)
-                )
-            }
+            ShareButton()
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            // like
-            OutlinedIconButton(
-                onClick = { },
-                border = BorderStroke(3.dp, Orange100),
-                shape = RoundedCornerShape(50), // = 50% percent
-                colors = IconButtonColors(
-                    contentColor = Orange100,
-                    containerColor = Color.Transparent,
-                    disabledContentColor = Grey10,
-                    disabledContainerColor = Grey10
-                ),
-                modifier = Modifier
-                    .width(36.dp)
-                    .height(36.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Favorite,
-                    contentDescription = "",
-                    modifier = Modifier
-                        .width(20.dp)
-                        .height(20.dp)
-                )
-            }
+            BookMarkButton()
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            // download
-            OutlinedIconButton(
-                onClick = { },
-                border = BorderStroke(3.dp, Orange100),
-                shape = RoundedCornerShape(50), // = 50% percent
-                colors = IconButtonColors(
-                    contentColor = Orange100,
-                    containerColor = Color.Transparent,
-                    disabledContentColor = Grey10,
-                    disabledContainerColor = Grey10
-                ),
-                modifier = Modifier
-                    .width(36.dp)
-                    .height(36.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Download,
-                    contentDescription = "",
-                    modifier = Modifier
-                        .width(20.dp)
-                        .height(20.dp)
-                )
-            }
+            DownloadButton()
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -214,5 +154,71 @@ fun WorldCupResultScreen(
                 fontSize = 16.sp
             )
         }
+    }
+}
+
+@Composable
+fun ShareButton() {
+    // share
+    IconButton(
+        onClick = { },
+        modifier = Modifier
+            .background(Orange100, CircleShape)
+            .width(36.dp)
+            .height(36.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Rounded.Share,
+            contentDescription = "",
+            tint = White100,
+            modifier = Modifier
+                .width(20.dp)
+                .height(20.dp)
+//                .background(White100)
+        )
+    }
+}
+
+@Composable
+fun BookMarkButton() {
+    // share
+    IconButton(
+        onClick = { },
+        modifier = Modifier
+            .background(Orange100, CircleShape)
+            .width(36.dp)
+            .height(36.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Rounded.Bookmark,
+            contentDescription = "",
+            tint = White100,
+            modifier = Modifier
+                .width(20.dp)
+                .height(20.dp)
+//                .background(White100)
+        )
+    }
+}
+
+@Composable
+fun DownloadButton() {
+    // share
+    IconButton(
+        onClick = { },
+        modifier = Modifier
+            .background(Orange100, CircleShape)
+            .width(36.dp)
+            .height(36.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Rounded.Download,
+            contentDescription = "",
+            tint = White100,
+            modifier = Modifier
+                .width(20.dp)
+                .height(20.dp)
+//                .background(White100)
+        )
     }
 }
