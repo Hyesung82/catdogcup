@@ -1,8 +1,8 @@
 package com.daejol.presentation.worldcup.result
 
-import androidx.compose.foundation.BorderStroke
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,36 +16,30 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.Download
-import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonColors
-import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.Gimpo
-import com.daejol.presentation.ui.theme.Grey10
 import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.RichTextAlign
@@ -127,7 +121,7 @@ fun WorldCupResultScreen(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            ShareButton()
+            ShareButton(LocalContext.current)
             Spacer(modifier = Modifier.width(24.dp))
             BookMarkButton()
             Spacer(modifier = Modifier.width(24.dp))
@@ -139,11 +133,21 @@ fun WorldCupResultScreen(
     }
 }
 
+// TODO: 공유하기 기능에 어떤 데이터를 넣어서 줄까?
+//  image? 텍스트? 링크? intent로 딥링크 기능을 넣을까??
 @Composable
-fun ShareButton() {
+fun ShareButton(context: Context) {
+    val sendIntent = Intent(Intent.ACTION_SEND).apply {
+        putExtra(Intent.EXTRA_TEXT, "공유하기")
+        type = "text/plain"
+    }
+    val shareIntent = Intent.createChooser(sendIntent, null)
     // share
     IconButton(
-        onClick = { },
+        onClick = {
+
+            startActivity(context, shareIntent, null)
+        },
         modifier = Modifier
             .background(Orange100, CircleShape)
             .width(36.dp)
