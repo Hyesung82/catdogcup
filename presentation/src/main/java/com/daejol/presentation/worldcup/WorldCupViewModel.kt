@@ -3,8 +3,6 @@ package com.daejol.presentation.worldcup
 import android.content.Context
 import android.graphics.drawable.BitmapDrawable
 import android.media.MediaScannerConnection
-import android.os.Environment
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -20,7 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
-import usecase.GetImageUsecase
+import usecase.GetImageUseCase
 import usecase.SaveImageUseCase
 import usecase.WorldCupType
 import java.io.File
@@ -30,8 +28,8 @@ import kotlin.random.Random
 
 @HiltViewModel
 class WorldCupViewModel @Inject constructor(
-    val imageUsecase: GetImageUsecase,
-    val saveImageUseCase: SaveImageUseCase,
+    private val imageUseCase: GetImageUseCase,
+    private val saveImageUseCase: SaveImageUseCase,
 ) : ViewModel() {
     private val _worldCupType = mutableStateOf(WorldCupType.CAT)
     val worldCupType: State<WorldCupType> = _worldCupType
@@ -89,7 +87,7 @@ class WorldCupViewModel @Inject constructor(
         onFinish: () -> Unit
     ) {
         viewModelScope.launch {
-            imageUsecase.getAnimalList(
+            imageUseCase.getAnimalList(
                 type = _worldCupType.value, randomImageCount = currentGameLevel.value
             ).catch {
 

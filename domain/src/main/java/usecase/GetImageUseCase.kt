@@ -1,6 +1,5 @@
 package usecase
 
-import androidx.versionedparcelable.ParcelField
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
 import entity.ImageEntity
@@ -11,7 +10,7 @@ enum class WorldCupType(value: String) {
     CAT("CAT"), DOG("DOG"), COMBINED("COMBINED")
 }
 
-class GetImageUsecase @Inject constructor(
+class GetImageUseCase @Inject constructor(
     private val catImagesRepository: CatImagesRepository,
     private val dogImagesRepository: DogImagesRepository
 ) {
