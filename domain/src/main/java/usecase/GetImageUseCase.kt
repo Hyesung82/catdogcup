@@ -35,7 +35,7 @@ class GetImageUseCase @Inject constructor(
 
     private suspend fun getRandomCatImages(randomImageCount: Int): Flow<List<ImageEntity>>? {
         try {
-            val flow = catImagesRepository.getCatRandomImages(randomImageCount).map {
+            return catImagesRepository.getCatRandomImages(randomImageCount).map {
                 return@map it.on(
                     // TODO: Entity 자체를 넘겨주는 것이 좋을까? 아니면 정말 필요한 것만 한 번 더 정제해서
                     // TODO: 주는 것이 나을까?
@@ -44,8 +44,6 @@ class GetImageUseCase @Inject constructor(
                     onError = { throw Exception() }
                 ) ?: listOf<ImageEntity>()
             }
-
-            return flow
         } catch (e: Exception) {
             return null
         }
@@ -53,7 +51,7 @@ class GetImageUseCase @Inject constructor(
 
     private suspend fun getRandomDogImages(randomImageCount: Int): Flow<List<ImageEntity>>? {
         try {
-            val flow = dogImagesRepository.getDogRandomImages(randomImageCount).map {
+            return dogImagesRepository.getDogRandomImages(randomImageCount).map {
                 return@map it.on(
                     // TODO: Entity 자체를 넘겨주는 것이 좋을까? 아니면 정말 필요한 것만 한 번 더 정제해서
                     // TODO: 주는 것이 나을까?
@@ -66,8 +64,6 @@ class GetImageUseCase @Inject constructor(
                     }
                 ) ?: listOf<ImageEntity>()
             }
-
-            return flow
         } catch (e: Exception) {
             return null
         }
