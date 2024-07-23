@@ -1,4 +1,4 @@
-package com.daejol.presentation.worldcup.top
+package com.daejol.presentation.worldcup.selection.top
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

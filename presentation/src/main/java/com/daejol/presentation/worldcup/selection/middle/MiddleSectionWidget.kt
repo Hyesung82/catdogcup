@@ -1,27 +1,23 @@
-package com.daejol.presentation.worldcup.middle
+package com.daejol.presentation.worldcup.selection.middle
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.daejol.presentation.worldcup.WorldCupPreviewParameterProvider
-import com.daejol.presentation.worldcup.WorldCupType
+import com.daejol.presentation.worldcup.selection.WorldCupPreviewParameterProvider
 import com.daejol.presentation.worldcup.WorldCupViewModel
+import usecase.WorldCupType
 
-@Preview
 @Composable
 fun MiddleSectionWidget(
-    viewModel: WorldCupViewModel = viewModel(),
+    viewModel: WorldCupViewModel,
     @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
 ) {
     Column(
@@ -35,11 +31,22 @@ fun MiddleSectionWidget(
             content = "몇 강까지 진행할까요?",
             state = viewModel.worldCupLevel,
             menus = listOf(
-                DropdownItems(text = "16강", onClick = { viewModel.setLevel("16강") }),
-                DropdownItems(text = "32강", onClick = { viewModel.setLevel("32강") }),
-                DropdownItems(text = "64강", onClick = { viewModel.setLevel("64강") }),
-                DropdownItems(text = "128강", onClick = { viewModel.setLevel("128강") }),
-                DropdownItems(text = "256강", onClick = { viewModel.setLevel("256강") }),
+                DropdownItems(text = "16강", onClick = {
+                    viewModel.setLevel("16강")
+                    viewModel.updateGameLevel(16)
+                }),
+                DropdownItems(text = "32강", onClick = {
+                    viewModel.setLevel("32강")
+                    viewModel.updateGameLevel(32)
+                }),
+                DropdownItems(text = "64강", onClick = {
+                    viewModel.setLevel("64강")
+                    viewModel.updateGameLevel(64)
+                }),
+                DropdownItems(text = "128강", onClick = {
+                    viewModel.setLevel("128강")
+                    viewModel.updateGameLevel(128)
+                }),
             ),
         )
 

@@ -28,6 +28,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange80
@@ -35,7 +36,9 @@ import com.daejol.presentation.ui.theme.Typography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavController? = null
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -75,7 +78,7 @@ fun HomeScreen() {
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-            WorldCupContent()
+            WorldCupContent(navController)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
             PopularCatDogContent()
         }

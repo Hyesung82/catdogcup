@@ -1,6 +1,7 @@
 package di
 
 import com.daejol.domain.repository.CatImagesRepository
+import com.daejol.domain.repository.DogImagesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +17,10 @@ object UsecaseModule {
 
     @Singleton
     @Provides
-    fun provideGetImageUsecase(catImagesRepository: CatImagesRepository): GetImageUsecase {
-        return GetImageUsecase(catImagesRepository)
+    fun provideGetImageUsecase(
+        catImagesRepository: CatImagesRepository,
+        dogImagesRepository: DogImagesRepository
+    ): GetImageUsecase {
+        return GetImageUsecase(catImagesRepository, dogImagesRepository)
     }
 }

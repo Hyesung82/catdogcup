@@ -6,6 +6,9 @@
     <string name="category">카테고리</string>
     <string name="bookmark">북마크</string>
     <string name="my_page">마이페이지</string>
+    <string name="worldcup_selection">월드컵선택</string>
+    <string name="worldcup_play">월드컵실행</string>
+    <string name="worldcup_result">월드컵결과</string>
 
     <!-- Home Screen -->
     <string name="home_app_bar_title">개냥컵 로고</string>

@@ -1,4 +1,4 @@
-package com.daejol.presentation.worldcup.top
+package com.daejol.presentation.worldcup.selection.top
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.daejol.presentation.worldcup.WorldCupPreviewParameterProvider
-import com.daejol.presentation.worldcup.WorldCupType
+import com.daejol.presentation.worldcup.selection.WorldCupPreviewParameterProvider
+import usecase.WorldCupType
 
 @Preview
 @Composable

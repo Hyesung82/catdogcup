@@ -101,7 +101,7 @@ object AppModule {
     class CatRetrofitInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val request = chain.request()
-            val params = mapOf<String, String>("api-key" to ApiConst.CAT_API_KEY)
+            val params = mapOf<String, String>("api_key" to ApiConst.CAT_API_KEY)
 
             val uriBuilder = request.url.newBuilder()
             params.forEach { (key, value) ->
@@ -122,7 +122,7 @@ object AppModule {
     class DogRetrofitInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val request = chain.request()
-            val params = mapOf<String, String>("api-key" to ApiConst.DOG_API_KEY)
+            val params = mapOf<String, String>("api_key" to ApiConst.DOG_API_KEY)
 
             val uriBuilder = request.url.newBuilder()
             params.forEach { (key, value) ->

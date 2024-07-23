@@ -90,7 +90,6 @@ compose-glide = { group = "com.github.skydoves", name = "landscapist-glide", ver
 hilt-viewmodel = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.0.0-alpha03" }
 
 
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin"}
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin"}

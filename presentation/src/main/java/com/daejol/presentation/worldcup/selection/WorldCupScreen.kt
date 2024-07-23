@@ -1,6 +1,6 @@
-package com.daejol.presentation.worldcup
+package com.daejol.presentation.worldcup.selection
 
-import com.daejol.presentation.worldcup.top.TopSectionWidget
+import com.daejol.presentation.worldcup.selection.top.TopSectionWidget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,12 +16,13 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.daejol.presentation.Screen
 import com.daejol.presentation.common.ui.BottomButton
-import com.daejol.presentation.worldcup.middle.MiddleSectionWidget
+import com.daejol.presentation.worldcup.WorldCupViewModel
+import com.daejol.presentation.worldcup.selection.middle.MiddleSectionWidget
+import usecase.WorldCupType
 
-enum class WorldCupType {
-    CAT, DOG, COMBINED
-}
 
 class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> {
     override val values = sequenceOf(
@@ -31,13 +32,14 @@ class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> 
     )
 }
 
-@Preview
 @Composable
 fun WorldCupScreen(
-    viewModel: WorldCupViewModel = viewModel(),
-    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: WorldCupType
+    viewModel: WorldCupViewModel,
+    @PreviewParameter(WorldCupPreviewParameterProvider::class) type: String,
+    navController: NavController? = null
 ) {
-    val t = WorldCupType.DOG
+    val t = enumValueOf<WorldCupType>(type)
+    viewModel.setType(t)
 
     return Column(
         verticalArrangement = Arrangement.Bottom,
@@ -64,7 +66,27 @@ fun WorldCupScreen(
         Box(
             contentAlignment = Alignment.BottomCenter,
         ) {
-            BottomButton({})
+            BottomButton(
+                onClick = {
+                    viewModel.getAnimalList(
+                        onFinish = {
+                            viewModel.initializeGame()
+                            navController?.navigate(
+                                route = Screen.WorldCupPlay.route
+                            )
+                        }
+                    )
+                }
+            )
+        }
+        Box {
+
         }
     }
+}
+
+@Preview
+@Composable
+fun Preview() {
+    WorldCupScreen(viewModel = viewModel(), WorldCupType.CAT.name)
 }
