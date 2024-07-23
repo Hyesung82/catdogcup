@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.daejol.presentation.Screen
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.Gimpo
 import com.daejol.presentation.ui.theme.MoveSans
@@ -131,7 +132,7 @@ fun WorldCupResultScreen(
         }
 
         Spacer(modifier = Modifier.height(24.dp))
-        PlayAnotherWorldCupButton(imageWidth)
+        PlayAnotherWorldCupButton(imageWidth, navController)
     }
 }
 
@@ -214,10 +215,14 @@ fun DownloadButton(viewModel: WorldCupViewModel) {
 }
 
 @Composable
-fun PlayAnotherWorldCupButton(imageWidth: Dp) {
+fun PlayAnotherWorldCupButton(imageWidth: Dp, navController: NavController?) {
     // 다른 월드컵 하러 가기
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController?.navigate(Screen.Home.route) {
+                popUpTo(0)
+            }
+        },
         modifier = Modifier
             .width(imageWidth),
         shape = RoundedCornerShape(
