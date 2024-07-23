@@ -2,6 +2,7 @@ package com.daejol.presentation.worldcup.result
 
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Bookmark
 import androidx.compose.material.icons.rounded.Download
 import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -125,7 +127,7 @@ fun WorldCupResultScreen(
             Spacer(modifier = Modifier.width(24.dp))
             BookMarkButton()
             Spacer(modifier = Modifier.width(24.dp))
-            DownloadButton()
+            DownloadButton(viewModel = viewModel)
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -145,7 +147,6 @@ fun ShareButton(context: Context) {
     // share
     IconButton(
         onClick = {
-
             startActivity(context, shareIntent, null)
         },
         modifier = Modifier
@@ -160,11 +161,11 @@ fun ShareButton(context: Context) {
             modifier = Modifier
                 .width(20.dp)
                 .height(20.dp)
-//                .background(White100)
         )
     }
 }
 
+// TODO: 북마크 기능은 firebase 혹은 내부 DB 작업이 완료된 후에 사용할 것
 @Composable
 fun BookMarkButton() {
     // share
@@ -182,16 +183,20 @@ fun BookMarkButton() {
             modifier = Modifier
                 .width(20.dp)
                 .height(20.dp)
-//                .background(White100)
         )
     }
 }
 
 @Composable
-fun DownloadButton() {
+fun DownloadButton(viewModel: WorldCupViewModel) {
+    val context = LocalContext.current
     // share
     IconButton(
-        onClick = { },
+        onClick = {
+            viewModel.downloadWinnerImage(context, onComplete = {
+                Toast.makeText(context, "다운로드가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+            })
+        },
         modifier = Modifier
             .background(Orange100, CircleShape)
             .width(36.dp)
@@ -204,7 +209,6 @@ fun DownloadButton() {
             modifier = Modifier
                 .width(20.dp)
                 .height(20.dp)
-//                .background(White100)
         )
     }
 }

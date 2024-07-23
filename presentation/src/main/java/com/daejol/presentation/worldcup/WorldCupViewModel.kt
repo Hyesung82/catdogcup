@@ -1,25 +1,37 @@
 package com.daejol.presentation.worldcup
 
+import android.content.Context
+import android.graphics.drawable.BitmapDrawable
+import android.media.MediaScannerConnection
+import android.os.Environment
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.ImageLoader
+import coil.request.CachePolicy
+import coil.request.ErrorResult
+import coil.request.ImageRequest
+import coil.request.SuccessResult
 import dagger.hilt.android.lifecycle.HiltViewModel
-import entity.ImageEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
 import usecase.GetImageUsecase
+import usecase.SaveImageUseCase
 import usecase.WorldCupType
+import java.io.File
 import javax.inject.Inject
 import kotlin.math.pow
-import kotlin.math.sqrt
 import kotlin.random.Random
 
 @HiltViewModel
 class WorldCupViewModel @Inject constructor(
-    val imageUsecase: GetImageUsecase
+    val imageUsecase: GetImageUsecase,
+    val saveImageUseCase: SaveImageUseCase,
 ) : ViewModel() {
     private val _worldCupType = mutableStateOf(WorldCupType.CAT)
     val worldCupType: State<WorldCupType> = _worldCupType
@@ -39,14 +51,14 @@ class WorldCupViewModel @Inject constructor(
     private val _currentGameLevel = mutableIntStateOf(16)
     val currentGameLevel: State<Int> = _currentGameLevel
 
-    private val _worldCupAnimalList = mutableStateOf(listOf<ImageEntity>())
+    private val _worldCupAnimalList = mutableStateOf(listOf<ImageModel>())
 
-    private val _currentMatchImages = mutableStateOf(listOf<ImageEntity>())
-    val currentMatchImages: State<List<ImageEntity>> = _currentMatchImages
+    private val _currentMatchImages = mutableStateOf(listOf<ImageModel>())
+    val currentMatchImages: State<List<ImageModel>> = _currentMatchImages
 
     // 128 -> 64 -> 32 -> 16 -> 4 -> final
     private val _gameProgressImageList =
-        mutableStateOf<MutableList<MutableList<ImageEntity>>>(mutableListOf())
+        mutableStateOf<MutableList<MutableList<ImageModel>>>(mutableListOf())
 
     fun setType(type: WorldCupType) {
         _worldCupType.value = type
@@ -73,6 +85,7 @@ class WorldCupViewModel @Inject constructor(
     }
 
     fun getAnimalList(
+        context: Context,
         onFinish: () -> Unit
     ) {
         viewModelScope.launch {
@@ -81,11 +94,45 @@ class WorldCupViewModel @Inject constructor(
             ).catch {
 
             }.collect {
-                val list = it.toImmutableList()
+                val list = it.toImmutableList().map {
+                    ImageModel(
+                        imageEntity = it,
+                        imageRequest = createImageRequest(
+                            context = context, imageUrl = it.url ?: "",
+                        )
+                    )
+                }
                 _worldCupAnimalList.value = list
                 onFinish.invoke()
             }
         }
+    }
+
+    private fun createImageRequest(
+        context: Context,
+        imageUrl: String
+    ): ImageRequest {
+        val listener = object : ImageRequest.Listener {
+            override fun onError(request: ImageRequest, result: ErrorResult) {
+                super.onError(request, result)
+            }
+
+            override fun onSuccess(request: ImageRequest, result: SuccessResult) {
+                super.onSuccess(request, result)
+            }
+        }
+
+        return ImageRequest.Builder(context)
+            .data(imageUrl)
+            .listener(listener)
+            .memoryCacheKey(imageUrl)
+            .diskCacheKey(imageUrl)
+//            .placeholder(placeholder)
+//            .error(placeholder)
+//            .fallback(placeholder)
+            .diskCachePolicy(CachePolicy.ENABLED)
+            .memoryCachePolicy(CachePolicy.ENABLED)
+            .build()
     }
 
     fun initializeGame() {
@@ -191,15 +238,54 @@ class WorldCupViewModel @Inject constructor(
         }
     }
 
-    fun getWinnerImage(): String? {
-        return _gameProgressImageList.value.last().last().url
+    fun getWinnerImage(): ImageRequest? {
+        return _gameProgressImageList.value.last().last().imageRequest
     }
 
     fun getWinnerName(): String? {
-        return _gameProgressImageList.value.last().last().breeds?.last()?.name
+        return _gameProgressImageList.value.last().last().imageEntity.breeds?.last()?.name
     }
 
     fun getWinnerDescription(): String? {
-        return _gameProgressImageList.value.last().last().breeds?.last()?.description
+        return _gameProgressImageList.value.last().last().imageEntity.breeds?.last()?.description
+    }
+
+    fun downloadWinnerImage(context: Context, onComplete: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                requestPermission()
+
+                val loader = ImageLoader(context)
+                val entity = _gameProgressImageList.value.last().last().imageEntity
+                val request = getWinnerImage()?.newBuilder(
+                    context = context
+                )?.build()
+
+                val result = (request?.let { loader.execute(it) } as SuccessResult).drawable
+                val bitmap = (result as BitmapDrawable).bitmap
+                val downloadResultFile =
+                    saveImageUseCase.downloadImage(bitmap = bitmap, imageEntity = entity)
+
+                downloadResultFile?.let { file ->
+                    scanFile(context = context, f = file, onComplete = onComplete)
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun requestPermission() {
+
+    }
+
+    private fun scanFile(context: Context, f: File, onComplete: () -> Unit) {
+        MediaScannerConnection.scanFile(
+            context,
+            arrayOf(f.absolutePath),
+            arrayOf("image/*")
+        ) { _, _ ->
+            onComplete.invoke()
+        }
     }
 }

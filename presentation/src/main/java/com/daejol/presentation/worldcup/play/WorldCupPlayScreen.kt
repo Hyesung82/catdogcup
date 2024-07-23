@@ -92,7 +92,7 @@ fun WorldCupPlayScreen(
                     defaultFontFamily = MoveSans,
                     textAlign = RichTextAlign.Center
                 ) {
-                    RichText(text = firstUrl?.breeds?.first()?.name ?: "")
+                    RichText(text = firstUrl?.imageEntity?.breeds?.first()?.name ?: "")
                 }
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -107,7 +107,7 @@ fun WorldCupPlayScreen(
                     },
                 ) {
                     AsyncImage(
-                        model = firstUrl?.url,
+                        model = firstUrl?.imageRequest,
                         contentDescription = "",
                         modifier = Modifier
                             .width(imageWidth)
@@ -134,7 +134,7 @@ fun WorldCupPlayScreen(
                     }
                 ) {
                     AsyncImage(
-                        model = secondUrl?.url,
+                        model = secondUrl?.imageRequest,
                         contentDescription = "",
                         modifier = Modifier
                             .width(imageWidth)
@@ -156,7 +156,7 @@ fun WorldCupPlayScreen(
                     defaultFontFamily = MoveSans,
                     textAlign = RichTextAlign.Center
                 ) {
-                    RichText(text = secondUrl?.breeds?.first()?.name ?: "")
+                    RichText(text = secondUrl?.imageEntity?.breeds?.first()?.name ?: "")
                 }
             }
             CustomRichText(
