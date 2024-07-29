@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import com.daejol.presentation.Screen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.home.HomeScreen
+import com.daejol.presentation.home.PopularCatDogDetailScreen
 import com.daejol.presentation.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.worldcup.selection.WorldCupScreen
@@ -27,15 +28,6 @@ fun MainNavHost(
         composable(route = Screen.Home.route) {
             HomeScreen(navController)
         }
-        composable(route = Screen.Matching.route) {
-            PersonalWidget()
-        }
-        composable(route = Screen.Random.route) {
-            // TODO: 스토리(랜덤 개냥이 이미지)
-        }
-        composable(route = Screen.Bookmark.route) {
-            // TODO: 북마크
-        }
         composable(route = Screen.WorldCupSelection.route) {
             WorldCupScreen(
                 viewModel = worldCupViewModel,
@@ -54,6 +46,19 @@ fun MainNavHost(
                 viewModel = worldCupViewModel,
                 navController = navController
             )
+        }
+        composable(route = Screen.AnimalDetail.route) {
+            PopularCatDogDetailScreen()
+        }
+
+        composable(route = Screen.Matching.route) {
+            PersonalWidget()
+        }
+        composable(route = Screen.Random.route) {
+            // TODO: 스토리(랜덤 개냥이 이미지)
+        }
+        composable(route = Screen.Bookmark.route) {
+            // TODO: 북마크
         }
     }
 }

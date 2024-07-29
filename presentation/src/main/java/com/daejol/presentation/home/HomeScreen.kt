@@ -66,7 +66,7 @@ fun HomeScreen(
                 }
             }
             itemsIndexed(TestData.catdogs) { i, catDog ->
-                PopularCatDogCard(i + 1, catDog)
+                PopularCatDogCard(i + 1, catDog, navController)
             }
             item(span = StaggeredGridItemSpan.FullLine) {
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))

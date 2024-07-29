@@ -10,6 +10,7 @@
     <string name="worldcup_selection">월드컵선택</string>
     <string name="worldcup_play">월드컵실행</string>
     <string name="worldcup_result">월드컵결과</string>
+    <string name="catdog_detail">고양이 및 강아지 상세 화면</string>
 
     <!-- Home Screen -->
     <string name="home_app_bar_title">개냥컵 로고</string>
