@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.daejol.domain.usecase.CheckAuth
 import com.daejol.domain.usecase.GetRankingUseCase
-import com.daejol.presentation.main.MainScreenApp
+import com.daejol.presentation.main.MainApp
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreenApp()
+                    MainApp()
                 }
             }
         }
@@ -53,6 +53,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     CatdogcupTheme {
-//        CatDogCupApp()
+        MainApp()
     }
 }

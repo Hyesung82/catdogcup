@@ -16,7 +16,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.daejol.presentation.Screen
 
 @Composable
-fun MainScreenApp() {
+fun MainApp() {
     val items = listOf(
         Screen.Home,
         Screen.Matching,
