@@ -20,11 +20,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
-import com.daejol.presentation.Screen
 import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
@@ -34,9 +32,9 @@ import com.daejol.presentation.ui.theme.White100
 
 @Composable
 fun PopularAnimalCard(
-    ranking: Int = 1,
-    animal: Animal = TestData.animals[0],
-    navController: NavController? = null
+    ranking: Int,
+    animal: Animal,
+    onClick: () -> Unit
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -45,9 +43,7 @@ fun PopularAnimalCard(
 //        colors = CardDefaults.cardColors(
 //            containerColor = White100
 //        )
-        onClick = {
-            navController?.navigate(Screen.AnimalDetail.route)
-        }
+        onClick = onClick
     ) {
         Box {
             AsyncImage(
@@ -95,6 +91,10 @@ private fun Ranking(
 @Composable
 fun PopularCatDogCardPreview() {
     CatdogcupTheme {
-        PopularAnimalCard()
+        PopularAnimalCard(
+            ranking = 1,
+            animal = TestData.animals[0],
+            onClick = {}
+        )
     }
 }

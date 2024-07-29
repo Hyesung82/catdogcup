@@ -29,26 +29,29 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
+import com.daejol.presentation.data.HomeUiState
 import com.daejol.presentation.data.TestData
+import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun PopularAnimalDetailScreen(
-    animal: Animal = TestData.animals[0],
-    navController: NavController
+    homeUiState: HomeUiState,
+    navController: NavController?
 ) {
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
         ) {
-            AnimalDetailImage(innerPadding, navController)
-            AnimalDetailDescription(animal)
+            AnimalDetailImage(innerPadding, navController, homeUiState.breed.image)
+            AnimalDetailDescription(homeUiState.breed)
         }
     }
 }
@@ -56,12 +59,13 @@ fun PopularAnimalDetailScreen(
 @Composable
 private fun AnimalDetailImage(
     innerPadding: PaddingValues,
-    navController: NavController
+    navController: NavController?,
+    imageUrl: String
 ) {
     Box(modifier = Modifier) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(TestData.animals[0].image)
+                .data(imageUrl)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(id = R.drawable.sample_cat),
@@ -76,14 +80,14 @@ private fun AnimalDetailImage(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PopularAnimalTopBar(
-    navController: NavController
+    navController: NavController?
 ) {
     TopAppBar(
         title = {},
         navigationIcon = {
             IconButton(
                 onClick = {
-                    navController.navigateUp()
+                    navController?.navigateUp()
                 }
             ) {
                 Icon(
@@ -147,10 +151,13 @@ private fun AnimalDetailAttribute(
     }
 }
 
-//@Preview
-//@Composable
-//fun PopularAnimalDetailScreenPreview() {
-//    CatdogcupTheme {
-//        PopularAnimalDetailScreen()
-//    }
-//}
+@Preview
+@Composable
+fun PopularAnimalDetailScreenPreview() {
+    CatdogcupTheme {
+        PopularAnimalDetailScreen(
+            homeUiState = HomeUiState(TestData.animals[0]),
+            navController = null
+        )
+    }
+}

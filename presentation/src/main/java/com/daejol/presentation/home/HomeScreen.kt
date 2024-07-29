@@ -34,6 +34,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
@@ -41,7 +42,8 @@ import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun HomeScreen(
-    navController: NavController? = null
+    navController: NavController? = null,
+    onDetailButtonClicked: (Animal) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -66,7 +68,11 @@ fun HomeScreen(
                 }
             }
             itemsIndexed(TestData.animals) { i, animal ->
-                PopularAnimalCard(i + 1, animal, navController)
+                PopularAnimalCard(
+                    ranking = i + 1,
+                    animal = animal,
+                    onClick = { onDetailButtonClicked(animal) }
+                )
             }
             item(span = StaggeredGridItemSpan.FullLine) {
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -127,6 +133,8 @@ fun Title(
 @Composable
 fun HomeScreenPreview() {
     CatdogcupTheme {
-        HomeScreen()
+        HomeScreen(
+            onDetailButtonClicked = {}
+        )
     }
 }

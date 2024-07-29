@@ -1,6 +1,8 @@
 package com.daejol.presentation.main
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -19,6 +21,9 @@ fun MainNavHost(
     modifier: Modifier
 ) {
     val worldCupViewModel = worldCupViewModel()
+    val homeViewModel = homeViewModel()
+
+    val homeUiState by homeViewModel.uiState.collectAsState()
 
     NavHost(
         navController = navController,
@@ -26,7 +31,13 @@ fun MainNavHost(
         modifier = modifier
     ) {
         composable(route = Screen.Home.route) {
-            HomeScreen(navController)
+            HomeScreen(
+                navController = navController,
+                onDetailButtonClicked = {
+                    homeViewModel.setBreed(it)
+                    navController.navigate(Screen.AnimalDetail.route)
+                }
+            )
         }
         composable(route = Screen.WorldCupSelection.route) {
             WorldCupScreen(
@@ -48,7 +59,10 @@ fun MainNavHost(
             )
         }
         composable(route = Screen.AnimalDetail.route) {
-            PopularAnimalDetailScreen(navController = navController)
+            PopularAnimalDetailScreen(
+                navController = navController,
+                homeUiState = homeUiState
+            )
         }
 
         composable(route = Screen.Matching.route) {
