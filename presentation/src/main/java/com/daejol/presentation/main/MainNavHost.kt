@@ -48,7 +48,7 @@ fun MainNavHost(
             )
         }
         composable(route = Screen.AnimalDetail.route) {
-            PopularAnimalDetailScreen()
+            PopularAnimalDetailScreen(navController = navController)
         }
 
         composable(route = Screen.Matching.route) {

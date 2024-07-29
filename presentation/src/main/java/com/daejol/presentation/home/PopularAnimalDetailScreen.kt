@@ -29,25 +29,25 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.TestData
-import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun PopularAnimalDetailScreen(
-    animal: Animal = TestData.animals[0]
+    animal: Animal = TestData.animals[0],
+    navController: NavController
 ) {
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
         ) {
-            AnimalDetailImage(innerPadding)
+            AnimalDetailImage(innerPadding, navController)
             AnimalDetailDescription(animal)
         }
     }
@@ -55,7 +55,8 @@ fun PopularAnimalDetailScreen(
 
 @Composable
 private fun AnimalDetailImage(
-    innerPadding: PaddingValues
+    innerPadding: PaddingValues,
+    navController: NavController
 ) {
     Box(modifier = Modifier) {
         AsyncImage(
@@ -68,17 +69,23 @@ private fun AnimalDetailImage(
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.fillMaxWidth()
         )
-        PopularAnimalTopBar()
+        PopularAnimalTopBar(navController = navController)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PopularAnimalTopBar() {
+private fun PopularAnimalTopBar(
+    navController: NavController
+) {
     TopAppBar(
         title = {},
         navigationIcon = {
-            IconButton(onClick = { /* TODO: 뒤로 가기 */ }) {
+            IconButton(
+                onClick = {
+                    navController.navigateUp()
+                }
+            ) {
                 Icon(
                     imageVector = Icons.Outlined.ArrowBackIosNew,
                     contentDescription = stringResource(id = R.string.popular_animal_back)
@@ -140,10 +147,10 @@ private fun AnimalDetailAttribute(
     }
 }
 
-@Preview
-@Composable
-fun PopularAnimalDetailScreenPreview() {
-    CatdogcupTheme {
-        PopularAnimalDetailScreen()
-    }
-}
+//@Preview
+//@Composable
+//fun PopularAnimalDetailScreenPreview() {
+//    CatdogcupTheme {
+//        PopularAnimalDetailScreen()
+//    }
+//}
