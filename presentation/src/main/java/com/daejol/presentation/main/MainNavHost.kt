@@ -8,7 +8,7 @@ import androidx.navigation.compose.composable
 import com.daejol.presentation.Screen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.home.HomeScreen
-import com.daejol.presentation.home.PopularCatDogDetailScreen
+import com.daejol.presentation.home.PopularAnimalDetailScreen
 import com.daejol.presentation.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.worldcup.selection.WorldCupScreen
@@ -48,7 +48,7 @@ fun MainNavHost(
             )
         }
         composable(route = Screen.AnimalDetail.route) {
-            PopularCatDogDetailScreen()
+            PopularAnimalDetailScreen()
         }
 
         composable(route = Screen.Matching.route) {

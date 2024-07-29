@@ -61,12 +61,12 @@ fun HomeScreen(
                 Column {
                     WorldCupContent(navController)
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-                    Title(text = R.string.popular_catdog_title)
+                    Title(text = R.string.popular_animal_title)
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
-            itemsIndexed(TestData.catdogs) { i, catDog ->
-                PopularCatDogCard(i + 1, catDog, navController)
+            itemsIndexed(TestData.animals) { i, animal ->
+                PopularAnimalCard(i + 1, animal, navController)
             }
             item(span = StaggeredGridItemSpan.FullLine) {
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))

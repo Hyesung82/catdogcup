@@ -1,6 +1,6 @@
 package com.daejol.presentation.data
 
-sealed class CatDog private constructor(
+sealed class Animal private constructor(
     val name: String,
     val image: String,
     val weight: String,
@@ -19,7 +19,7 @@ sealed class CatDog private constructor(
         description: String = "Bengals are a lot of fun to live with, but they're definitely not the cat for everyone, or for first-time cat owners. Extremely intelligent, curious and active, they demand a lot of interaction and woe betide the owner who doesn't provide it.",
         lifeSpan: String = "12 - 15",
         wikipediaUrl: String = "https://en.wikipedia.org/wiki/Bengal_(cat)"
-    ) : CatDog(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
+    ) : Animal(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
 
     class DogType(
         name: String = "Bengal",
@@ -30,5 +30,5 @@ sealed class CatDog private constructor(
         description: String = "Bengals are a lot of fun to live with, but they're definitely not the cat for everyone, or for first-time cat owners. Extremely intelligent, curious and active, they demand a lot of interaction and woe betide the owner who doesn't provide it.",
         lifeSpan: String = "12 - 15",
         wikipediaUrl: String = "https://en.wikipedia.org/wiki/Bengal_(cat)"
-    ) : CatDog(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
+    ) : Animal(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
 }

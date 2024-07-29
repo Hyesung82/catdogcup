@@ -21,7 +21,7 @@ sealed class Screen(
 
     data object WorldCupResult : Screen("worldcup/result", R.string.worldcup_result)
 
-    data object AnimalDetail : Screen("catdog_detail", R.string.catdog_detail)
+    data object AnimalDetail : Screen("animal_detail", R.string.animal_detail)
 
     data object Matching : Screen("matching", R.string.matching, Icons.Filled.Extension)
 

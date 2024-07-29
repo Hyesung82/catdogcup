@@ -25,7 +25,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.Screen
-import com.daejol.presentation.data.CatDog
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Pretendard
@@ -33,9 +33,9 @@ import com.daejol.presentation.ui.theme.Red100
 import com.daejol.presentation.ui.theme.White100
 
 @Composable
-fun PopularCatDogCard(
+fun PopularAnimalCard(
     ranking: Int = 1,
-    catDog: CatDog = TestData.catdogs[0],
+    animal: Animal = TestData.animals[0],
     navController: NavController? = null
 ) {
     ElevatedCard(
@@ -46,19 +46,17 @@ fun PopularCatDogCard(
 //            containerColor = White100
 //        )
         onClick = {
-            /* TODO: PopularCatDogDetailScreen으로 이동 */
             navController?.navigate(Screen.AnimalDetail.route)
-            println("elevatedcard onclick")
         }
     ) {
         Box {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(catDog.image)
+                    .data(animal.image)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
-                contentDescription = stringResource(R.string.popular_catdog_image),
+                contentDescription = stringResource(R.string.popular_animal_image),
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -83,7 +81,7 @@ private fun Ranking(
         color = White100,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .size(dimensionResource(id = R.dimen.popular_catdog_ranking_size))
+            .size(dimensionResource(id = R.dimen.popular_animal_ranking_size))
             .drawBehind {
                 drawCircle(
                     color = Red100,
@@ -97,6 +95,6 @@ private fun Ranking(
 @Composable
 fun PopularCatDogCardPreview() {
     CatdogcupTheme {
-        PopularCatDogCard()
+        PopularAnimalCard()
     }
 }

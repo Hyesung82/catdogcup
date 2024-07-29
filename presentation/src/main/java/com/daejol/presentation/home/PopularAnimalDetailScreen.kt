@@ -30,14 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
-import com.daejol.presentation.data.CatDog
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
 @Composable
-fun PopularCatDogDetailScreen(
-    catDog: CatDog = TestData.catdogs[0]
+fun PopularAnimalDetailScreen(
+    animal: Animal = TestData.animals[0]
 ) {
     Scaffold { innerPadding ->
         Column(
@@ -45,37 +45,37 @@ fun PopularCatDogDetailScreen(
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-            CatDogDetailImage()
-            CatDogDetailDescription(catDog)
+            AnimalDetailImage()
+            AnimalDetailDescription(animal)
         }
     }
 }
 
 @Composable
-private fun CatDogDetailImage() {
+private fun AnimalDetailImage() {
     Box(modifier = Modifier) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(TestData.catdogs[0].image)
+                .data(TestData.animals[0].image)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(id = R.drawable.sample_cat),
-            contentDescription = stringResource(id = R.string.popular_catdog_image)
+            contentDescription = stringResource(id = R.string.popular_animal_image)
         )
-        PopularCatDogTopBar()
+        PopularAnimalTopBar()
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PopularCatDogTopBar() {
+private fun PopularAnimalTopBar() {
     TopAppBar(
         title = {},
         navigationIcon = {
             IconButton(onClick = { /* TODO: 뒤로 가기 */ }) {
                 Icon(
                     imageVector = Icons.Outlined.ArrowBackIosNew,
-                    contentDescription = stringResource(id = R.string.popular_catdog_back)
+                    contentDescription = stringResource(id = R.string.popular_animal_back)
                 )
             }
         },
@@ -85,15 +85,15 @@ private fun PopularCatDogTopBar() {
 }
 
 @Composable
-private fun CatDogDetailDescription(
-    catDog: CatDog
+private fun AnimalDetailDescription(
+    animal: Animal
 ) {
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
     ) {
         Row {
             Text(
-                text = catDog.name,
+                text = animal.name,
                 style = Typography.headlineLarge,
                 modifier = Modifier
                     .weight(1f)
@@ -102,22 +102,22 @@ private fun CatDogDetailDescription(
             IconButton(onClick = { /* TODO: 좋아요 */ }) {
                 Icon(
                     imageVector = Icons.Outlined.FavoriteBorder,
-                    contentDescription = stringResource(id = R.string.popular_catdog_like)
+                    contentDescription = stringResource(id = R.string.popular_animal_like)
                 )
             }
         }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
-        CatDogDetailAttribute(title = "Weight", desc = catDog.weight)
-        CatDogDetailAttribute(title = "Temperament", desc = catDog.temperament.toString())
-        CatDogDetailAttribute(title = "Origin", desc = catDog.origin)
-        CatDogDetailAttribute(title = "Description", desc = catDog.description)
-        CatDogDetailAttribute(title = "Life Span", desc = catDog.lifeSpan)
-        CatDogDetailAttribute(title = "Wikipedia URL", desc = catDog.wikipediaUrl)
+        AnimalDetailAttribute(title = "Weight", desc = animal.weight)
+        AnimalDetailAttribute(title = "Temperament", desc = animal.temperament.toString())
+        AnimalDetailAttribute(title = "Origin", desc = animal.origin)
+        AnimalDetailAttribute(title = "Description", desc = animal.description)
+        AnimalDetailAttribute(title = "Life Span", desc = animal.lifeSpan)
+        AnimalDetailAttribute(title = "Wikipedia URL", desc = animal.wikipediaUrl)
     }
 }
 
 @Composable
-private fun CatDogDetailAttribute(
+private fun AnimalDetailAttribute(
     title: String,
     desc: String
 ) {
@@ -136,8 +136,8 @@ private fun CatDogDetailAttribute(
 
 @Preview
 @Composable
-fun PopularCatDogDetailScreenPreview() {
+fun PopularAnimalDetailScreenPreview() {
     CatdogcupTheme {
-        PopularCatDogDetailScreen()
+        PopularAnimalDetailScreen()
     }
 }
