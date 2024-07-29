@@ -2,8 +2,10 @@ package com.daejol.presentation.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -22,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -42,17 +45,18 @@ fun PopularAnimalDetailScreen(
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-            AnimalDetailImage()
+            AnimalDetailImage(innerPadding)
             AnimalDetailDescription(animal)
         }
     }
 }
 
 @Composable
-private fun AnimalDetailImage() {
+private fun AnimalDetailImage(
+    innerPadding: PaddingValues
+) {
     Box(modifier = Modifier) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
@@ -60,7 +64,9 @@ private fun AnimalDetailImage() {
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(id = R.drawable.sample_cat),
-            contentDescription = stringResource(id = R.string.popular_animal_image)
+            contentDescription = stringResource(id = R.string.popular_animal_image),
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth()
         )
         PopularAnimalTopBar()
     }
