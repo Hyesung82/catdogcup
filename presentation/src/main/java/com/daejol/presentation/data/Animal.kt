@@ -1,6 +1,7 @@
 package com.daejol.presentation.data
 
 sealed class Animal private constructor(
+    val id: String,
     val name: String,
     val image: String,
     val weight: String,
@@ -11,6 +12,7 @@ sealed class Animal private constructor(
     val wikipediaUrl: String
 ) {
     class Cat(
+        id: String = "",
         name: String = "Bengal",
         image: String = "https://cdn2.thecatapi.com/images/cqg.jpg",
         weight: String = "3 - 7",
@@ -19,9 +21,10 @@ sealed class Animal private constructor(
         description: String = "Bengals are a lot of fun to live with, but they're definitely not the cat for everyone, or for first-time cat owners. Extremely intelligent, curious and active, they demand a lot of interaction and woe betide the owner who doesn't provide it.",
         lifeSpan: String = "12 - 15",
         wikipediaUrl: String = "https://en.wikipedia.org/wiki/Bengal_(cat)"
-    ) : Animal(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
+    ) : Animal(id, name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
 
     class DogType(
+        id: String = "",
         name: String = "Bengal",
         image: String = "https://cdn2.thecatapi.com/images/cqg.jpg",
         weight: String = "3 - 7",
@@ -30,5 +33,5 @@ sealed class Animal private constructor(
         description: String = "Bengals are a lot of fun to live with, but they're definitely not the cat for everyone, or for first-time cat owners. Extremely intelligent, curious and active, they demand a lot of interaction and woe betide the owner who doesn't provide it.",
         lifeSpan: String = "12 - 15",
         wikipediaUrl: String = "https://en.wikipedia.org/wiki/Bengal_(cat)"
-    ) : Animal(name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
+    ) : Animal(id, name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
 }
