@@ -3,8 +3,8 @@ package com.daejol.presentation.mypage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -45,9 +45,10 @@ fun BookmarkContent(
         modifier = modifier
             .fillMaxWidth()
             .padding(end = 0.dp)
-            .padding(start = dimensionResource(id = R.dimen.space_l))
     ) {
-        Row {
+        Row(
+            modifier = modifier.padding(start = dimensionResource(id = R.dimen.space_l))
+        ) {
             Text(
                 text = stringResource(id = R.string.my_page_title_bookmark),
                 style = Typography.titleLarge,
@@ -63,7 +64,8 @@ fun BookmarkContent(
             }
         }
         LazyRow(
-            modifier = modifier
+            modifier = modifier,
+            contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.space_l))
         ) {
             items(imageUrls) { imageUrl ->
                 BookmarkItem(imageUrl)
