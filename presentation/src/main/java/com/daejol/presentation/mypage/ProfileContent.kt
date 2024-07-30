@@ -26,21 +26,24 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 
 @Composable
 fun ProfileContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    imageUrl: String
 ) {
     Row(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
             .padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
         val borderWidth = 2.dp
 
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data("https://example.com/image.jpg")
+                .data(imageUrl)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),
@@ -85,7 +88,8 @@ fun ProfileItem(
 fun ProfileContentPreview() {
     CatdogcupTheme {
         ProfileContent(
-            modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
+            imageUrl = SampleData.imageUrls[0]
         )
     }
 }

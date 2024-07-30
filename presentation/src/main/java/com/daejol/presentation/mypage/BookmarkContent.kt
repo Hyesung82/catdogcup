@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Icon
@@ -29,13 +30,15 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.Screen
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun BookmarkContent(
     modifier: Modifier = Modifier,
-    navController: NavController?
+    navController: NavController?,
+    imageUrls: List<String>
 ) {
     Column(
         modifier = modifier
@@ -61,8 +64,8 @@ fun BookmarkContent(
         LazyRow(
             modifier = modifier
         ) {
-            items(5) { _ ->
-                BookmarkItem()
+            items(imageUrls) { imageUrl ->
+                BookmarkItem(imageUrl)
             }
         }
     }
@@ -70,7 +73,7 @@ fun BookmarkContent(
 
 @Composable
 private fun BookmarkItem(
-    imageUrl: String = ""
+    imageUrl: String
 ) {
     Box(
         modifier = Modifier.size(88.dp)
@@ -93,7 +96,8 @@ fun BookmarkContentPreview() {
     CatdogcupTheme {
         BookmarkContent(
             modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
-            navController = null
+            navController = null,
+            imageUrls = SampleData.imageUrls
         )
     }
 }

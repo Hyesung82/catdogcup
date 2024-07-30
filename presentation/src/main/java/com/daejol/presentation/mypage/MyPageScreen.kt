@@ -16,6 +16,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 
 @Composable
@@ -28,9 +29,12 @@ fun MyPageScreen(
             .padding(vertical = dimensionResource(id = R.dimen.space_l))
             .verticalScroll(rememberScrollState())
     ) {
-        ProfileContent()
+        ProfileContent(imageUrl = SampleData.imageUrls[0])
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        BookmarkContent(navController = navController)
+        BookmarkContent(
+            navController = navController,
+            imageUrls = SampleData.imageUrls
+        )
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         AchievementContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
