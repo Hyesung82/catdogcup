@@ -33,7 +33,7 @@ fun MyPageScreen(
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         BookmarkContent(
             navController = navController,
-            imageUrls = SampleData.imageUrls
+            imageUrls = SampleData.imageUrls.subList(0, 10)
         )
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         AchievementContent()
