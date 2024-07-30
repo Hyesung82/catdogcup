@@ -12,19 +12,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 
 @Composable
 fun MyPageScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController?
 ) {
     Column(
         modifier = modifier.padding(vertical = dimensionResource(id = R.dimen.space_l))
     ) {
         ProfileContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
-        BookmarkContent()
+        BookmarkContent(navController = navController)
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
         AchievementContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -39,7 +41,10 @@ fun MyPageScreenPreview() {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            MyPageScreen(Modifier.background(color = MaterialTheme.colorScheme.background))
+            MyPageScreen(
+                modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
+                navController = null
+            )
         }
     }
 }

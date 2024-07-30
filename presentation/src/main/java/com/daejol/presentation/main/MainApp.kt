@@ -20,8 +20,8 @@ fun MainApp() {
     val items = listOf(
         Screen.Home,
         Screen.Matching,
-        Screen.Random,
-        Screen.MyPage
+        Screen.Story,
+        Screen.MyPage,
     )
     val appState = rememberAppState()
     val navController = appState.navController

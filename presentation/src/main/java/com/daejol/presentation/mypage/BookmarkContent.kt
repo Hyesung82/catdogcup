@@ -24,15 +24,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
+import com.daejol.presentation.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
 @Composable
 fun BookmarkContent(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController?
 ) {
     Column(
         modifier = modifier
@@ -47,7 +50,7 @@ fun BookmarkContent(
                     .weight(1f)
                     .align(Alignment.CenterVertically)
             )
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController?.navigate(Screen.Bookmark.route) }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                     contentDescription = stringResource(id = R.string.my_page_bookmark_more)
@@ -88,9 +91,10 @@ private fun BookmarkItem(
 fun BookmarkContentPreview() {
     CatdogcupTheme {
         BookmarkContent(
-            Modifier
+            modifier = Modifier
                 .fillMaxWidth()
-                .background(color = MaterialTheme.colorScheme.background)
+                .background(color = MaterialTheme.colorScheme.background),
+            navController = null
         )
     }
 }

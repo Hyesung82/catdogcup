@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.daejol.presentation.Screen
+import com.daejol.presentation.bookmark.BookmarkScreen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.home.HomeScreen
 import com.daejol.presentation.home.PopularAnimalDetailScreen
@@ -69,11 +70,16 @@ fun MainNavHost(
         composable(route = Screen.Matching.route) {
             PersonalWidget()
         }
-        composable(route = Screen.Random.route) {
-            // TODO: 스토리(랜덤 개냥이 이미지)
+
+        composable(route = Screen.Story.route) {
+            // TODO: 스토리 화면
         }
+
         composable(route = Screen.MyPage.route) {
-            MyPageScreen()
+            MyPageScreen(navController = navController)
+        }
+        composable(route = Screen.Bookmark.route) {
+            BookmarkScreen()
         }
     }
 }
