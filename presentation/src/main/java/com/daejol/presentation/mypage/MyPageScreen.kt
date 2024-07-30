@@ -29,12 +29,13 @@ fun MyPageScreen(
             .verticalScroll(rememberScrollState())
     ) {
         ProfileContent()
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
+        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         BookmarkContent(navController = navController)
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
+        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         AchievementContent()
-        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_m)))
+        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         EtcContent()
+        Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
     }
 }
 
