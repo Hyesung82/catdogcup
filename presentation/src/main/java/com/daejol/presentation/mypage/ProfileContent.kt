@@ -84,6 +84,8 @@ fun ProfileItem(
 @Composable
 fun ProfileContentPreview() {
     CatdogcupTheme {
-        ProfileContent(Modifier.background(color = MaterialTheme.colorScheme.background))
+        ProfileContent(
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
+        )
     }
 }

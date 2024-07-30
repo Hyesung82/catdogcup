@@ -39,6 +39,7 @@ fun BookmarkContent(
 ) {
     Column(
         modifier = modifier
+            .fillMaxWidth()
             .padding(end = 0.dp)
             .padding(start = dimensionResource(id = R.dimen.space_l))
     ) {
@@ -91,9 +92,7 @@ private fun BookmarkItem(
 fun BookmarkContentPreview() {
     CatdogcupTheme {
         BookmarkContent(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(color = MaterialTheme.colorScheme.background),
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
             navController = null
         )
     }

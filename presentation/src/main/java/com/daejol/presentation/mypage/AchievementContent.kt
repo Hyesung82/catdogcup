@@ -32,7 +32,9 @@ fun AchievementContent(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding(horizontal = dimensionResource(id = R.dimen.space_l))
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = dimensionResource(id = R.dimen.space_l))
     ) {
         Text(
             text = stringResource(id = R.string.my_page_title_achievement),
@@ -74,9 +76,7 @@ private fun AchievementItem(
 fun AchievementContentPreview() {
     CatdogcupTheme {
         AchievementContent(
-            Modifier
-                .fillMaxWidth()
-                .background(color = MaterialTheme.colorScheme.background)
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
         )
     }
 }
