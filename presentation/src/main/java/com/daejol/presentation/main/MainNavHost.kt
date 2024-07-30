@@ -11,6 +11,7 @@ import com.daejol.presentation.Screen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.home.HomeScreen
 import com.daejol.presentation.home.PopularAnimalDetailScreen
+import com.daejol.presentation.mypage.MyPageScreen
 import com.daejol.presentation.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.worldcup.selection.WorldCupScreen
@@ -71,8 +72,8 @@ fun MainNavHost(
         composable(route = Screen.Random.route) {
             // TODO: 스토리(랜덤 개냥이 이미지)
         }
-        composable(route = Screen.Bookmark.route) {
-            // TODO: 북마크
+        composable(route = Screen.MyPage.route) {
+            MyPageScreen()
         }
     }
 }

@@ -21,7 +21,7 @@ fun MainApp() {
         Screen.Home,
         Screen.Matching,
         Screen.Random,
-        Screen.Bookmark
+        Screen.MyPage
     )
     val appState = rememberAppState()
     val navController = appState.navController
