@@ -36,7 +36,7 @@ fun MyPageScreen(
             imageUrls = SampleData.imageUrls.subList(0, 10)
         )
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        AchievementContent()
+        AchievementContent(achievements = SampleData.achievements)
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         EtcContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
