@@ -25,5 +25,7 @@
     <dimen name="popular_animal_image_height">116dp</dimen>
 
     <!-- My Page Screen -->
+    <dimen name="my_animal_image_size">112dp</dimen>
     <dimen name="achievement_image_rounded_corner_shape_size">32dp</dimen>
+    <dimen name="achievement_image_size">92dp</dimen>
 </resources>

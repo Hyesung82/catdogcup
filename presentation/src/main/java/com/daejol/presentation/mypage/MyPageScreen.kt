@@ -26,10 +26,10 @@ fun MyPageScreen(
 ) {
     Column(
         modifier = modifier
-            .padding(vertical = dimensionResource(id = R.dimen.space_l))
             .verticalScroll(rememberScrollState())
+            .padding(vertical = dimensionResource(id = R.dimen.space_xl))
     ) {
-        ProfileContent(imageUrl = SampleData.imageUrls[0])
+        MyAnimalContent(achievement = SampleData.achievements[0])
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         BookmarkContent(
             navController = navController,

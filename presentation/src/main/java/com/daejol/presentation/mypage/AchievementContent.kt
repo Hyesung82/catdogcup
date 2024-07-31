@@ -26,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -58,18 +59,20 @@ fun AchievementContent(
             modifier = Modifier.fillMaxWidth()
         ) {
             achievements.forEach {
-                AchievementItem(it)
+                AchievementItem(achievement = it)
             }
         }
     }
 }
 
 @Composable
-private fun AchievementItem(
+fun AchievementItem(
+    modifier: Modifier = Modifier,
+    imageSize: Dp = dimensionResource(id = R.dimen.achievement_image_size),
     achievement: Achievement
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .width(IntrinsicSize.Min)
     ) {
         AsyncImage(
@@ -81,7 +84,7 @@ private fun AchievementItem(
             contentDescription = stringResource(id = R.string.my_page_achievement_image),
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .size(92.dp)
+                .size(imageSize)
                 .clip(RoundedCornerShape(dimensionResource(id = R.dimen.achievement_image_rounded_corner_shape_size)))
                 .align(Alignment.CenterHorizontally)
         )
