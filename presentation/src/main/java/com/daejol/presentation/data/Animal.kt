@@ -23,7 +23,7 @@ sealed class Animal private constructor(
         wikipediaUrl: String = "https://en.wikipedia.org/wiki/Bengal_(cat)"
     ) : Animal(id, name, image, weight, temperament, origin, description, lifeSpan, wikipediaUrl)
 
-    class DogType(
+    class Dog(
         id: String = "",
         name: String = "Bengal",
         image: String = "https://cdn2.thecatapi.com/images/cqg.jpg",
