@@ -9,12 +9,20 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.daejol.domain.usecase.CheckAuth
+import com.daejol.domain.usecase.GetRankingUseCase
 import com.daejol.presentation.main.MainScreenApp
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject lateinit var checkAuth: CheckAuth
+    @Inject lateinit var getRankingUseCase: GetRankingUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +42,10 @@ class MainActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
+        CoroutineScope(Dispatchers.IO).launch {
+            checkAuth.checkIfUserIsSignedIn()
+            getRankingUseCase.getPopularCatsAndDogs()
+        }
     }
 }
 

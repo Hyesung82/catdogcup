@@ -18,12 +18,11 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.Screen
 import com.daejol.presentation.common.ui.BottomButton
 import com.daejol.presentation.worldcup.WorldCupViewModel
 import com.daejol.presentation.worldcup.selection.middle.MiddleSectionWidget
-import usecase.WorldCupType
-
 
 class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> {
     override val values = sequenceOf(

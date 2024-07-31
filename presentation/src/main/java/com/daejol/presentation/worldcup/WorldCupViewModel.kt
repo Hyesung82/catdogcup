@@ -13,14 +13,14 @@ import coil.request.CachePolicy
 import coil.request.ErrorResult
 import coil.request.ImageRequest
 import coil.request.SuccessResult
+import com.daejol.domain.usecase.GetImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
-import usecase.GetImageUseCase
-import usecase.SaveImageUseCase
-import usecase.WorldCupType
+import com.daejol.domain.usecase.SaveImageUseCase
+import com.daejol.domain.usecase.WorldCupType
 import java.io.File
 import javax.inject.Inject
 import kotlin.math.pow

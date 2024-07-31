@@ -1,7 +1,7 @@
 package com.daejol.domain.repository
 
-import DataState
-import entity.ImageEntity
+import com.daejol.domain.DataState
+import com.daejol.domain.entity.ImageEntity
 import kotlinx.coroutines.flow.Flow
 
 interface CatImagesRepository {

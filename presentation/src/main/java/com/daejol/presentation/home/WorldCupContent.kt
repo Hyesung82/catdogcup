@@ -11,11 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.R
 import com.daejol.presentation.Screen
 import com.daejol.presentation.main.worldCupViewModel
 import com.daejol.presentation.ui.theme.CatdogcupTheme
-import usecase.WorldCupType
 
 @Composable
 fun WorldCupContent(

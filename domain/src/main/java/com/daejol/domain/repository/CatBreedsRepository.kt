@@ -1,8 +1,8 @@
 package com.daejol.domain.repository
 
-import DataState
-import entity.BreedInfoEntity
-import entity.BreedTypeEntity
+import com.daejol.domain.DataState
+import com.daejol.domain.entity.BreedInfoEntity
+import com.daejol.domain.entity.BreedTypeEntity
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 
