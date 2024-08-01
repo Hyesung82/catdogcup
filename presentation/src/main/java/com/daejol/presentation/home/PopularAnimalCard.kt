@@ -48,7 +48,7 @@ fun PopularAnimalCard(
         Box {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(animal.image)
+                    .data(animal.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),

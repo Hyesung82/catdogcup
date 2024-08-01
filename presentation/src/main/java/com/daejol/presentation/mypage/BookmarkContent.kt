@@ -84,7 +84,7 @@ private fun BookmarkItem(
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(animal.image)
+                .data(animal.imageUrl)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),

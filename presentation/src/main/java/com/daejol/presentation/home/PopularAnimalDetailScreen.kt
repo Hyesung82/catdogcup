@@ -50,7 +50,7 @@ fun PopularAnimalDetailScreen(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
         ) {
-            AnimalDetailImage(innerPadding, navController, homeUiState.breed.image)
+            AnimalDetailImage(innerPadding, navController, homeUiState.breed.imageUrl)
             AnimalDetailDescription(homeUiState.breed)
         }
     }
