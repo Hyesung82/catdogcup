@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.domain.usecase.WorldCupType
@@ -26,7 +27,7 @@ fun WorldCupContent(
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
     ) {
-        Title(text = R.string.world_cup_title)
+        Title(text = stringResource(id = R.string.world_cup_title))
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         WorldCupCard(
             R.string.cat_world_cup_title,

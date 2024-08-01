@@ -1,6 +1,5 @@
 package com.daejol.presentation.home
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,7 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
-import com.daejol.presentation.data.TestData
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
@@ -63,11 +62,11 @@ fun HomeScreen(
                 Column {
                     WorldCupContent(navController)
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-                    Title(text = R.string.popular_animal_title)
+                    Title(text = stringResource(id = R.string.popular_animal_title))
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
-            itemsIndexed(TestData.animals) { i, animal ->
+            itemsIndexed(SampleData.animals) { i, animal ->
                 PopularAnimalCard(
                     ranking = i + 1,
                     animal = animal,
@@ -120,12 +119,13 @@ private fun HomeTopBar() {
 
 @Composable
 fun Title(
-    @StringRes text: Int
+    text: String,
+    modifier: Modifier = Modifier
 ) {
     Text(
-        text = stringResource(id = text),
+        text = text,
         style = Typography.titleLarge,
-        modifier = Modifier
+        modifier = modifier
     )
 }
 

@@ -5,7 +5,8 @@
     <dimen name="space_s">12dp</dimen>
     <dimen name="space_m">16dp</dimen>
     <dimen name="space_l">20dp</dimen>
-    <dimen name="space_xl">40dp</dimen>
+    <dimen name="space_xl">24dp</dimen>
+    <dimen name="space_xxl">40dp</dimen>
     <dimen name="text_xxxs">6sp</dimen>
     <dimen name="text_xxs">8sp</dimen>
     <dimen name="text_xs">10sp</dimen>
@@ -21,4 +22,10 @@
     <dimen name="home_app_bar_title_width">64dp</dimen>
     <dimen name="world_cup_card_image_size">80dp</dimen>
     <dimen name="popular_animal_ranking_size">24dp</dimen>
+    <dimen name="popular_animal_image_height">116dp</dimen>
+
+    <!-- My Page Screen -->
+    <dimen name="my_animal_image_size">112dp</dimen>
+    <dimen name="achievement_image_rounded_corner_shape_size">32dp</dimen>
+    <dimen name="achievement_image_size">92dp</dimen>
 </resources>

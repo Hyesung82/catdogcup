@@ -4,13 +4,13 @@
     <!-- Screen -->
     <string name="home">홈</string>
     <string name="matching">성격 매칭</string>
-    <string name="random">스토리</string>
-    <string name="bookmark">북마크</string>
+    <string name="story">스토리</string>
     <string name="my_page">마이페이지</string>
     <string name="worldcup_selection">월드컵선택</string>
     <string name="worldcup_play">월드컵실행</string>
     <string name="worldcup_result">월드컵결과</string>
     <string name="animal_detail">고양이 및 강아지 상세 화면</string>
+    <string name="bookmark">북마크</string>
 
     <!-- Home Screen -->
     <string name="home_app_bar_title">개냥컵 로고</string>
@@ -30,4 +30,14 @@
     <string name="popular_animal_image">인기 고양이 및 강아지 이미지</string>
     <string name="popular_animal_like">좋아요</string>
     <string name="popular_animal_back">뒤로 가기</string>
+
+    <!-- My Page Screen -->
+    <string name="my_page_title_bookmark">북마크</string>
+    <string name="my_page_bookmark_more">북마크 더보기</string>
+    <string name="my_page_bookmarked_image">북마크한 이미지</string>
+    <string name="my_page_title_achievement">활동 업적</string>
+    <string name="my_page_achievement_image">업적 이미지</string>
+    <string name="my_page_title_etc">기타</string>
+    <string name="my_page_etc_sign_in">로그인</string>
+    <string name="my_page_etc_sign_out">로그아웃</string>
 </resources>
