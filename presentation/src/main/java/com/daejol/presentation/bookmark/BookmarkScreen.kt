@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
-import com.daejol.presentation.home.CatDog
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -31,12 +31,7 @@ import com.daejol.presentation.ui.theme.Typography
 fun BookmarkScreen(
     modifier: Modifier = Modifier
 ) {
-    val catDogs: List<CatDog> = listOf(
-        CatDog("Russian Blue", 1),
-        CatDog("Keykat", 2, "https://cdn.thedogapi.com/images/Hylo4Snaf.jpeg"),
-        CatDog("Snow Cat", 3, "https://cdn2.thecatapi.com/images/xxBaNrfM0.jpg"),
-        CatDog("Grasskitty", 4, "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg")
-    )
+    val animals = SampleData.animals
 
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(3),
@@ -54,10 +49,10 @@ fun BookmarkScreen(
         item(span = StaggeredGridItemSpan.FullLine) {
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
         }
-        items(catDogs) { catDog ->
+        items(animals) { animal ->
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(catDog.imageUrl)
+                    .data(animal.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
