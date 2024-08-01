@@ -6,6 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.daejol.presentation.ui.home.HomeViewModel
+import com.daejol.presentation.ui.utils.AppState
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 
 @Composable

@@ -1,4 +1,4 @@
-package com.daejol.presentation.ui
+package com.daejol.presentation.ui.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
