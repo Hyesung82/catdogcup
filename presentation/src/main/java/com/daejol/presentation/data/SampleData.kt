@@ -1,5 +1,7 @@
 package com.daejol.presentation.data
 
+import com.daejol.presentation.model.Animal
+
 object SampleData {
     val animals = listOf(
         Animal.Cat(
