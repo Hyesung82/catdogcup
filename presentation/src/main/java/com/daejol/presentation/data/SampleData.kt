@@ -3,86 +3,43 @@ package com.daejol.presentation.data
 object SampleData {
     val animals = listOf(
         Animal.Cat(
-            name = "Russian Blue",
-            imageUrl = "https://cdn2.thecatapi.com/images/cqg.jpg"
-        ),
-        Animal.Cat(
-            name = "Keykat",
-            imageUrl = "https://cdn2.thecatapi.com/images/ebv.jpg"
-        ),
-        Animal.Cat(
-            name = "Snow Cat",
-            imageUrl = "https://cdn.thedogapi.com/images/Hylo4Snaf.jpeg"
-        ),
-        Animal.Cat(
-            name = "Grasskitty",
-            imageUrl = "https://cdn2.thecatapi.com/images/xxBaNrfM0.jpg"
-        ),
-        Animal.Cat(
-            name = "Russian Blue",
-            imageUrl = "https://cdn2.thecatapi.com/images/cqg.jpg"
-        ),
-        Animal.Cat(
-            name = "Keykat",
-            imageUrl = "https://cdn2.thecatapi.com/images/ebv.jpg"
-        ),
-        Animal.Cat(
-            name = "Snow Cat",
-            imageUrl = "https://cdn.thedogapi.com/images/Hylo4Snaf.jpeg"
-        ),
-        Animal.Cat(
-            name = "Grasskitty",
-            imageUrl = "https://cdn2.thecatapi.com/images/xxBaNrfM0.jpg"
-        ),
-        Animal.Cat(
-            name = "Russian Blue",
-            imageUrl = "https://cdn2.thecatapi.com/images/cqg.jpg"
-        ),
-        Animal.Cat(
-            name = "Keykat",
-            imageUrl = "https://cdn2.thecatapi.com/images/ebv.jpg"
-        )
-    )
-
-    val achievements = listOf(
-        Achievement(
-            breed = "Abyssinian",
+            name = "Abyssinian",
             imageUrl = "https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg"
         ),
-        Achievement(
-            breed = "Aegean",
+        Animal.Cat(
+            name = "Aegean",
             imageUrl = "https://cdn2.thecatapi.com/images/ozEvzdVM-.jpg"
         ),
-        Achievement(
-            breed = "American Bobtail",
+        Animal.Cat(
+            name = "American Bobtail",
             imageUrl = "https://cdn2.thecatapi.com/images/hBXicehMA.jpg"
         ),
-        Achievement(
-            breed = "American Shorthair",
+        Animal.Cat(
+            name = "American Shorthair",
             imageUrl = "https://cdn2.thecatapi.com/images/JFPROfGtQ.jpg"
         ),
-        Achievement(
-            breed = "Bengal",
+        Animal.Cat(
+            name = "Bengal",
             imageUrl = "https://cdn2.thecatapi.com/images/O3btzLlsO.png"
         ),
-        Achievement(
-            breed = "British Shorthair",
+        Animal.Cat(
+            name = "British Shorthair",
             imageUrl = "https://cdn2.thecatapi.com/images/s4wQfYoEk.jpg"
         ),
-        Achievement(
-            breed = "Devon Rex",
+        Animal.Cat(
+            name = "Devon Rex",
             imageUrl = "https://cdn2.thecatapi.com/images/4RzEwvyzz.png"
         ),
-        Achievement(
-            breed = "Japanese Bobtail",
+        Animal.Cat(
+            name = "Japanese Bobtail",
             imageUrl = "https://cdn2.thecatapi.com/images/-tm9-znzl.jpg"
         ),
-        Achievement(
-            breed = "Javanese",
+        Animal.Cat(
+            name = "Javanese",
             imageUrl = "https://cdn2.thecatapi.com/images/xoI_EpOKe.jpg"
         ),
-        Achievement(
-            breed = "Norwegian Forest Cat",
+        Animal.Cat(
+            name = "Norwegian Forest Cat",
             imageUrl = "https://cdn2.thecatapi.com/images/06dgGmEOV.jpg"
         )
     )

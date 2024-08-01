@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.daejol.presentation.R
-import com.daejol.presentation.data.Achievement
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
@@ -23,7 +23,7 @@ import com.daejol.presentation.ui.theme.Typography
 @Composable
 fun MyAnimalContent(
     modifier: Modifier = Modifier,
-    achievement: Achievement
+    animal: Animal
 ) {
     Column(
         modifier = modifier
@@ -38,7 +38,7 @@ fun MyAnimalContent(
         Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             AchievementItem(
                 imageSize = dimensionResource(id = R.dimen.my_animal_image_size),
-                achievement = achievement
+                animal = animal
             )
         }
     }
@@ -50,7 +50,7 @@ fun ProfileContentPreview() {
     CatdogcupTheme {
         MyAnimalContent(
             modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
-            achievement = SampleData.achievements[0]
+            animal = SampleData.animals[0]
         )
     }
 }

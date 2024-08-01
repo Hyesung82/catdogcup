@@ -27,11 +27,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
-import com.daejol.presentation.data.Achievement
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
@@ -40,7 +39,7 @@ import com.daejol.presentation.ui.theme.Typography
 @Composable
 fun AchievementContent(
     modifier: Modifier = Modifier,
-    achievements: List<Achievement>
+    animals: List<Animal>
 ) {
     Column(
         modifier = modifier
@@ -58,8 +57,8 @@ fun AchievementContent(
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_s), Alignment.CenterVertically),
             modifier = Modifier.fillMaxWidth()
         ) {
-            achievements.forEach {
-                AchievementItem(achievement = it)
+            animals.forEach {
+                AchievementItem(animal = it)
             }
         }
     }
@@ -69,7 +68,7 @@ fun AchievementContent(
 fun AchievementItem(
     modifier: Modifier = Modifier,
     imageSize: Dp = dimensionResource(id = R.dimen.achievement_image_size),
-    achievement: Achievement
+    animal: Animal
 ) {
     Column(
         modifier = modifier
@@ -77,7 +76,7 @@ fun AchievementItem(
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(achievement.imageUrl)
+                .data(animal.imageUrl)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),
@@ -89,7 +88,7 @@ fun AchievementItem(
                 .align(Alignment.CenterHorizontally)
         )
         Text(
-            text = achievement.breed,
+            text = animal.name,
             textAlign = TextAlign.Center,
             style = Typography.labelSmall,
             maxLines = 2,
@@ -106,7 +105,7 @@ fun AchievementContentPreview() {
     CatdogcupTheme {
         AchievementContent(
             modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
-            achievements = SampleData.achievements
+            animals = SampleData.animals
         )
     }
 }

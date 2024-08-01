@@ -31,14 +31,14 @@ fun MyPageScreen(
             .verticalScroll(rememberScrollState())
             .padding(vertical = dimensionResource(id = R.dimen.space_xl))
     ) {
-        MyAnimalContent(achievement = SampleData.achievements[0])
+        MyAnimalContent(animal = animals[0])
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         BookmarkContent(
             navController = navController,
             animals = animals.subList(0, 10)
         )
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
-        AchievementContent(achievements = SampleData.achievements)
+        AchievementContent(animals = animals)
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         EtcContent()
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
