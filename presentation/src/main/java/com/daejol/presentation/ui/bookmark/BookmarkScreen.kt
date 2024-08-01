@@ -52,7 +52,7 @@ fun BookmarkScreen(
         items(animals) { animal ->
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(animal)
+                    .data(animal.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
