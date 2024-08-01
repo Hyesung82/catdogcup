@@ -3,12 +3,14 @@
 
     <!-- Screen -->
     <string name="home">홈</string>
-    <string name="category">카테고리</string>
+    <string name="matching">성격 매칭</string>
+    <string name="random">스토리</string>
     <string name="bookmark">북마크</string>
     <string name="my_page">마이페이지</string>
     <string name="worldcup_selection">월드컵선택</string>
     <string name="worldcup_play">월드컵실행</string>
     <string name="worldcup_result">월드컵결과</string>
+    <string name="animal_detail">고양이 및 강아지 상세 화면</string>
 
     <!-- Home Screen -->
     <string name="home_app_bar_title">개냥컵 로고</string>
@@ -24,7 +26,8 @@
     <string name="mixed_world_cup_title">고양이와 강아지를 함께</string>
     <string name="mixed_world_cup_desc">고양이? 강아지? 중요하지 않아요.\n가장 귀엽다고 생각하는 아이를 골라보세요.</string>
     <string name="mixed_world_cup_button">고양이 &amp; 강아지 월드컵 하러가기</string>
-    <string name="popular_catdog_title">인기있는 고양이 &amp; 강아지</string>
-    <string name="popular_catdog_image">인기 고양이 및 강아지 이미지</string>
-    <string name="popular_catdog_like">좋아요</string>
+    <string name="popular_animal_title">인기있는 고양이 &amp; 강아지</string>
+    <string name="popular_animal_image">인기 고양이 및 강아지 이미지</string>
+    <string name="popular_animal_like">좋아요</string>
+    <string name="popular_animal_back">뒤로 가기</string>
 </resources>

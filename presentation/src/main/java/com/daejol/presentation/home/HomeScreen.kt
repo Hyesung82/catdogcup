@@ -2,18 +2,22 @@ package com.daejol.presentation.home
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
+import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,59 +34,88 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.data.Animal
+import com.daejol.presentation.data.TestData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
-import com.daejol.presentation.ui.theme.Orange80
+import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavController? = null
+    navController: NavController? = null,
+    onDetailButtonClicked: (Animal) -> Unit
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.catdogcup_logo),
-                            contentDescription = stringResource(R.string.home_app_bar_title),
-                            colorFilter = ColorFilter.tint(Orange80),
-                            modifier = Modifier
-                                .width(dimensionResource(id = R.dimen.home_app_bar_title_width))
-                                .fillMaxHeight()
-                        )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { /* TODO: 품종 검색 */ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Search,
-                            contentDescription = stringResource(R.string.home_app_bar_search)
-                        )
-                    }
-                    IconButton(onClick = { /* TODO: 마이페이지 */ }) {
-                        Icon(
-                            imageVector = Icons.Filled.Menu,
-                            contentDescription = stringResource(R.string.home_app_bar_my_page)
-                        )
-                    }
-                }
-            )
+            HomeTopBar()
         }
     ) { innerPadding ->
-        Column(
+        LazyVerticalStaggeredGrid(
+            columns = StaggeredGridCells.Fixed(2),
+            verticalItemSpacing = dimensionResource(id = R.dimen.space_s),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_s)),
             modifier = Modifier
+                .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
+                .padding(horizontal = dimensionResource(id = R.dimen.space_m))
         ) {
-            WorldCupContent(navController)
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-            PopularCatDogContent()
+            item(span = StaggeredGridItemSpan.FullLine) {
+                Column {
+                    WorldCupContent(navController)
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+                    Title(text = R.string.popular_animal_title)
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                }
+            }
+            itemsIndexed(TestData.animals) { i, animal ->
+                PopularAnimalCard(
+                    ranking = i + 1,
+                    animal = animal,
+                    onClick = { onDetailButtonClicked(animal) }
+                )
+            }
+            item(span = StaggeredGridItemSpan.FullLine) {
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+            }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun HomeTopBar() {
+    TopAppBar(
+        title = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.catdogcup_logo),
+                    contentDescription = stringResource(R.string.home_app_bar_title),
+                    colorFilter = ColorFilter.tint(Orange100),
+                    modifier = Modifier
+                        .width(dimensionResource(id = R.dimen.home_app_bar_title_width))
+                        .fillMaxHeight()
+                )
+            }
+        },
+        actions = {
+            IconButton(onClick = { /* TODO: 품종 검색 */ }) {
+                Icon(
+                    imageVector = Icons.Outlined.Search,
+                    contentDescription = stringResource(R.string.home_app_bar_search),
+                    tint = Orange100
+                )
+            }
+            IconButton(onClick = { /* TODO: 마이페이지 */ }) {
+                Icon(
+                    imageVector = Icons.Outlined.AccountCircle,
+                    contentDescription = stringResource(R.string.home_app_bar_my_page),
+                    tint = Orange100
+                )
+            }
+        }
+    )
 }
 
 @Composable
@@ -100,6 +133,8 @@ fun Title(
 @Composable
 fun HomeScreenPreview() {
     CatdogcupTheme {
-        HomeScreen()
+        HomeScreen(
+            onDetailButtonClicked = {}
+        )
     }
 }

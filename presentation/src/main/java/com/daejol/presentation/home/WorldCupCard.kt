@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
-import com.daejol.presentation.ui.theme.White100
 
 @Composable
 fun WorldCupCard(
@@ -47,9 +46,9 @@ fun WorldCupCard(
             elevation = CardDefaults.cardElevation(
                 defaultElevation = dimensionResource(id = R.dimen.elevation_default)
             ),
-            colors = CardDefaults.cardColors(
-                containerColor = White100
-            ),
+    //        colors = CardDefaults.cardColors(
+    //            containerColor = White100
+    //        ),
             modifier = Modifier
                 .fillMaxWidth()
         ) {

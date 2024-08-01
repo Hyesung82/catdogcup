@@ -1,6 +1,8 @@
 package com.daejol.presentation.main
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.daejol.presentation.Screen
 import com.daejol.presentation.category.match.PersonalWidget
 import com.daejol.presentation.home.HomeScreen
+import com.daejol.presentation.home.PopularAnimalDetailScreen
 import com.daejol.presentation.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.worldcup.result.WorldCupResultScreen
 import com.daejol.presentation.worldcup.selection.WorldCupScreen
@@ -18,6 +21,9 @@ fun MainNavHost(
     modifier: Modifier
 ) {
     val worldCupViewModel = worldCupViewModel()
+    val homeViewModel = homeViewModel()
+
+    val homeUiState by homeViewModel.uiState.collectAsState()
 
     NavHost(
         navController = navController,
@@ -25,16 +31,13 @@ fun MainNavHost(
         modifier = modifier
     ) {
         composable(route = Screen.Home.route) {
-            HomeScreen(navController)
-        }
-        composable(route = Screen.Category.route) {
-            PersonalWidget()
-        }
-        composable(route = Screen.Bookmark.route) {
-            // TODO: 북마크
-        }
-        composable(route = Screen.MyPage.route) {
-            // TODO: 마이페이지
+            HomeScreen(
+                navController = navController,
+                onDetailButtonClicked = {
+                    homeViewModel.setBreed(it)
+                    navController.navigate(Screen.AnimalDetail.route)
+                }
+            )
         }
         composable(route = Screen.WorldCupSelection.route) {
             WorldCupScreen(
@@ -54,6 +57,22 @@ fun MainNavHost(
                 viewModel = worldCupViewModel,
                 navController = navController
             )
+        }
+        composable(route = Screen.AnimalDetail.route) {
+            PopularAnimalDetailScreen(
+                navController = navController,
+                homeUiState = homeUiState
+            )
+        }
+
+        composable(route = Screen.Matching.route) {
+            PersonalWidget()
+        }
+        composable(route = Screen.Random.route) {
+            // TODO: 스토리(랜덤 개냥이 이미지)
+        }
+        composable(route = Screen.Bookmark.route) {
+            // TODO: 북마크
         }
     }
 }

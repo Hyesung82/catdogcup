@@ -16,12 +16,12 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.daejol.presentation.Screen
 
 @Composable
-fun MainScreenApp() {
+fun MainApp() {
     val items = listOf(
         Screen.Home,
-        Screen.Category,
-        Screen.Bookmark,
-        Screen.MyPage,
+        Screen.Matching,
+        Screen.Random,
+        Screen.Bookmark
     )
     val appState = rememberAppState()
     val navController = appState.navController
@@ -62,4 +62,3 @@ fun MainScreenApp() {
         MainNavHost(navController, Modifier.padding(innerPadding))
     }
 }
-
