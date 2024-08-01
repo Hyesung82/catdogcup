@@ -24,7 +24,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
-import com.daejol.presentation.data.TestData
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Pretendard
 import com.daejol.presentation.ui.theme.Red100
@@ -93,7 +93,7 @@ fun PopularCatDogCardPreview() {
     CatdogcupTheme {
         PopularAnimalCard(
             ranking = 1,
-            animal = TestData.animals[0],
+            animal = SampleData.animals[0],
             onClick = {}
         )
     }

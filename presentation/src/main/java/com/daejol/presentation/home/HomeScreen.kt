@@ -34,7 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
-import com.daejol.presentation.data.TestData
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Typography
@@ -66,7 +66,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                 }
             }
-            itemsIndexed(TestData.animals) { i, animal ->
+            itemsIndexed(SampleData.animals) { i, animal ->
                 PopularAnimalCard(
                     ranking = i + 1,
                     animal = animal,

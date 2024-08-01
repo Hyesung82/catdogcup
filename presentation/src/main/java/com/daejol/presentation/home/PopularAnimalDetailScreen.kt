@@ -36,7 +36,7 @@ import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.HomeUiState
-import com.daejol.presentation.data.TestData
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -156,7 +156,7 @@ private fun AnimalDetailAttribute(
 fun PopularAnimalDetailScreenPreview() {
     CatdogcupTheme {
         PopularAnimalDetailScreen(
-            homeUiState = HomeUiState(TestData.animals[0]),
+            homeUiState = HomeUiState(SampleData.animals[0]),
             navController = null
         )
     }
