@@ -31,6 +31,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
 import com.daejol.presentation.Screen
+import com.daejol.presentation.data.Animal
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
@@ -39,7 +40,7 @@ import com.daejol.presentation.ui.theme.Typography
 fun BookmarkContent(
     modifier: Modifier = Modifier,
     navController: NavController?,
-    imageUrls: List<String>
+    animals: List<Animal>
 ) {
     Column(
         modifier = modifier
@@ -67,8 +68,8 @@ fun BookmarkContent(
             modifier = modifier,
             contentPadding = PaddingValues(horizontal = dimensionResource(id = R.dimen.space_l))
         ) {
-            items(imageUrls) { imageUrl ->
-                BookmarkItem(imageUrl)
+            items(animals) { animal ->
+                BookmarkItem(animal)
             }
         }
     }
@@ -76,14 +77,14 @@ fun BookmarkContent(
 
 @Composable
 private fun BookmarkItem(
-    imageUrl: String
+    animal: Animal
 ) {
     Box(
         modifier = Modifier.size(88.dp)
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(imageUrl)
+                .data(animal.image)
                 .crossfade(true)
                 .build(),
             placeholder = painterResource(R.drawable.sample_cat),
@@ -101,7 +102,7 @@ fun BookmarkContentPreview() {
         BookmarkContent(
             modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
             navController = null,
-            imageUrls = SampleData.imageUrls
+            animals = SampleData.animals
         )
     }
 }

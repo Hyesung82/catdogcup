@@ -24,6 +24,8 @@ fun MyPageScreen(
     modifier: Modifier = Modifier,
     navController: NavController?
 ) {
+    val animals = SampleData.animals
+
     Column(
         modifier = modifier
             .verticalScroll(rememberScrollState())
@@ -33,7 +35,7 @@ fun MyPageScreen(
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         BookmarkContent(
             navController = navController,
-            imageUrls = SampleData.imageUrls.subList(0, 10)
+            animals = animals.subList(0, 10)
         )
         Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         AchievementContent(achievements = SampleData.achievements)
