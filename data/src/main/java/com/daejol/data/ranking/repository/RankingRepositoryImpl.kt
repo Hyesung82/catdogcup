@@ -5,7 +5,7 @@ import com.daejol.domain.repository.RankingRepository
 import javax.inject.Inject
 
 class RankingRepositoryImpl @Inject constructor() : RankingRepository {
-    override suspend fun getRanking() = RankingApi.getPopularCatsAndDogs()
+    override suspend fun getRanking() = RankingApi.getPopularAnimals()
 
     override suspend fun checkIfUserIsSignedIn() = RankingApi.checkAuth()
 }

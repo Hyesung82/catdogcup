@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetRankingUseCase @Inject constructor(
     private val rankingRepository: RankingRepository
 ) {
-    suspend fun getPopularCatsAndDogs() = rankingRepository.getRanking()
+    suspend fun getPopularAnimals() = rankingRepository.getRanking()
 }

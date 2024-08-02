@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         CoroutineScope(Dispatchers.IO).launch {
             checkAuthUseCase.checkIfUserIsSignedIn()
-            getRankingUseCase.getPopularCatsAndDogs()
+            getRankingUseCase.getPopularAnimals()
         }
     }
 }
