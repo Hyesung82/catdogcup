@@ -21,6 +21,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val tag = this::class.java.simpleName
+
     @Inject lateinit var checkAuthUseCase: CheckAuthUseCase
     @Inject lateinit var getRankingUseCase: GetRankingUseCase
 
@@ -48,10 +50,6 @@ class MainActivity : ComponentActivity() {
                 Log.d(tag, it.data.toString())
             }
         }
-    }
-
-    companion object {
-        private val tag = this::class.java.name
     }
 }
 
