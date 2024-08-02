@@ -3,7 +3,7 @@ package com.daejol.domain.di
 import com.daejol.domain.repository.CatImagesRepository
 import com.daejol.domain.repository.DogImagesRepository
 import com.daejol.domain.repository.RankingRepository
-import com.daejol.domain.usecase.CheckAuth
+import com.daejol.domain.usecase.CheckAuthUseCase
 import com.daejol.domain.usecase.GetImageUseCase
 import dagger.Module
 import dagger.Provides
@@ -35,5 +35,5 @@ object UseCaseModule {
     @Provides
     fun provideCheckAuthUseCase(
         rankingRepository: RankingRepository
-    ): CheckAuth = CheckAuth(rankingRepository)
+    ): CheckAuthUseCase = CheckAuthUseCase(rankingRepository)
 }

@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.daejol.domain.usecase.CheckAuth
+import com.daejol.domain.usecase.CheckAuthUseCase
 import com.daejol.domain.usecase.GetRankingUseCase
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    @Inject lateinit var checkAuth: CheckAuth
+    @Inject lateinit var checkAuthUseCase: CheckAuthUseCase
     @Inject lateinit var getRankingUseCase: GetRankingUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         CoroutineScope(Dispatchers.IO).launch {
-            checkAuth.checkIfUserIsSignedIn()
+            checkAuthUseCase.checkIfUserIsSignedIn()
             getRankingUseCase.getPopularCatsAndDogs()
         }
     }
