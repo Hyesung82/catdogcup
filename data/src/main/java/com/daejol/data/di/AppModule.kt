@@ -5,6 +5,7 @@ import com.daejol.data.ApiConst
 import com.daejol.data.catdata.api.CatImagesApi
 import com.daejol.data.dogdata.api.DogImagesApi
 import com.daejol.data.dogdata.api.DogBreedsApi
+import com.daejol.data.ranking.api.RankingApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -95,6 +96,12 @@ object AppModule {
     @Provides
     fun provideDogBreedsApi(@DogType retrofit: Retrofit): DogBreedsApi {
         return retrofit.create(DogBreedsApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCatRankingApi(@CatType retrofit: Retrofit): RankingApi {
+        return retrofit.create(RankingApi::class.java)
     }
 
     class CatRetrofitInterceptor : Interceptor {

@@ -1,6 +1,7 @@
 package com.daejol.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -43,8 +44,14 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         CoroutineScope(Dispatchers.IO).launch {
             checkAuthUseCase.checkIfUserIsSignedIn()
-            getRankingUseCase.getPopularAnimals()
+            getRankingUseCase.getPopularAnimals().collect {
+                Log.d(tag, it.data.toString())
+            }
         }
+    }
+
+    companion object {
+        private val tag = this::class.java.name
     }
 }
 
