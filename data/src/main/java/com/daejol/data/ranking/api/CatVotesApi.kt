@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RankingApi {
+interface CatVotesApi {
     @GET("votes")
     suspend fun getVotes(
         @Query("attach_image") attachImage: Int? = null,
