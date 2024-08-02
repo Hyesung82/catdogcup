@@ -10,7 +10,7 @@ import com.google.firebase.database.getValue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-object RankingApi {
+object SignInApi {
     const val TAG = "RankingApi"
 
     private val database = Firebase.database
