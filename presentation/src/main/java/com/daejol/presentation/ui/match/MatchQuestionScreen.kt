@@ -19,7 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -33,7 +35,9 @@ import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun MatchQuestionScreen() {
+fun MatchQuestionScreen(
+    navController: NavController? = null
+) {
     val configuration = LocalConfiguration.current
 
     val sh = configuration.screenHeightDp.dp
@@ -156,7 +160,9 @@ fun MatchQuestionScreen() {
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController?.navigate(Screen.AnimalDetail.route)
+                    },
                     modifier = Modifier
                         .width(sw / 5 * 4),
                     colors = ButtonColors(

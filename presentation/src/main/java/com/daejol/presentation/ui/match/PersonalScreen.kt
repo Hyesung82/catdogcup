@@ -20,7 +20,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -34,7 +36,9 @@ import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun PersonalWidget() {
+fun PersonalWidget(
+    navController: NavController? = null
+) {
     val configuration = LocalConfiguration.current
 
     val sh = configuration.screenHeightDp.dp
@@ -112,7 +116,9 @@ fun PersonalWidget() {
 
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = {},
+                onClick = {
+                    navController?.navigate(Screen.MatchingQuestion.route)
+                },
                 modifier = Modifier
                     .width(sw / 3 * 2)
                     .align(Alignment.CenterHorizontally),

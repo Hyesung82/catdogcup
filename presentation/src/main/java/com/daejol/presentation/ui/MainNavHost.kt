@@ -70,11 +70,15 @@ fun MainNavHost(
         }
 
         composable(route = Screen.Matching.route) {
-            PersonalWidget()
+            PersonalWidget(
+                navController = navController
+            )
         }
 
         composable(route = Screen.MatchingQuestion.route) {
-            MatchQuestionScreen()
+            MatchQuestionScreen(
+                navController = navController
+            )
         }
 
         composable(route = Screen.MatchingLoading.route) {
