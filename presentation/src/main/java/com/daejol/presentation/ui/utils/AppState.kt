@@ -17,7 +17,9 @@ class AppState(
     val disableBottomBarScreenList = listOf(
         Screen.WorldCupSelection.route,
         Screen.WorldCupPlay.route,
-        Screen.WorldCupResult.route
+        Screen.WorldCupResult.route,
+        Screen.MatchingQuestion.route,
+        Screen.MatchingLoading.route,
     )
 
     val shouldShowBottomBar: Boolean

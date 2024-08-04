@@ -12,6 +12,8 @@ import com.daejol.presentation.ui.bookmark.BookmarkScreen
 import com.daejol.presentation.ui.match.PersonalWidget
 import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
+import com.daejol.presentation.ui.match.MatchLoadingScreen
+import com.daejol.presentation.ui.match.MatchQuestionScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.ui.worldcup.result.WorldCupResultScreen
@@ -69,6 +71,14 @@ fun MainNavHost(
 
         composable(route = Screen.Matching.route) {
             PersonalWidget()
+        }
+
+        composable(route = Screen.MatchingQuestion.route) {
+            MatchQuestionScreen()
+        }
+
+        composable(route = Screen.MatchingLoading.route) {
+            MatchLoadingScreen()
         }
 
         composable(route = Screen.Story.route) {
