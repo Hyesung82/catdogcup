@@ -83,7 +83,9 @@ fun MainNavHost(
         }
 
         composable(route = Screen.MatchingLoading.route) {
-            MatchLoadingScreen()
+            MatchLoadingScreen(
+                navController = navController
+            )
         }
 
         composable(route = Screen.MatchingResult.route) {

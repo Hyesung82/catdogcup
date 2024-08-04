@@ -2,13 +2,11 @@ package com.daejol.presentation.ui.match
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -21,7 +19,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.daejol.presentation.R
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -35,7 +35,9 @@ import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun MatchLoadingScreen() {
+fun MatchLoadingScreen(
+    navController: NavController
+) {
     val configuration = LocalConfiguration.current
 
     val sh = configuration.screenHeightDp.dp
@@ -96,7 +98,9 @@ fun MatchLoadingScreen() {
                             .height(50.dp)
                     )
                     Button(
-                        onClick = {},
+                        onClick = {
+                            navController.navigate(Screen.MatchingResult.route)
+                        },
                         modifier = Modifier
                             .width(sw / 3 * 2),
                         colors = ButtonColors(
