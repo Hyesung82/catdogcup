@@ -161,7 +161,7 @@ fun MatchQuestionScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = {
-                        navController?.navigate(Screen.AnimalDetail.route)
+                        navController?.navigate(Screen.MatchingLoading.route)
                     },
                     modifier = Modifier
                         .width(sw / 5 * 4),
