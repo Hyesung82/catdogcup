@@ -22,6 +22,8 @@ sealed class Screen(
 
     data object MatchingLoading : Screen("matching_loading", R.string.matching, Icons.Filled.Extension)
 
+    data object MatchingResult : Screen("matching_result", R.string.matching, Icons.Filled.Extension)
+
     data object Story : Screen("story", R.string.story, Icons.Filled.PhotoLibrary)
 
     data object MyPage : Screen("my_page", R.string.my_page, Icons.Filled.Person)

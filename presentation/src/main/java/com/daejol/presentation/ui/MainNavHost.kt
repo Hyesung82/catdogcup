@@ -14,6 +14,7 @@ import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
 import com.daejol.presentation.ui.match.MatchLoadingScreen
 import com.daejol.presentation.ui.match.MatchQuestionScreen
+import com.daejol.presentation.ui.match.MatchResultScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.ui.worldcup.result.WorldCupResultScreen
@@ -84,6 +85,11 @@ fun MainNavHost(
         composable(route = Screen.MatchingLoading.route) {
             MatchLoadingScreen()
         }
+
+        composable(route = Screen.MatchingResult.route) {
+            MatchResultScreen()
+        }
+
 
         composable(route = Screen.Story.route) {
             // TODO: 스토리 화면
