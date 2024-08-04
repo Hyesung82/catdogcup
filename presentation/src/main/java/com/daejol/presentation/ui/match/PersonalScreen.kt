@@ -1,7 +1,6 @@
 package com.daejol.presentation.ui.match
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -18,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
@@ -36,7 +34,7 @@ import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun PersonalWidget(
+fun MatchStartScreen(
     navController: NavController? = null
 ) {
     val configuration = LocalConfiguration.current

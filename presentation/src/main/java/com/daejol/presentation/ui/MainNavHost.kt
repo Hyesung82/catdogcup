@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.bookmark.BookmarkScreen
-import com.daejol.presentation.ui.match.PersonalWidget
+import com.daejol.presentation.ui.match.MatchStartScreen
 import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
 import com.daejol.presentation.ui.match.MatchLoadingScreen
@@ -70,7 +70,7 @@ fun MainNavHost(
         }
 
         composable(route = Screen.Matching.route) {
-            PersonalWidget(
+            MatchStartScreen(
                 navController = navController
             )
         }
