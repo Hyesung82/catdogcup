@@ -20,6 +20,7 @@ class AppState(
         Screen.WorldCupResult.route,
         Screen.MatchingQuestion.route,
         Screen.MatchingLoading.route,
+        Screen.MatchingResult.route,
     )
 
     val shouldShowBottomBar: Boolean
