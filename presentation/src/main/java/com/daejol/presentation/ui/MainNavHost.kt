@@ -89,7 +89,9 @@ fun MainNavHost(
         }
 
         composable(route = Screen.MatchingResult.route) {
-            MatchResultScreen()
+            MatchResultScreen(
+                navController = navController
+            )
         }
 
 
