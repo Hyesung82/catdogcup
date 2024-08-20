@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -185,7 +186,7 @@ fun MatchResultScreen(
                         ),
                 ) {
                     Text(
-                        text = "홈으로 가기",
+                        text = stringResource(id = R.string.match_result_go_home),
                         fontSize = 16.sp,
                         fontFamily = Gimpo,
                         fontWeight = FontWeight.Normal,
@@ -206,7 +207,7 @@ fun MatchResultScreen(
                     )
                 ) {
                     Text(
-                        text = "한번 더 하기",
+                        text = stringResource(id = R.string.match_result_one_more),
                         color = White100,
                         fontSize = 16.sp,
                         fontFamily = Gimpo,

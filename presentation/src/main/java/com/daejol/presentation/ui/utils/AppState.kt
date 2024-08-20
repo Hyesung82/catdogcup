@@ -14,7 +14,7 @@ import com.daejol.presentation.model.Screen
 class AppState(
     val navController: NavHostController
 ) {
-    val disableBottomBarScreenList = listOf(
+    private val disableBottomBarScreenList = listOf(
         Screen.WorldCupSelection.route,
         Screen.WorldCupPlay.route,
         Screen.WorldCupResult.route,
