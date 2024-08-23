@@ -17,17 +17,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
+import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PopularCatDogContent(
-    catdogs: List<CatDog> = listOf(
-        CatDog("Russian Blue", 1),
-        CatDog("Keykat", 2),
-        CatDog("Snow Cat", 3),
-        CatDog("Grasskitty", 4)
-    )
+    animals: List<Animal> = SampleData.animals
 ) {
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
@@ -42,8 +39,8 @@ fun PopularCatDogContent(
             val configuration = LocalConfiguration.current
             val screenWidth = configuration.screenWidthDp
 
-            catdogs.forEach {
-//                PopularCatDogCard(it, (screenWidth / 2 - 22).dp)
+            animals.forEachIndexed { i, animal ->
+                PopularCatDogCard(animal, i, (screenWidth / 2 - 22).dp)
             }
         }
     }
@@ -60,9 +57,3 @@ fun PopularCatDogContentPreview() {
         }
     }
 }
-
-data class CatDog(
-    val name: String,
-    val ranking: Int,
-    val imageUrl: String = "https://cdn2.thecatapi.com/images/cqg.jpg"
-)

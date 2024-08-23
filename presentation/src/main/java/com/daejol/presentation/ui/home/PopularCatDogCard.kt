@@ -31,14 +31,15 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
+import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.MoveSans
-import com.daejol.presentation.ui.theme.White100
 import com.daejol.presentation.ui.theme.secondaryLight
 
 @Composable
 fun PopularCatDogCard(
-    catdog: CatDog = CatDog("Russian Blue", 1),
+    animal: Animal = Animal.Cat(name = "Russian Blue"),
+    ranking: Int = 1,
     width: Dp = 140.dp
 ) {
     ElevatedCard(
@@ -46,7 +47,7 @@ fun PopularCatDogCard(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
         ),
         colors = CardDefaults.cardColors(
-            containerColor = White100
+//            containerColor = White100
         ),
         modifier = Modifier
             .wrapContentHeight()
@@ -58,7 +59,7 @@ fun PopularCatDogCard(
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://cdn2.thecatapi.com/images/cqg.jpg")
+                    .data(animal.imageUrl)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(id = R.drawable.sample_cat),
@@ -76,7 +77,7 @@ fun PopularCatDogCard(
                     )
             ) {
                 Text(
-                    text = "CAT NO.${catdog.ranking}",
+                    text = "CAT NO.${ranking}",
                     fontSize = dimensionResource(id = R.dimen.text_xxxs).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,
@@ -84,7 +85,7 @@ fun PopularCatDogCard(
                     lineHeight = 8.sp
                 )
                 Text(
-                    text = catdog.name,
+                    text = animal.name,
                     fontSize = dimensionResource(id = R.dimen.text_xs).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,

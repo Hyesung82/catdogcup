@@ -1,6 +1,7 @@
 package com.daejol.presentation.ui.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,8 @@ import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Search
@@ -49,33 +52,17 @@ fun HomeScreen(
             HomeTopBar()
         }
     ) { innerPadding ->
-        LazyVerticalStaggeredGrid(
-            columns = StaggeredGridCells.Fixed(2),
-            verticalItemSpacing = dimensionResource(id = R.dimen.space_s),
-            horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_s)),
+        val scrollState = rememberScrollState()
+
+        Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(innerPadding)
-                .padding(horizontal = dimensionResource(id = R.dimen.space_m))
+                .verticalScroll(scrollState)
         ) {
-            item(span = StaggeredGridItemSpan.FullLine) {
-                Column {
-                    WorldCupContent(navController)
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-                    Title(text = stringResource(id = R.string.popular_animal_title))
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                }
-            }
-            itemsIndexed(SampleData.animals) { i, animal ->
-                PopularAnimalCard(
-                    ranking = i + 1,
-                    animal = animal,
-                    onClick = { onDetailButtonClicked(animal) }
-                )
-            }
-            item(span = StaggeredGridItemSpan.FullLine) {
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            }
+            WorldCupContent(navController)
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+            PopularCatDogContent(SampleData.animals)
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         }
     }
 }
