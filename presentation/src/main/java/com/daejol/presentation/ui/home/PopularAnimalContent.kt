@@ -24,7 +24,8 @@ import com.daejol.presentation.ui.theme.CatdogcupTheme
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun PopularAnimalContent(
-    animals: List<Animal> = SampleData.animals
+    animals: List<Animal>,
+    onClick: (Animal) -> Unit
 ) {
     Column(
         modifier = Modifier.padding(dimensionResource(id = R.dimen.space_m))
@@ -40,7 +41,7 @@ fun PopularAnimalContent(
             val screenWidth = configuration.screenWidthDp
 
             animals.forEachIndexed { i, animal ->
-                PopularAnimalCard(animal, i, (screenWidth / 2 - 22).dp)
+                PopularAnimalCard(i, animal, (screenWidth / 2 - 22).dp, onClick)
             }
         }
     }
@@ -53,7 +54,10 @@ fun PopularCatDogContentPreview() {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            PopularAnimalContent()
+            PopularAnimalContent(
+                animals = SampleData.animals,
+                onClick = {}
+            )
         }
     }
 }

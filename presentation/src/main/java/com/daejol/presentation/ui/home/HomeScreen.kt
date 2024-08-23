@@ -54,7 +54,7 @@ fun HomeScreen(
         ) {
             WorldCupContent(navController)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            PopularAnimalContent(SampleData.animals)
+            PopularAnimalContent(SampleData.animals, onDetailButtonClicked)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         }
     }

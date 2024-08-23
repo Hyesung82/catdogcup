@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -32,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.MoveSans
@@ -39,9 +39,10 @@ import com.daejol.presentation.ui.theme.secondaryLight
 
 @Composable
 fun PopularAnimalCard(
-    animal: Animal = Animal.Cat(name = "Russian Blue"),
-    ranking: Int = 1,
-    width: Dp = 140.dp
+    ranking: Int,
+    animal: Animal,
+    width: Dp,
+    onClick: (Animal) -> Unit
 ) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
@@ -50,6 +51,7 @@ fun PopularAnimalCard(
         colors = CardDefaults.cardColors(
 //            containerColor = White100
         ),
+        onClick = { onClick(animal) },
         modifier = Modifier
             .wrapContentHeight()
             .width(width)
@@ -121,6 +123,11 @@ fun PopularAnimalCard(
 @Composable
 fun PopularCatDogCardPreView() {
     CatdogcupTheme {
-        PopularAnimalCard()
+        PopularAnimalCard(
+            ranking = 1,
+            animal = SampleData.animals[0],
+            width = 140.dp,
+            onClick = {}
+        )
     }
 }
