@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import com.daejol.domain.usecase.GetRankingUseCase
+import com.daejol.domain.usecase.WinWorldCupUseCase
 import javax.inject.Singleton
 
 @Module
@@ -36,4 +37,10 @@ object UseCaseModule {
     fun provideCheckAuthUseCase(
         votesRepository: VotesRepository
     ): CheckAuthUseCase = CheckAuthUseCase(votesRepository)
+
+    @Singleton
+    @Provides
+    fun provideWinWorldCupUseCase(
+        votesRepository: VotesRepository
+    ): WinWorldCupUseCase = WinWorldCupUseCase(votesRepository)
 }

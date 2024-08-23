@@ -1,8 +1,11 @@
 package com.daejol.data.ranking.api
 
 import com.daejol.data.ranking.dto.VotesDto
+import com.daejol.data.ranking.dto.VotesRequest
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface CatVotesApi {
@@ -14,4 +17,9 @@ interface CatVotesApi {
         @Query("limit") limit: Int? = null,
         @Query("order") order: String? = null
     ): Response<List<VotesDto>>
+
+    @POST("votes")
+    suspend fun updateVotes(
+        @Body votesRequest: VotesRequest
+    )
 }
