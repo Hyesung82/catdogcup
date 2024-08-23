@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Bookmark
+import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -106,7 +107,7 @@ fun PopularAnimalCard(
                         modifier = Modifier.size(12.dp)
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.Bookmark,
+                            imageVector = Icons.Outlined.BookmarkBorder,
                             contentDescription = stringResource(R.string.popular_animal_like)
                         )
                     }
