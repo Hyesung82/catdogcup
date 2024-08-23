@@ -45,8 +45,8 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         CoroutineScope(Dispatchers.IO).launch {
-            checkAuthUseCase.checkIfUserIsSignedIn()
-            getRankingUseCase.getPopularAnimals().collect {
+            checkAuthUseCase()
+            getRankingUseCase().collect {
                 Log.d(tag, it.data.toString())
             }
         }

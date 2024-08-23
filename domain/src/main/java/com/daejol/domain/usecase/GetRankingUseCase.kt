@@ -1,15 +1,16 @@
 package com.daejol.domain.usecase
 
-import com.daejol.domain.DataState
-import com.daejol.domain.entity.VotesEntity
 import com.daejol.domain.repository.VotesRepository
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetRankingUseCase @Inject constructor(
-    private val votesRepository: VotesRepository
+    private val votesRepository: VotesRepository,
+    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.Default
 ) {
-    suspend fun getPopularAnimals(): Flow<DataState<List<VotesEntity>>> {
-        return votesRepository.getVotes()
+    suspend operator fun invoke() = withContext(defaultDispatcher) {
+        votesRepository.getVotes()
     }
 }
