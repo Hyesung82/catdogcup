@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.outlined.Bookmark
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -106,7 +106,7 @@ fun PopularCatDogCard(
                         modifier = Modifier.size(12.dp)
                     ) {
                         Icon(
-                            imageVector = Icons.Filled.FavoriteBorder,
+                            imageVector = Icons.Outlined.Bookmark,
                             contentDescription = stringResource(R.string.popular_animal_like)
                         )
                     }
