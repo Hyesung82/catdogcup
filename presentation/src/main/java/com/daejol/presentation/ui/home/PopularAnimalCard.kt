@@ -37,7 +37,7 @@ import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.secondaryLight
 
 @Composable
-fun PopularCatDogCard(
+fun PopularAnimalCard(
     animal: Animal = Animal.Cat(name = "Russian Blue"),
     ranking: Int = 1,
     width: Dp = 140.dp
@@ -120,6 +120,6 @@ fun PopularCatDogCard(
 @Composable
 fun PopularCatDogCardPreView() {
     CatdogcupTheme {
-        PopularCatDogCard()
+        PopularAnimalCard()
     }
 }

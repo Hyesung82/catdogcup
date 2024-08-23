@@ -1,20 +1,13 @@
 package com.daejol.presentation.ui.home
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
-import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -61,7 +54,7 @@ fun HomeScreen(
         ) {
             WorldCupContent(navController)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            PopularCatDogContent(SampleData.animals)
+            PopularAnimalContent(SampleData.animals)
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
         }
     }
