@@ -7,22 +7,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
 import androidx.compose.material.icons.outlined.BookmarkBorder
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -51,46 +49,64 @@ fun PopularAnimalDetailScreen(
                     modifier = Modifier
                         .verticalScroll(rememberScrollState())
                 ) {
-                    AsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(homeUiState.breed.imageUrl)
-                            .crossfade(true)
-                            .build(),
-                        placeholder = painterResource(id = R.drawable.sample_cat),
-                        contentDescription = stringResource(id = R.string.popular_animal_image),
-                        contentScale = ContentScale.FillWidth,
-                        modifier = Modifier.fillMaxWidth()
-                    )
+                    AnimalDetailImage(homeUiState.breed.imageUrl)
                     AnimalDetailDescription(homeUiState.breed)
                 }
-                PopularAnimalTopBar(navController = navController)
+                PopularAnimalBackButton(navController = navController)
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PopularAnimalTopBar(
-    navController: NavController?
+private fun AnimalDetailImage(
+    imageUrl: String
 ) {
-    TopAppBar(
-        title = {},
-        navigationIcon = {
+    Box {
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(imageUrl)
+                .crossfade(true)
+                .build(),
+            placeholder = painterResource(id = R.drawable.sample_cat),
+            contentDescription = stringResource(id = R.string.popular_animal_image),
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Row(
+            modifier = Modifier.padding(dimensionResource(id = R.dimen.space_xs))
+        ) {
+            Spacer(modifier = Modifier.weight(1f))
             IconButton(
-                onClick = {
-                    navController?.navigateUp()
-                }
+                onClick = { /*TODO*/ }
             ) {
                 Icon(
-                    imageVector = Icons.Outlined.ArrowBackIosNew,
-                    contentDescription = stringResource(id = R.string.popular_animal_back)
+                    imageVector = Icons.Outlined.FileDownload,
+                    contentDescription = "이미지 다운로드",
+                    modifier = Modifier.size(dimensionResource(id = R.dimen.detail_icon_button_size))
                 )
             }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
-        modifier = Modifier
-    )
+        }
+    }
+}
+
+@Composable
+private fun PopularAnimalBackButton(
+    navController: NavController?
+) {
+    Row(
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.space_xs))
+    ) {
+        IconButton(
+            onClick = { navController?.navigateUp() },
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.ArrowBackIosNew,
+                contentDescription = stringResource(id = R.string.popular_animal_back),
+                modifier = Modifier.size(dimensionResource(id = R.dimen.detail_icon_button_size))
+            )
+        }
+    }
 }
 
 @Composable
