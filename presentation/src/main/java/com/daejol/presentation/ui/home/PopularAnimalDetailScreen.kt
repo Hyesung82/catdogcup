@@ -2,7 +2,6 @@ package com.daejol.presentation.ui.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,7 +12,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
 import androidx.compose.material.icons.outlined.BookmarkBorder
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,9 +33,9 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.daejol.presentation.R
+import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
 import com.daejol.presentation.model.HomeUiState
-import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -48,35 +46,26 @@ fun PopularAnimalDetailScreen(
 ) {
     CatdogcupTheme {
         Scaffold { innerPadding ->
-            Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-            ) {
-                AnimalDetailImage(innerPadding, navController, homeUiState.breed.imageUrl)
-                AnimalDetailDescription(homeUiState.breed)
+            Box {
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(homeUiState.breed.imageUrl)
+                            .crossfade(true)
+                            .build(),
+                        placeholder = painterResource(id = R.drawable.sample_cat),
+                        contentDescription = stringResource(id = R.string.popular_animal_image),
+                        contentScale = ContentScale.FillWidth,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    AnimalDetailDescription(homeUiState.breed)
+                }
+                PopularAnimalTopBar(navController = navController)
             }
         }
-    }
-}
-
-@Composable
-private fun AnimalDetailImage(
-    innerPadding: PaddingValues,
-    navController: NavController?,
-    imageUrl: String
-) {
-    Box(modifier = Modifier) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(imageUrl)
-                .crossfade(true)
-                .build(),
-            placeholder = painterResource(id = R.drawable.sample_cat),
-            contentDescription = stringResource(id = R.string.popular_animal_image),
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth()
-        )
-        PopularAnimalTopBar(navController = navController)
     }
 }
 
