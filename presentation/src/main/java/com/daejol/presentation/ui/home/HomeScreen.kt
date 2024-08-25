@@ -40,22 +40,24 @@ fun HomeScreen(
     navController: NavController? = null,
     onDetailButtonClicked: (Animal) -> Unit
 ) {
-    Scaffold(
-        topBar = {
-            HomeTopBar()
-        }
-    ) { innerPadding ->
-        val scrollState = rememberScrollState()
+    CatdogcupTheme {
+        Scaffold(
+            topBar = {
+                HomeTopBar()
+            }
+        ) { innerPadding ->
+            val scrollState = rememberScrollState()
 
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .verticalScroll(scrollState)
-        ) {
-            WorldCupContent(navController)
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
-            PopularAnimalContent(SampleData.animals, onDetailButtonClicked)
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .verticalScroll(scrollState)
+            ) {
+                WorldCupContent(navController)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+                PopularAnimalContent(SampleData.animals, onDetailButtonClicked)
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
+            }
         }
     }
 }

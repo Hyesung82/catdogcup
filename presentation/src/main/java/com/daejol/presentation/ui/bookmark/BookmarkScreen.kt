@@ -33,31 +33,33 @@ fun BookmarkScreen(
 ) {
     val animals = SampleData.animals
 
-    LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Fixed(3),
-        verticalItemSpacing = 4.dp,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        modifier = modifier.padding(dimensionResource(id = R.dimen.space_l))
-    ) {
-        item(span = StaggeredGridItemSpan.FullLine) {
-            Text(
-                text = "북마크",
-                textAlign = TextAlign.Center,
-                style = Typography.headlineLarge
-            )
-        }
-        item(span = StaggeredGridItemSpan.FullLine) {
-            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
-        }
-        items(animals) { animal ->
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(animal.imageUrl)
-                    .crossfade(true)
-                    .build(),
-                placeholder = painterResource(id = R.drawable.sample_cat),
-                contentDescription = "북마크한 고양이 & 강아지"
-            )
+    CatdogcupTheme {
+        LazyVerticalStaggeredGrid(
+            columns = StaggeredGridCells.Fixed(3),
+            verticalItemSpacing = 4.dp,
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = modifier.padding(dimensionResource(id = R.dimen.space_l))
+        ) {
+            item(span = StaggeredGridItemSpan.FullLine) {
+                Text(
+                    text = "북마크",
+                    textAlign = TextAlign.Center,
+                    style = Typography.headlineLarge
+                )
+            }
+            item(span = StaggeredGridItemSpan.FullLine) {
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
+            }
+            items(animals) { animal ->
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(animal.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    placeholder = painterResource(id = R.drawable.sample_cat),
+                    contentDescription = "북마크한 고양이 & 강아지"
+                )
+            }
         }
     }
 }

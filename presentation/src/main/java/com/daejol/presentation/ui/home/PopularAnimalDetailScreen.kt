@@ -46,13 +46,15 @@ fun PopularAnimalDetailScreen(
     homeUiState: HomeUiState,
     navController: NavController?
 ) {
-    Scaffold { innerPadding ->
-        Column(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-        ) {
-            AnimalDetailImage(innerPadding, navController, homeUiState.breed.imageUrl)
-            AnimalDetailDescription(homeUiState.breed)
+    CatdogcupTheme {
+        Scaffold { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+            ) {
+                AnimalDetailImage(innerPadding, navController, homeUiState.breed.imageUrl)
+                AnimalDetailDescription(homeUiState.breed)
+            }
         }
     }
 }
