@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBackIosNew
@@ -16,6 +17,7 @@ import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,9 +25,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.UrlAnnotation
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -137,24 +145,55 @@ private fun AnimalDetailDescription(
         AnimalDetailAttribute(title = "Origin", desc = animal.origin)
         AnimalDetailAttribute(title = "Description", desc = animal.description)
         AnimalDetailAttribute(title = "Life Span", desc = animal.lifeSpan)
-        AnimalDetailAttribute(title = "Wikipedia URL", desc = animal.wikipediaUrl)
+        AnimalDetailAttribute(
+            title = "Wikipedia URL",
+            desc = animal.wikipediaUrl,
+            isClickable = true
+        )
     }
 }
 
 @Composable
 private fun AnimalDetailAttribute(
     title: String,
-    desc: String
+    desc: String,
+    isClickable: Boolean = false
 ) {
     Column {
         Text(
             text = title,
             style = Typography.titleLarge
         )
-        Text(
-            text = desc,
-            style = Typography.bodyMedium
-        )
+        if (isClickable) {
+            val annotatedString = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(color = MaterialTheme.colorScheme.primary)
+                ) {
+                    append(desc)
+                }
+
+                addStringAnnotation(
+                    tag = "URL",
+                    annotation = desc,
+                    start = 0,
+                    end = desc.length
+                )
+            }
+            val uriHandler = LocalUriHandler.current
+
+            ClickableText(annotatedString) {
+                annotatedString
+                    .getStringAnnotations("URL", it, it)
+                    .firstOrNull()?.let { stringAnnotation ->
+                        uriHandler.openUri(stringAnnotation.item)
+                    }
+            }
+        } else {
+            Text(
+                text = desc,
+                style = Typography.bodyMedium
+            )
+        }
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_l)))
     }
 }
