@@ -41,7 +41,12 @@ fun PopularAnimalContent(
             val screenWidth = configuration.screenWidthDp
 
             animals.forEachIndexed { i, animal ->
-                PopularAnimalCard(i, animal, (screenWidth / 2 - 22).dp, onClick)
+                PopularAnimalCard(
+                    ranking = i + 1,
+                    animal = animal,
+                    width = (screenWidth / 2 - 22).dp,
+                    onClick = onClick
+                )
             }
         }
     }

@@ -36,6 +36,7 @@ import com.daejol.presentation.model.Animal
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.secondaryLight
+import com.daejol.presentation.ui.utils.sp
 
 @Composable
 fun PopularAnimalCard(
@@ -48,9 +49,9 @@ fun PopularAnimalCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
         ),
-        colors = CardDefaults.cardColors(
+//        colors = CardDefaults.cardColors(
 //            containerColor = White100
-        ),
+//        ),
         onClick = { onClick(animal) },
         modifier = Modifier
             .wrapContentHeight()
@@ -74,39 +75,39 @@ fun PopularAnimalCard(
             )
             Column(
                 modifier = Modifier
-                    .padding(
-                        horizontal = dimensionResource(id = R.dimen.space_xs),
-                        vertical = dimensionResource(id = R.dimen.space_xxxs)
-                    )
+                    .padding(dimensionResource(id = R.dimen.space_xs))
             ) {
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xxs)))
                 Text(
                     text = "CAT NO.${ranking}",
-                    fontSize = dimensionResource(id = R.dimen.text_xxxs).value.sp,
-                    fontFamily = MoveSans,
-                    fontWeight = FontWeight.Bold,
-                    color = secondaryLight,
-                    lineHeight = 8.sp
-                )
-                Text(
-                    text = animal.name,
                     fontSize = dimensionResource(id = R.dimen.text_xs).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,
-                    lineHeight = 12.sp
+                    color = secondaryLight,
+                    lineHeight = dimensionResource(id = R.dimen.text_xxs).value.sp
                 )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xxs)))
                 Text(
-                    text = "고양이 귀여움 어쩌구 저쩌구...\napi temperament에 있는 설명..",
-                    fontSize = dimensionResource(id = R.dimen.text_xxxs).value.sp,
+                    text = animal.name,
+                    fontSize = dimensionResource(id = R.dimen.text_m).value.sp,
                     fontFamily = MoveSans,
                     fontWeight = FontWeight.Bold,
-                    lineHeight = 8.sp
+                    lineHeight = dimensionResource(id = R.dimen.text_s).value.sp
                 )
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xxs)))
+                Text(
+                    text = "고양이 귀여움 어쩌구 저쩌구...\napi temperament에 있는 설명..",
+                    fontSize = dimensionResource(id = R.dimen.text_xs).value.sp,
+                    fontFamily = MoveSans,
+                    fontWeight = FontWeight.Bold,
+                    lineHeight = dimensionResource(id = R.dimen.text_s).value.sp
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xxs)))
                 Row {
                     Spacer(modifier = Modifier.weight(1f))
                     IconButton(
                         onClick = { /*TODO*/ },
-                        modifier = Modifier.size(12.dp)
+                        modifier = Modifier.size(dimensionResource(id = R.dimen.popular_animal_card_icon_size))
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.BookmarkBorder,
