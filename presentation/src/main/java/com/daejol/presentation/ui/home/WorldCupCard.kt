@@ -4,22 +4,21 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -74,20 +73,24 @@ fun WorldCupCard(
                     style = Typography.bodySmall
                 )
                 Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                Button(
-                    onClick = { /*TODO*/ },
-                    contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
+                val colorScheme = MaterialTheme.colorScheme
+                val cornerRadius = dimensionResource(id = R.dimen.world_cup_card_text_corner_radius)
+                Text(
+                    text = stringResource(id = button),
+                    color = colorScheme.onPrimary,
+                    style = Typography.titleSmall,
                     modifier = Modifier
-                        .defaultMinSize(
-                            minWidth = ButtonDefaults.MinWidth,
-                            minHeight = 1.dp
-                        )
-                ) {
-                    Text(
-                        text = stringResource(id = button),
-                        style = Typography.titleSmall,
-                    )
-                }
+                        .drawBehind {
+                            drawRoundRect(
+                                color = colorScheme.inversePrimary,
+                                cornerRadius = CornerRadius(
+                                    cornerRadius.toPx(),
+                                    cornerRadius.toPx()
+                                )
+                            )
+                        }
+                        .padding(dimensionResource(id = R.dimen.space_xxxs))
+                )
             }
             Column {
                 Image(
