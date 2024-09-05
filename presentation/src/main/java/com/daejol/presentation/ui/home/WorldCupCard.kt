@@ -16,7 +16,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,68 +38,67 @@ fun WorldCupCard(
     @DrawableRes painter: Int = R.drawable.cat,
     onClick: () -> Unit
 ) {
-    Surface(onClick = {
-        onClick.invoke()
-    }) {
-        ElevatedCard(
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = dimensionResource(id = R.dimen.elevation_default)
-            ),
-    //        colors = CardDefaults.cardColors(
-    //            containerColor = White100
-    //        ),
-            modifier = Modifier
-                .fillMaxWidth()
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = dimensionResource(id = R.dimen.elevation_default)
+        ),
+//        colors = CardDefaults.cardColors(
+//            containerColor = White100
+//        ),
+        onClick = {
+            onClick.invoke()
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(
+                start = dimensionResource(id = R.dimen.space_m),
+                top = dimensionResource(id = R.dimen.space_m),
+                bottom = dimensionResource(id = R.dimen.space_xxxs),
+                end = dimensionResource(id = R.dimen.space_m)
+            )
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(
-                    start = dimensionResource(id = R.dimen.space_m),
-                    top = dimensionResource(id = R.dimen.space_m),
-                    bottom = dimensionResource(id = R.dimen.space_xxxs),
-                    end = dimensionResource(id = R.dimen.space_m)
-                )
+            Column(
+                Modifier.weight(1f)
             ) {
-                Column(
-                    Modifier.weight(1f)
+                Text(
+                    text = stringResource(id = title),
+                    fontSize = dimensionResource(id = R.dimen.text_l).value.sp,
+                    style = Typography.titleSmall
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                Text(
+                    text = stringResource(id = desc),
+                    style = Typography.bodySmall
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                Button(
+                    onClick = { /*TODO*/ },
+                    contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
+                    modifier = Modifier
+                        .defaultMinSize(
+                            minWidth = ButtonDefaults.MinWidth,
+                            minHeight = 1.dp
+                        )
                 ) {
                     Text(
-                        text = stringResource(id = title),
-                        fontSize = dimensionResource(id = R.dimen.text_l).value.sp,
-                        style = Typography.titleSmall
-                    )
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                    Text(
-                        text = stringResource(id = desc),
-                        style = Typography.bodySmall
-                    )
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
-                    Button(
-                        onClick = { /*TODO*/ },
-                        contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
-                        modifier = Modifier
-                            .defaultMinSize(
-                                minWidth = ButtonDefaults.MinWidth,
-                                minHeight = 1.dp
-                            )
-                    ) {
-                        Text(
-                            text = stringResource(id = button),
-                            style = Typography.titleSmall,
-                        )
-                    }
-                }
-                Column {
-                    Image(
-                        painter = painterResource(id = painter),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(dimensionResource(id = R.dimen.world_cup_card_image_size))
-                    )
-                    Spacer(
-                        modifier = Modifier.height(dimensionResource(id = R.dimen.space_s))
+                        text = stringResource(id = button),
+                        style = Typography.titleSmall,
                     )
                 }
+            }
+            Column {
+                Image(
+                    painter = painterResource(id = painter),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(dimensionResource(id = R.dimen.world_cup_card_image_size))
+                )
+                Spacer(
+                    modifier = Modifier.height(dimensionResource(id = R.dimen.space_s))
+                )
             }
         }
     }
