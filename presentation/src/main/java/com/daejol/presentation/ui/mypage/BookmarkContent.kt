@@ -33,6 +33,7 @@ import com.daejol.presentation.R
 import com.daejol.presentation.data.SampleData
 import com.daejol.presentation.model.Animal
 import com.daejol.presentation.model.Screen
+import com.daejol.presentation.ui.home.Title
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.Typography
 
@@ -50,9 +51,8 @@ fun BookmarkContent(
         Row(
             modifier = modifier.padding(start = dimensionResource(id = R.dimen.space_l))
         ) {
-            Text(
+            Title(
                 text = stringResource(id = R.string.my_page_title_bookmark),
-                style = Typography.titleLarge,
                 modifier = modifier
                     .weight(1f)
                     .align(Alignment.CenterVertically)

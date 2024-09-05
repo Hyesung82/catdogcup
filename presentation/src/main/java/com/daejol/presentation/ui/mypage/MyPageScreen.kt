@@ -33,14 +33,14 @@ fun MyPageScreen(
                 .padding(vertical = dimensionResource(id = R.dimen.space_xl))
         ) {
             MyAnimalContent(animal = animals[0])
-            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
             BookmarkContent(
                 navController = navController,
                 animals = animals.subList(0, 10)
             )
-            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
             AchievementContent(animals = animals)
-            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
+            Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xxl)))
             EtcContent()
             Spacer(modifier = modifier.height(dimensionResource(id = R.dimen.space_xl)))
         }
