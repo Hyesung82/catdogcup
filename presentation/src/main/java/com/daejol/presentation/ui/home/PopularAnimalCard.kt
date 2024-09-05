@@ -76,7 +76,7 @@ fun PopularAnimalCard(
                 modifier = Modifier
                     .padding(
                         horizontal = dimensionResource(id = R.dimen.space_xs),
-                        vertical = dimensionResource(id = R.dimen.space_xxs)
+                        vertical = dimensionResource(id = R.dimen.space_xxxs)
                     )
             ) {
                 Text(

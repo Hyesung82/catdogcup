@@ -57,7 +57,7 @@ fun WorldCupCard(
                 modifier = Modifier.padding(
                     start = dimensionResource(id = R.dimen.space_m),
                     top = dimensionResource(id = R.dimen.space_m),
-                    bottom = dimensionResource(id = R.dimen.space_xxs),
+                    bottom = dimensionResource(id = R.dimen.space_xxxs),
                     end = dimensionResource(id = R.dimen.space_m)
                 )
             ) {
@@ -66,7 +66,7 @@ fun WorldCupCard(
                 ) {
                     Text(
                         text = stringResource(id = title),
-                        fontSize = dimensionResource(id = R.dimen.text_m).value.sp,
+                        fontSize = dimensionResource(id = R.dimen.text_l).value.sp,
                         style = Typography.titleSmall
                     )
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
@@ -74,6 +74,7 @@ fun WorldCupCard(
                         text = stringResource(id = desc),
                         style = Typography.bodySmall
                     )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
                     Button(
                         onClick = { /*TODO*/ },
                         contentPadding = PaddingValues(dimensionResource(id = R.dimen.space_xxs)),
@@ -85,8 +86,7 @@ fun WorldCupCard(
                     ) {
                         Text(
                             text = stringResource(id = button),
-                            fontSize = dimensionResource(id = R.dimen.text_xxs).value.sp,
-                            style = Typography.titleLarge,
+                            style = Typography.titleSmall,
                         )
                     }
                 }

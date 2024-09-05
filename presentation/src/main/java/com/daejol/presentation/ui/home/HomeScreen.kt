@@ -106,7 +106,7 @@ fun Title(
 ) {
     Text(
         text = text,
-        style = Typography.titleLarge,
+        style = Typography.headlineLarge,
         modifier = modifier
     )
 }
