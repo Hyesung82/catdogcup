@@ -23,7 +23,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.daejol.presentation.R
 import com.daejol.presentation.ui.theme.CatdogcupTheme
@@ -41,23 +40,12 @@ fun WorldCupCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = dimensionResource(id = R.dimen.elevation_default)
         ),
-//        colors = CardDefaults.cardColors(
-//            containerColor = White100
-//        ),
-        onClick = {
-            onClick.invoke()
-        },
-        modifier = Modifier
-            .fillMaxWidth()
+        onClick = { onClick.invoke() },
+        modifier = Modifier.fillMaxWidth()
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(
-                start = dimensionResource(id = R.dimen.space_m),
-                top = dimensionResource(id = R.dimen.space_m),
-                bottom = dimensionResource(id = R.dimen.space_xxxs),
-                end = dimensionResource(id = R.dimen.space_m)
-            )
+            modifier = Modifier.padding(dimensionResource(id = R.dimen.space_l))
         ) {
             Column(
                 Modifier.weight(1f)
@@ -72,7 +60,7 @@ fun WorldCupCard(
                     text = stringResource(id = desc),
                     style = Typography.bodySmall
                 )
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_xs)))
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
                 val colorScheme = MaterialTheme.colorScheme
                 val cornerRadius = dimensionResource(id = R.dimen.world_cup_card_text_corner_radius)
                 Text(
