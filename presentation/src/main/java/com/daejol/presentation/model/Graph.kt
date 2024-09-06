@@ -12,7 +12,7 @@ import com.daejol.presentation.R
 sealed class Graph(
     val route: String,
     @StringRes val resourceId: Int,
-    val icon : ImageVector? = null
+    val icon : ImageVector
 ) {
     data object Home : Graph("graph_home", R.string.home, Icons.Filled.Home)
 
