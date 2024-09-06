@@ -13,6 +13,14 @@ sealed class Screen(
 
     data object AnimalDetail : Screen("animal_detail")
 
+    data object Matching : Screen("matching")
+
+    data object MatchingQuestion : Screen("matching_question")
+
+    data object MatchingLoading : Screen("matching_loading")
+
+    data object MatchingResult : Screen("matching_result")
+
     data object MyPage : Screen("my_page")
 
     data object Bookmark : Screen("bookmark")

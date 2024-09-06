@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Graph
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -99,7 +99,7 @@ fun MatchLoadingScreen(
                     )
                     Button(
                         onClick = {
-                            navController.navigate(Graph.MatchingResult.route)
+                            navController.navigate(Screen.MatchingResult.route)
                         },
                         modifier = Modifier
                             .width(sw / 3 * 2),

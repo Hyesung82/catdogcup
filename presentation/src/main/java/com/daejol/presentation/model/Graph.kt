@@ -18,12 +18,6 @@ sealed class Graph(
 
     data object Matching : Graph("graph_matching", R.string.matching, Icons.Filled.Extension)
 
-    data object MatchingQuestion : Graph("matching_question", R.string.matching_question, Icons.Filled.Extension)
-
-    data object MatchingLoading : Graph("matching_loading", R.string.matching, Icons.Filled.Extension)
-
-    data object MatchingResult : Graph("matching_result", R.string.matching, Icons.Filled.Extension)
-
     data object Story : Graph("graph_story", R.string.story, Icons.Filled.PhotoLibrary)
 
     data object MyPage : Graph("graph_my_page", R.string.my_page, Icons.Filled.Person)

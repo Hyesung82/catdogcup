@@ -74,30 +74,31 @@ fun MainNavHost(
             }
         }
 
-        composable(route = Graph.Matching.route) {
-            MatchStartScreen(
-                navController = navController
-            )
-        }
+        navigation(startDestination = Screen.Matching.route, route = Graph.Matching.route) {
+            composable(route = Screen.Matching.route) {
+                MatchStartScreen(
+                    navController = navController
+                )
+            }
 
-        composable(route = Graph.MatchingQuestion.route) {
-            MatchQuestionScreen(
-                navController = navController
-            )
-        }
+            composable(route = Screen.MatchingQuestion.route) {
+                MatchQuestionScreen(
+                    navController = navController
+                )
+            }
 
-        composable(route = Graph.MatchingLoading.route) {
-            MatchLoadingScreen(
-                navController = navController
-            )
-        }
+            composable(route = Screen.MatchingLoading.route) {
+                MatchLoadingScreen(
+                    navController = navController
+                )
+            }
 
-        composable(route = Graph.MatchingResult.route) {
-            MatchResultScreen(
-                navController = navController
-            )
+            composable(route = Screen.MatchingResult.route) {
+                MatchResultScreen(
+                    navController = navController
+                )
+            }
         }
-
 
         composable(route = Graph.Story.route) {
             // TODO: 스토리 화면
