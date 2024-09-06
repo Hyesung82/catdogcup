@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -115,7 +115,7 @@ fun MatchStartScreen(
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    navController?.navigate(Screen.MatchingQuestion.route)
+                    navController?.navigate(Graph.MatchingQuestion.route)
                 },
                 modifier = Modifier
                     .width(sw / 3 * 2)

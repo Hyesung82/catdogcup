@@ -8,24 +8,24 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 
 @Stable
 class AppState(
     val navController: NavHostController
 ) {
-    private val disableBottomBarScreenList = listOf(
-        Screen.WorldCupSelection.route,
-        Screen.WorldCupPlay.route,
-        Screen.WorldCupResult.route,
-        Screen.MatchingQuestion.route,
-        Screen.MatchingLoading.route,
-        Screen.MatchingResult.route,
+    private val disableBottomBarGraphList = listOf(
+        Graph.WorldCupSelection.route,
+        Graph.WorldCupPlay.route,
+        Graph.WorldCupResult.route,
+        Graph.MatchingQuestion.route,
+        Graph.MatchingLoading.route,
+        Graph.MatchingResult.route,
     )
 
     val shouldShowBottomBar: Boolean
         @Composable get() = navController
-            .currentBackStackEntryAsState().value?.destination?.route !in disableBottomBarScreenList
+            .currentBackStackEntryAsState().value?.destination?.route !in disableBottomBarGraphList
 
     val currentRoute: String?
         get() = navController.currentDestination?.route

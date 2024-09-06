@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -30,7 +30,6 @@ import com.daejol.presentation.ui.theme.Gimpo
 import com.daejol.presentation.ui.theme.MoveSans
 import com.daejol.presentation.ui.theme.Orange100
 import com.daejol.presentation.ui.theme.Orange80
-import com.daejol.presentation.ui.theme.Pretendard
 import com.daejol.presentation.ui.theme.RichTextAlign
 import com.daejol.presentation.ui.theme.White100
 import com.skydoves.landscapist.glide.GlideImage
@@ -100,7 +99,7 @@ fun MatchLoadingScreen(
                     )
                     Button(
                         onClick = {
-                            navController.navigate(Screen.MatchingResult.route)
+                            navController.navigate(Graph.MatchingResult.route)
                         },
                         modifier = Modifier
                             .width(sw / 3 * 2),

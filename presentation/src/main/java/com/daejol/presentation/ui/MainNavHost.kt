@@ -7,14 +7,16 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.bookmark.BookmarkScreen
-import com.daejol.presentation.ui.match.MatchStartScreen
 import com.daejol.presentation.ui.home.HomeScreen
 import com.daejol.presentation.ui.home.PopularAnimalDetailScreen
 import com.daejol.presentation.ui.match.MatchLoadingScreen
 import com.daejol.presentation.ui.match.MatchQuestionScreen
 import com.daejol.presentation.ui.match.MatchResultScreen
+import com.daejol.presentation.ui.match.MatchStartScreen
 import com.daejol.presentation.ui.mypage.MyPageScreen
 import com.daejol.presentation.ui.worldcup.play.WorldCupPlayScreen
 import com.daejol.presentation.ui.worldcup.result.WorldCupResultScreen
@@ -32,10 +34,10 @@ fun MainNavHost(
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = Graph.Home.route,
         modifier = modifier
     ) {
-        composable(route = Screen.Home.route) {
+        composable(route = Graph.Home.route) {
             HomeScreen(
                 navController = navController,
                 onDetailButtonClicked = {
@@ -44,20 +46,20 @@ fun MainNavHost(
                 }
             )
         }
-        composable(route = Screen.WorldCupSelection.route) {
+        composable(route = Graph.WorldCupSelection.route) {
             WorldCupScreen(
                 viewModel = worldCupViewModel,
                 type = "CAT",
                 navController = navController
             )
         }
-        composable(route = Screen.WorldCupPlay.route) {
+        composable(route = Graph.WorldCupPlay.route) {
             WorldCupPlayScreen(
                 viewModel = worldCupViewModel,
                 navController = navController
             )
         }
-        composable(route = Screen.WorldCupResult.route) {
+        composable(route = Graph.WorldCupResult.route) {
             WorldCupResultScreen(
                 viewModel = worldCupViewModel,
                 navController = navController
@@ -70,40 +72,42 @@ fun MainNavHost(
             )
         }
 
-        composable(route = Screen.Matching.route) {
+        composable(route = Graph.Matching.route) {
             MatchStartScreen(
                 navController = navController
             )
         }
 
-        composable(route = Screen.MatchingQuestion.route) {
+        composable(route = Graph.MatchingQuestion.route) {
             MatchQuestionScreen(
                 navController = navController
             )
         }
 
-        composable(route = Screen.MatchingLoading.route) {
+        composable(route = Graph.MatchingLoading.route) {
             MatchLoadingScreen(
                 navController = navController
             )
         }
 
-        composable(route = Screen.MatchingResult.route) {
+        composable(route = Graph.MatchingResult.route) {
             MatchResultScreen(
                 navController = navController
             )
         }
 
 
-        composable(route = Screen.Story.route) {
+        composable(route = Graph.Story.route) {
             // TODO: 스토리 화면
         }
 
-        composable(route = Screen.MyPage.route) {
-            MyPageScreen(navController = navController)
-        }
-        composable(route = Screen.Bookmark.route) {
-            BookmarkScreen()
+        navigation(startDestination = Screen.MyPage.route, route = Graph.MyPage.route) {
+            composable(route = Screen.MyPage.route) {
+                MyPageScreen(navController = navController)
+            }
+            composable(route = Screen.Bookmark.route) {
+                BookmarkScreen()
+            }
         }
     }
 }

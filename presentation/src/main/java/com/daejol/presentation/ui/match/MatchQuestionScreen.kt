@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -21,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.CatdogcupTheme
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -161,7 +160,7 @@ fun MatchQuestionScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = {
-                        navController?.navigate(Screen.MatchingLoading.route)
+                        navController?.navigate(Graph.MatchingLoading.route)
                     },
                     modifier = Modifier
                         .width(sw / 5 * 4),

@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.daejol.domain.usecase.WorldCupType
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.utils.BottomButton
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 import com.daejol.presentation.ui.worldcup.selection.middle.MiddleSectionWidget
@@ -74,7 +74,7 @@ fun WorldCupScreen(
                         onFinish = {
                             viewModel.initializeGame()
                             navController?.navigate(
-                                route = Screen.WorldCupPlay.route
+                                route = Graph.WorldCupPlay.route
                             )
                         }
                     )

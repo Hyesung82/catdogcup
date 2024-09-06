@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 import com.daejol.presentation.ui.theme.BorderRadius
 import com.daejol.presentation.ui.theme.CustomRichText
 import com.daejol.presentation.ui.theme.CustomTextStyle
@@ -178,7 +178,7 @@ fun WorldCupPlayScreen(
 }
 
 private fun onMatchEnd(navController: NavController?) {
-    navController?.navigate(route = Screen.WorldCupResult.route) {
+    navController?.navigate(route = Graph.WorldCupResult.route) {
         popUpTo(0)
     }
 }

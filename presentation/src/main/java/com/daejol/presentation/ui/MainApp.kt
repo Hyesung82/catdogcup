@@ -15,15 +15,15 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Screen
+import com.daejol.presentation.model.Graph
 
 @Composable
 fun MainApp() {
     val items = listOf(
-        Screen.Home,
-        Screen.Matching,
-        Screen.Story,
-        Screen.MyPage,
+        Graph.Home,
+        Graph.Matching,
+        Graph.Story,
+        Graph.MyPage,
     )
     val appState = rememberAppState()
     val navController = appState.navController
