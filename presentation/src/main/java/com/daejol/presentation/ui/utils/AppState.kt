@@ -9,15 +9,16 @@ import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.daejol.presentation.model.Graph
+import com.daejol.presentation.model.Screen
 
 @Stable
 class AppState(
     val navController: NavHostController
 ) {
     private val disableBottomBarGraphList = listOf(
-        Graph.WorldCupSelection.route,
-        Graph.WorldCupPlay.route,
-        Graph.WorldCupResult.route,
+        Screen.WorldCupSelection.route,
+        Screen.WorldCupPlay.route,
+        Screen.WorldCupResult.route,
         Graph.MatchingQuestion.route,
         Graph.MatchingLoading.route,
         Graph.MatchingResult.route,

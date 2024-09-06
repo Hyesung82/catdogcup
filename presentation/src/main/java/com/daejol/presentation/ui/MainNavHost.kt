@@ -37,39 +37,41 @@ fun MainNavHost(
         startDestination = Graph.Home.route,
         modifier = modifier
     ) {
-        composable(route = Graph.Home.route) {
-            HomeScreen(
-                navController = navController,
-                onDetailButtonClicked = {
-                    homeViewModel.setBreed(it)
-                    navController.navigate(Screen.AnimalDetail.route)
-                }
-            )
-        }
-        composable(route = Graph.WorldCupSelection.route) {
-            WorldCupScreen(
-                viewModel = worldCupViewModel,
-                type = "CAT",
-                navController = navController
-            )
-        }
-        composable(route = Graph.WorldCupPlay.route) {
-            WorldCupPlayScreen(
-                viewModel = worldCupViewModel,
-                navController = navController
-            )
-        }
-        composable(route = Graph.WorldCupResult.route) {
-            WorldCupResultScreen(
-                viewModel = worldCupViewModel,
-                navController = navController
-            )
-        }
-        composable(route = Screen.AnimalDetail.route) {
-            PopularAnimalDetailScreen(
-                navController = navController,
-                homeUiState = homeUiState
-            )
+        navigation(startDestination = Screen.Home.route, route = Graph.Home.route) {
+            composable(route = Screen.Home.route) {
+                HomeScreen(
+                    navController = navController,
+                    onDetailButtonClicked = {
+                        homeViewModel.setBreed(it)
+                        navController.navigate(Screen.AnimalDetail.route)
+                    }
+                )
+            }
+            composable(route = Screen.WorldCupSelection.route) {
+                WorldCupScreen(
+                    viewModel = worldCupViewModel,
+                    type = "CAT",
+                    navController = navController
+                )
+            }
+            composable(route = Screen.WorldCupPlay.route) {
+                WorldCupPlayScreen(
+                    viewModel = worldCupViewModel,
+                    navController = navController
+                )
+            }
+            composable(route = Screen.WorldCupResult.route) {
+                WorldCupResultScreen(
+                    viewModel = worldCupViewModel,
+                    navController = navController
+                )
+            }
+            composable(route = Screen.AnimalDetail.route) {
+                PopularAnimalDetailScreen(
+                    navController = navController,
+                    homeUiState = homeUiState
+                )
+            }
         }
 
         composable(route = Graph.Matching.route) {

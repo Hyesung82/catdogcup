@@ -14,15 +14,9 @@ sealed class Graph(
     @StringRes val resourceId: Int,
     val icon : ImageVector? = null
 ) {
-    data object Home : Graph("home", R.string.home, Icons.Filled.Home)
+    data object Home : Graph("graph_home", R.string.home, Icons.Filled.Home)
 
-    data object WorldCupSelection : Graph("worldcup/selection", R.string.worldcup_selection)
-
-    data object WorldCupPlay : Graph("worldcup/play", R.string.worldcup_play)
-
-    data object WorldCupResult : Graph("worldcup/result", R.string.worldcup_result)
-
-    data object Matching : Graph("matching", R.string.matching, Icons.Filled.Extension)
+    data object Matching : Graph("graph_matching", R.string.matching, Icons.Filled.Extension)
 
     data object MatchingQuestion : Graph("matching_question", R.string.matching_question, Icons.Filled.Extension)
 
@@ -30,7 +24,7 @@ sealed class Graph(
 
     data object MatchingResult : Graph("matching_result", R.string.matching, Icons.Filled.Extension)
 
-    data object Story : Graph("story", R.string.story, Icons.Filled.PhotoLibrary)
+    data object Story : Graph("graph_story", R.string.story, Icons.Filled.PhotoLibrary)
 
-    data object MyPage : Graph("my_page_graph", R.string.my_page, Icons.Filled.Person)
+    data object MyPage : Graph("graph_my_page", R.string.my_page, Icons.Filled.Person)
 }

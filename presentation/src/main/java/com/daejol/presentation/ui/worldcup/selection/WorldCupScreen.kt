@@ -1,6 +1,5 @@
 package com.daejol.presentation.ui.worldcup.selection
 
-import com.daejol.presentation.ui.worldcup.selection.top.TopSectionWidget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,10 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.daejol.domain.usecase.WorldCupType
-import com.daejol.presentation.model.Graph
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.utils.BottomButton
 import com.daejol.presentation.ui.worldcup.WorldCupViewModel
 import com.daejol.presentation.ui.worldcup.selection.middle.MiddleSectionWidget
+import com.daejol.presentation.ui.worldcup.selection.top.TopSectionWidget
 
 class WorldCupPreviewParameterProvider : PreviewParameterProvider<WorldCupType> {
     override val values = sequenceOf(
@@ -74,7 +74,7 @@ fun WorldCupScreen(
                         onFinish = {
                             viewModel.initializeGame()
                             navController?.navigate(
-                                route = Graph.WorldCupPlay.route
+                                route = Screen.WorldCupPlay.route
                             )
                         }
                     )

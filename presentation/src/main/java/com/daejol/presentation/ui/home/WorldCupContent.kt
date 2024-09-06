@@ -14,9 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.daejol.domain.usecase.WorldCupType
 import com.daejol.presentation.R
-import com.daejol.presentation.model.Graph
-import com.daejol.presentation.ui.worldCupViewModel
+import com.daejol.presentation.model.Screen
 import com.daejol.presentation.ui.theme.CatdogcupTheme
+import com.daejol.presentation.ui.worldCupViewModel
 
 @Composable
 fun WorldCupContent(
@@ -36,7 +36,7 @@ fun WorldCupContent(
             R.drawable.cat,
             onClick = {
                 worldCupViewModel.setType(WorldCupType.CAT)
-                navController?.navigate(Graph.WorldCupSelection.route)
+                navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -47,7 +47,7 @@ fun WorldCupContent(
             R.drawable.dog,
             onClick = {
                 worldCupViewModel.setType(WorldCupType.DOG)
-                navController?.navigate(Graph.WorldCupSelection.route)
+                navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.space_m)))
@@ -58,7 +58,7 @@ fun WorldCupContent(
             R.drawable.catdog,
             onClick = {
                 worldCupViewModel.setType(WorldCupType.COMBINED)
-                navController?.navigate(Graph.WorldCupSelection.route)
+                navController?.navigate(Screen.WorldCupSelection.route)
             }
         )
     }
